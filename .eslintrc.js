@@ -12,6 +12,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     'capitalized-comments': 'off',
     'comma-dangle': ['error', 'always-multiline'],
+    "react/react-in-jsx-scope": "off",
     'react/jsx-tag-spacing': 'off',
     'react/prop-types': 'off',
     'react/require-default-props': 'off',

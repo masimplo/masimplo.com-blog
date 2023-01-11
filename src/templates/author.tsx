@@ -13,10 +13,10 @@ import {
   AuthorProfileImage,
   inner,
   outer,
-  PostFeed, ResponsiveHeaderBackground, SiteArchiveHeader, SiteHeader, SiteHeaderBackground, SiteHeaderContent, SiteMain, SiteNavMain, SiteTitle
+  PostFeed, ResponsiveHeaderBackground, SiteArchiveHeader, SiteHeader, SiteHeaderBackground, SiteHeaderContent, SiteMain, SiteNavMain, SiteTitle,
 } from '../styles/shared';
 import config from '../website-config';
-import { PageContext } from './post';
+import { type PageContext } from './post';
 
 type AuthorTemplateProps = {
   location: Location;

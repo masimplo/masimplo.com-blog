@@ -17,7 +17,7 @@ import {
   SiteDescription,
   SiteHeader,
   SiteHeaderContent, SiteHeaderStyles, SiteMain,
-  SiteTitle
+  SiteTitle,
 } from '../styles/shared';
 import config from '../website-config';
 import type { PageContext } from './post';

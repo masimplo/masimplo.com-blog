@@ -12,7 +12,7 @@ import {
   outer,
   PostFeed, ResponsiveHeaderBackground, SiteArchiveHeader, SiteDescription,
   SiteHeader, SiteHeaderBackground, SiteHeaderContent,
-  SiteMain, SiteNavMain, SiteTitle
+  SiteMain, SiteNavMain, SiteTitle,
 } from '../styles/shared';
 import config from '../website-config';
 import type { PageContext } from './post';

@@ -7,7 +7,7 @@ import { kebabCase } from 'lodash';
 import { lighten } from 'polished';
 import React from 'react';
 import { colors } from '../styles/colors';
-import { PageContext } from '../templates/post';
+import { type PageContext } from '../templates/post';
 import config from '../website-config';
 import { AuthorList } from './AuthorList';
 
