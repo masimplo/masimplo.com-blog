@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Using environment config in Ionic2"
+title: Using environment config in Ionic2
 author: [masimplo]
-tags: ["Ionic"]
+tags: [Ionic, Code]
 image: ../../images/headers/rsz_elizabeth-lies.jpg
-date: "2017-09-12"
+date: 2017-09-12
 draft: false
 ---
 

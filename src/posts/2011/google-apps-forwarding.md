@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Google Apps forwarding"
+title: Google Apps forwarding
 author: [masimplo]
-tags: []
+tags: [Tips]
 image: ../../images/headers/gaelle-marcel-161096-unsplash.jpg
-date: "2011-07-20"
+date: 2011-07-20
 draft: false
 ---
 

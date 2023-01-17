@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Measure real world web performance"
+title: Measure real world web performance
 author: [masimplo]
-tags: ['performance']
+tags: [Performance, Code]
 image: ../../images/headers/veri-ivanova-17904-unsplash.jpg
-date: "2019-03-23"
+date: 2019-03-23
 draft: false
 ---
 Every developer at some point gets a task to make something faster.

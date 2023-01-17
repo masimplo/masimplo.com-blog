@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Git rerere to the rererescue"
+title: Git rerere to the rererescue
 author: [masimplo]
-tags: []
+tags: [Tools, Tips]
 image: ../../images/headers/abraham-osorio-184519.jpg
-date: "2017-10-18"
+date: 2017-10-18
 draft: false
 ---
 

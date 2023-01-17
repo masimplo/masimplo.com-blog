@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Writing a Firebase function to modify user claims"
+title: Writing a Firebase function to modify user claims
 author: [masimplo]
-tags: ["lifehacks"]
+tags: [Code, Firebase]
 image: ../../images/headers/sarah-kilian-xit3LjRvKvM-unsplash.jpg
-date: "2023-01-05"
+date: 2023-01-05
 draft: false
 ---
 

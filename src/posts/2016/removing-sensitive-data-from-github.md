@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Removing sensitive data from github"
+title: Removing sensitive data from github
 author: [masimplo]
-tags: [""]
+tags: [Tools, Security, Tips]
 image: ../../images/headers/bfg.png
-date: "2016-10-28"
+date: 2016-10-28
 draft: false
 ---
 

@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "What's wrong with StackOverflow"
+title: What's wrong with StackOverflow
 author: [masimplo]
-tags: [""]
+tags: [Opinions]
 image: ../../images/headers/stackoverflow.png
-date: "2016-11-25"
+date: 2016-11-25
 draft: false
 ---
 

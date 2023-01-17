@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Updating Cordova config.xml version using npm version"
+title: Updating Cordova config.xml version using npm version
 author: [masimplo]
-tags: [""]
+tags: [Bash]
 image: ../../images/headers/cordova_logo_normal_dark_large.png
-date: "2016-11-17"
+date: 2016-11-17
 draft: false
 ---
 

@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Adding highlight.js to Ghost"
+title: Adding highlight.js to Ghost
 author: [masimplo]
-tags: [""]
+tags: [Blogging]
 image: ../../images/headers/highlighted-code.png
-date: "2016-10-17"
+date: 2016-10-17
 draft: false
 ---
 

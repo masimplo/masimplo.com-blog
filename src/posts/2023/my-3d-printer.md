@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Building my own 3D printer"
+title: Building my own 3D printer
 author: [masimplo]
-tags: []
+tags: [3D Printing, Hobbies]
 image: ../../images/headers/kadir-celep-HsefvbLbNWc-unsplash.jpg
-date: "2023-01-02"
+date: 2023-01-02
 draft: false
 ---
 

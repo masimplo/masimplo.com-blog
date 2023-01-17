@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Testing Ionic presentables"
+title: Testing Ionic presentables
 author: [masimplo]
-tags: ["Ionic"]
+tags: [Ionic, Code, Testing]
 image: ../../images/headers/kelly-sikkema-411622-unsplash.jpg
-date: "2017-06-30"
+date: 2017-06-30
 draft: false
 ---
 

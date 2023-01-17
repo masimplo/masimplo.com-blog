@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Listing global npm installed packages"
+title: Listing global npm installed packages
 author: [masimplo]
-tags: [""]
+tags: [Tips, Tools]
 image: ../../images/headers/weekly-header-boxes-retina.png
-date: "2016-10-14"
+date: 2016-10-14
 draft: false
 ---
 

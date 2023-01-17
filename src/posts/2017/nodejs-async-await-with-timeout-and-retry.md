@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "NodeJS async/await with retry"
+title: NodeJS async/await with retry
 author: [masimplo]
-tags: []
+tags: [Code]
 image: ../../images/headers/async-javascript.jpg
-date: "2017-10-15"
+date: 2017-10-15
 draft: false
 ---
 

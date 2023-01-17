@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Batch resize pictures on Mac using Preview"
+title: Batch resize pictures on Mac using Preview
 author: [masimplo]
-tags: [""]
+tags: [Tips, Tools]
 image: ../../images/headers/domenico-loia-EhTcC9sYXsw-unsplash.jpg
-date: "2023-01-03"
+date: 2023-01-03
 draft: false
 ---
 

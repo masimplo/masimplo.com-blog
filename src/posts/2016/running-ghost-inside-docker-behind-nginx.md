@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Running Ghost inside docker behind nginx"
+title: Running Ghost inside docker behind nginx
 author: [masimplo]
-tags: [""]
+tags: [Tips, Docker, Blogging]
 image: ../../images/headers/docker.png
-date: "2016-09-25"
+date: 2016-09-25
 draft: false
 ---
 

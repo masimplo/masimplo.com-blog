@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Waiting for progress"
+title: Waiting for progress
 author: [masimplo]
-tags: [""]
+tags: [Code]
 image: ../../images/headers/ben-white-292680-unsplash.jpg
-date: "2012-11-22"
+date: 2012-11-22
 draft: false
 ---
 

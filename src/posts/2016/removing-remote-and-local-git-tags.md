@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Removing remote and local git tags"
+title: Removing remote and local git tags
 author: [masimplo]
-tags: [""]
+tags: [Tips, Tools]
 image: ../../images/headers/tagging.png
-date: "2016-11-19"
+date: 2016-11-19
 draft: false
 ---
 

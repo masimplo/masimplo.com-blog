@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Software security is a culture not a calendar event"
+title: Software security is a culture not a calendar event
 author: [masimplo]
-tags: ["security","opinions"]
+tags: [Security, Opinions]
 image: ../../images/headers/fly-d-mT7lXZPjk7U-unsplash.jpg
-date: "2023-01-17"
+date: 2023-01-17
 draft: false
 ---
 

@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Android blogging"
+title: Android blogging
 author: [masimplo]
-tags: []
+tags: [Blogging]
 image: ../../images/headers/patrick-fore-381200-unsplash.jpg
-date: "2011-07-17"
+date: 2011-07-17
 draft: false
 ---
 

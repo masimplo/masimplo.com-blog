@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Annoying online salesrobot"
+title: Annoying online salesrobot
 author: [masimplo]
-tags: ["Online Shopping"]
+tags: [Online Shopping]
 image: ../../images/headers/hello-i-m-nik-616779-unsplash.jpg
-date: "2012-01-03"
+date: 2012-01-03
 draft: false
 ---
 

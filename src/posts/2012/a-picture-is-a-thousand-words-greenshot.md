@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "A picture is a thousand words. GreenShot"
+title: A picture is a thousand words. GreenShot
 author: [masimplo]
-tags: []
+tags: [Tools]
 image: ../../images/headers/patrick-tomasso-71909-unsplash.jpg
-date: "2012-01-04"
+date: 2012-01-04
 draft: false
 ---
 

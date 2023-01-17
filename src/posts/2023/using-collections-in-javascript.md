@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Managing Collections in Javascript"
+title: Managing Collections in Javascript
 author: [masimplo]
-tags: ["Javascript"]
+tags: [Javascript, Code]
 image: ../../images/headers/kevs-gSMY1wNNlvY-unsplash.jpg
-date: "2023-01-11"
+date: 2023-01-11
 draft: false
 ---
 

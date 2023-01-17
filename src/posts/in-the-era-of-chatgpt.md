@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "In the Era of ChatGPT and friends"
+title: In the Era of ChatGPT and friends
 author: [masimplo]
-tags: []
+tags: [Technology, AI]
 image: ../images/headers/possessed-photography-jIBMSMs4_kA-unsplash.jpg
-date: "2023-01-13"
+date: 2023-01-13
 draft: false
 ---
 
