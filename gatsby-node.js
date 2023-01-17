@@ -14,12 +14,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   switch (node.internal.type) {
     case 'MarkdownRemark': {
       const { permalink, layout, primaryTag } = node.frontmatter;
-      const { relativePath } = getNode(node.parent);
+      const { name } = getNode(node.parent);
 
       let slug = permalink;
 
       if (!slug) {
-        slug = `/${relativePath.replace('.md', '')}/`;
+        slug = `/${name.replace('.md', '')}/`;
       }
 
       // Used to generate URL to view this content.
