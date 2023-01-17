@@ -44,7 +44,7 @@ performance.measure('mytask', 'mytaskStart', 'mytaskFinish'); // this will give 
 
 ```
 
-To capture the measurement and do something with it (e.g. log it or send to a server or even change our apps behaviour) we need to setup and register a performance observer. It is actually pretty straight forward.
+To capture the measurement and do something with it (e.g. log it or send it to a server or even change our app's behavior), we need to set up and register a performance observer. It's actually pretty straightforward.
 
 ```javascript
 const userObserver = new PerformanceObserver(list => {
@@ -62,6 +62,10 @@ Now whenever your expensive task runs we will get a nice log in the console like
 
 `measure: mytask took 125ms`
 
-In a real world scenario, we can gather such statistics to our server or analytics provider and use it to both identify bottlenecks or debug specific situations.
+In a real-world scenario, you can gather these statistics on your server or analytics provider and use them to identify bottlenecks or debug specific situations.
 
-*Since we are using the Performance API, measuring should not have any impact on our app's performance (like it would, if we were using Date timestamps).*
+*It's also worth noting that since we're using the Performance API, measuring should not have any impact on our app's performance, unlike if we were using date timestamps.*
+
+In conclusion, client-side performance API is a powerful tool that can help us identify and fix performance issues that are difficult to reproduce in the lab. By leveraging performance.mark and performance.measure, we can get accurate measurements of how long each piece of our code takes to run on a user's device and use that information to improve the performance of our app.
+
+
