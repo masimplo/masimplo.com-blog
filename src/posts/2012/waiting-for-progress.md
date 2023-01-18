@@ -8,38 +8,38 @@ date: 2012-11-22
 draft: false
 ---
 
-Όταν μια εφαρμογή έχει πολλές χρονοβόρες διαδικασίες τότε ένα progressbar στην κεντρική φόρμα είναι απαραίτητο, ώστε να μην υπάρχουν 200 progressbar δεξιά και αριστερά.
-Ωραία, ας βάλουμε το progressbar στην κεντρική φόρμα, εγώ όμως που είναι 15 φόρμες και 20 κλάσεις μακριά και κάνω ένα χρονοβόρο υπολογισμό τι κάνω;.
-Έχω δει ανθρώπους να κάνουν το progressbar public, να έχουν access μέσω static, ακόμα και να το περνάνε παντού ως παράμετρο. Δεν μπορεί… Πρέπει να υπάρχει μη καγκουρικος τρόπος σκέφτηκα. Και τότε μου ήρθε…
+When an application has many time-consuming processes then a progressbar in the central form is necessary, so that there are not 200 progressbars left and right.
+Okay, let's put the progressbar on the main form, but I'm 15 forms and 20 classes away and I'm doing a time-consuming calculation, what do I do?
+I've seen people make the progressbar public, access it via static, and even pass it everywhere as a parameter. It can't be… There has to be a non-kangaroo way I thought. And then it came to me…
 
-Μία class ονόματι StatusNotifier που απαρτίζεται από:
+A class named StatusNotifier consisting of:
 
-- ένα event delegate
+- an event delegate
 ```csharp
   public delegate void StatusChangedEventHandler(object sender, StatusEventArgs e);
 ```
-- ένα event
+- an event
 ```csharp
   public static event StatusChangedEventHandler StatusChanged;
 ```
 
-και 1 μέθοδο
+and 1 method
 ```csharp
   if (StatusChanged == null) return; // Make sure there are methods to execute
   StatusChanged(sender, new StatusEventArgs(status, percentageDone)); // Raise the event
 ```
 
-Όποιος θέλει να ειδοποιήσει για το status μίας χρονοβόρας διαδικασίας απλά χρειάζεται να κάνει
+Anyone who wants to notify about the status of a time-consuming process simply needs to do
 ```csharp
   StatusNotifier.SetStatus(this, "Processing universal parameters of chaos...", 10);
 ```
 
-Στην αντίπερα όχθη, στην mainForm της εφαρμογής η οποία έχει το statusbar αρκεί να κάνουμε register το statusChanged event
+On the other side, in the mainForm of the application which has the statusbar, it is enough to register the statusChanged event
 ```csharp
   StatusNotifier.StatusChanged += StatusNotifier_StatusChanged;
 ```
 
-και να γράψουμε τι θέλουμε να γίνεται με τα δεδομένα που μας ήρθαν μέσω του event
+and write what we want to be done with the data that came to us through the event
 ```csharp
   void StatusNotifier_StatusChanged(object sender, StatusEventArgs e) {
     var percentageDone = e.PercentageDone;

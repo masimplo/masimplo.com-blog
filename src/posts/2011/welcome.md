@@ -8,9 +8,8 @@ date: 2011-06-06T23:46:37.121Z
 draft: false
 ---
 
-👋 Το default post του blog μόλις το εγκατέστησα…Hello World! Σκέφτηκα για μια στιγμή να το διαγράψω και να ξεκινήσω να γράφω τα δικά μου posts, αλλά τι πιο κατάλληλο για welcoming post του blog ενός computer literate ατόμου -αυτό που πολλοί Έλληνες αποκαλούν κομπιουτερά-
+👋 The default blog post I just installed...Hello World! I thought for a moment to delete it and start writing my own posts, but what more suitable for a welcoming post of the blog of a computer literate person - what many Greeks call "κομπιουτεράς" -
 
-Έχω ξεκινήσει αρκετές φορές blog και τα έχω αφήσει στην μέση λόγω έλλειψης είτε χρόνου είτε όρεξης. Αυτή είναι μία ακόμα προσπάθεια να επικοινωνήσω αυτά που ξέρω να κάνω καλά στον έξω κόσμο.
-Τα θέματα που θα απασχολήσουν το παρών blog δεν τα έχω κάνει well define ακόμα αλλά φαντάζομαι θα έχουν να κάνουν με τις σπουδές μου, με τη δουλειά μου αλλά και με τα hobby μου.
+I have started several blogs and abandoned them due to lack of either time or appetite. This is another attempt to communicate what I know how to do well to the outside world. The topics that will concern this blog I have not yet defined well, but I imagine they will have to do with my studies, my work and my hobbies.
 
-Ελπίζω αυτή τη φορά να πιάσει τόπο η προσπάθεια και να μην ξεχάσω και αυτό το blog καθώς κάνω wonder off προς κάτι πιο λαμπερό…
+I hope this time the effort takes place and I don't forget this blog as I wonder off towards something brighter...

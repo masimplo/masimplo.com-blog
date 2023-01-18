@@ -8,15 +8,15 @@ date: 2011-07-07
 draft: false
 ---
 
-Δουλεύοντας με το Entity Framework του .Net και έχοντας υλοποιήσει ένα Repository Pattern με generics βρέθηκα στην θέση να πρέπει να φτιάξω ένα Repository αγνώστου, μέχρι το runtime, τύπου οπότε έκανα κάτι του στυλ:
+Working with the Entity Framework of .NET and having implemented a Repository Pattern with generics, I found myself in the position of having to make a Repository of an unknown type until runtime, so I did something like:
 
-….
+...
 
-Όσο έφτιαχνα νέα entities αυτό το chunk δούλευε απροβλημάτιστα. Μόλις όμως άρχισα να σηκώνω entities από το framework για editing τα exceptions δεν είχαν σταματημό. Το πρόβλημα δημιουργήθηκε από το γεγονός ότι τα entities που γυρνάει το EF είναι proxies που κάνουν inherit τον τύπο του εκάστοτε entity και όχι τύπου entity.
+As long as I was creating new entities, this chunk worked fine. But as soon as I started to pick up entities from the framework for editing, the exceptions did not stop. The problem was created by the fact that the entities returned by EF are proxies that inherit the type of the respective entity and not the entity type.
 
-Η πρώτη μου σκέψη ήταν αν η MS θα είχε καταχωνιάσει κάπου τον τύπο του entity μέσα στα properties των dynamic proxies. Πουθενά όμως, εκτός από το αναμενόμενο base type το οποίο όμως δημιουργούσε άλλα προβλήματα αν κάποια entities έχουν πάνω από ένα επίπεδα inheritance όπως τα δικά μου.
+My first thought was if Microsoft would have buried the entity type somewhere in the properties of the dynamic proxies. But nowhere, except for the expected base type which, however, created other problems if some entities have more than one level of inheritance like mine.
 
-Μετά από αρκετό ψάξιμο, μιας και searches του στυλ: *“dynamic proxies gettype originating type” *γελούσαν στα μούτρα μου,βρήκα ένα γλυκύτατο static method μέσα στο ObjectContext που έδεινε τον Entity Type για Dynamic proxy entities αλλά δεν παραπονιόταν και στα POCO, οπότε ήταν ότι χρειαζόμουν για να κάνω το προβληματικό chunk exception free (τουλάχιστον του συγκεκριμένου :P).
+After a lot of searching, since searches of the style: "dynamic proxies getType originating type" laughed in my face, I found a sweet static method inside the ObjectContext that showed the Entity Type for Dynamic proxy entities but didn't complain to POCOs either, so it was what I needed to make the problematic chunk exception-free (at least that particular one :P).
 
 ```
 public static bool IsProxy(object type) {

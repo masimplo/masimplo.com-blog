@@ -9,8 +9,8 @@ draft: false
 ---
 
 
-Μόλις εγκατέστησα στο Android τηλέφωνο μου την εφαρμογή WordPress για να εχω το blog πάντα μαζί μου, μπας και γίνω dedicate αυτή τη φορά.
+I just installed the WordPress application on my Android phone so that I can always have the blog with me, even if I become dedicated this time.
 
-Προσεγμένο και εύκολο το app προσφέροντας έλεγχο σε comments, posts, pages αλλά και wordpress.com stats.  Για την ακρίβεια από αυτό γράφω αυτό το post 2 λεπτά μετά την εγκατάσταση του.
+It's a neat and easy app that offers control over comments, posts, pages, as well as WordPress.com stats. In fact, I am writing this post 2 minutes after installing it.
 
 ![QR Code](../../images/content/wordpress_qrcode_urekwe.png)
