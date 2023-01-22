@@ -1,7 +1,7 @@
+import { css, Global } from '@emotion/react';
+import { lighten } from 'polished';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Global, css } from '@emotion/react';
-import { lighten } from 'polished';
 
 import favicon from '../../src/favicon.ico';
 import { colors } from '../styles/colors';
@@ -475,6 +475,12 @@ function IndexLayout(props: IndexProps) {
             margin: 1.5em 0 0.5em 0;
             font-size: 1.4rem;
             font-weight: 500;
+          }
+
+          li::marker {
+            color: #3366ff;
+            content: "»";
+            font-size: 1.1em;
           }
 
           /* globals from screen.css */
