@@ -2,7 +2,7 @@
 layout: post
 title: "Practical CSS3 tables with rounded corners - RedTeamDesign"
 author: [masimplo]
-tags: ["Web Design", "CSS"]
+tags: [Web Design, CSS]
 image: ../../images/headers/phuong-tran-1190168-unsplash.jpg
 date: "2012-01-05"
 draft: false
