@@ -2,10 +2,12 @@ import { Helmet } from 'react-helmet';
 
 import { css } from '@emotion/react';
 
+import styled from '@emotion/styled';
 import { Footer } from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
 import { Wrapper } from '../components/Wrapper';
+import image from "../images/content/sarah-dorweiler-QeVmJxZOv3k-unsplash.jpg";
 import IndexLayout from '../layouts';
 import { colors } from '../styles/colors';
 import {
@@ -14,7 +16,7 @@ import {
   SiteArchiveHeader,
   SiteHeader,
   SiteMain,
-  SiteNavMain,
+  SiteNavMain
 } from '../styles/shared';
 import { NoImage, PostFull, PostFullHeader, PostFullTitle } from '../templates/post';
 
@@ -30,6 +32,31 @@ const PageTemplate = css`
       /* background: var(--darkmode); */
       background: ${colors.darkmode};
     }
+  }
+`;
+
+const PostFullImage = styled.figure`
+  margin: 25px 0 50px;
+  height: 500px;
+  background: ${colors.lightgrey} center center;
+  background: url('${image}') center top;
+  background-size: cover;
+  border-radius: 5px;
+
+  @media (max-width: 1170px) {
+    margin: 25px -6vw 50px;
+    border-radius: 0;
+    img {
+      max-width: 1170px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    height: 200px;
+  }
+  @media (max-width: 500px) {
+    margin-bottom: 4vw;
+    height: 150px;
   }
 `;
 
@@ -54,13 +81,15 @@ function About() {
                 <PostFullTitle className="post-full-title">About</PostFullTitle>
               </PostFullHeader>
 
+              <PostFullImage>
+                {/* <img src={image} alt="hero image" /> */}
+              </PostFullImage>
+
               <PostFullContent className="post-full-content">
                 <div className="post-content">
-                  <p>
-                    I am a professional Software Developer for the past 20 years or so. Since a very young age
-                    I tinkered with computers and always remember myself enjoying building things. I always take
-                    on new challenges and try to find solutions to everyday problems in the most creative and efficient
-                    way possible.
+                  <p>As a professional software developer for almost 20 years, I have always been fascinated by the power of technology to solve problems.
+                    From a very young age, I tinkered with computers and found joy in building things.
+                    I approach new challenges with a creative and efficient mindset, constantly seeking innovative solutions to everyday problems.
                   </p>
                   <p>
                     During the day I make a lot of architecture and design decisions and manage a great team over <a href="https://covve.com">@Covve</a> but I also get my hands *dirty* writing
@@ -69,15 +98,20 @@ function About() {
                   </p>
                   <p>
                     I have done a lot of freelancing in the past, which gave me the opportunity to work with different
-                    technologies, but also people. I have done about 7+ years of C# development, mostly for Geographic Information
-                    Systems, 3D and Data Intensive applications. Half the last decade I am more into javascript (or more accurately typescript)
-                    development mostly for front end and mobile, but also some interesting nodejs backend microservices.
+                    technologies, but also people. I have done about 7+ years of daily C# development, mostly for Geographic Information
+                    Systems, 3D and Data Intensive applications. The last decade I am more into web technologies
+                    development mostly for front end and mobile (Ionic, Capacitor, Swift, Kotlin, you name it), but also DevOps, kubernetes and serverless.
                   </p>
                   <p>
-                    I love to cook, I love 3d printing, I love carpentry, I love travelling, I love teaching myself new things and I love spending time with my two little boys, teaching them as many things
-                    about our universe as they can possibly handle. I sometimes tweet some interesting stuff over on Twitter <a href="https://twitter.com/masimplo">@masimplo</a>, write a short blog article at masimplo.com and
-                    enjoy taking pictures of things I cook on Instagram <a href="https://www.instagram.com/masimplo/">@masimplo</a>. I do not have a Facebook account and I am
-                    not interested in getting one, so please don&apos;t look me up there.
+                    My MBA background gives me a unique perspective on software products and how they align with business goals. I am able to approach software
+                    development with a strategic mindset, focusing on how the end product will serve the needs of both the business and the users.
+                    This allows me to be more involved with product development and business decisions
+                  </p>
+                  <p>
+                    When I&apos;m not coding, I am an avid cook, 3d printing enthusiast, carpenter, traveler, and self-learner.
+                    I also enjoy spending quality time with my two little boys, teaching them about the world around us.
+                    I share my interests and thoughts on Twitter <a href="https://twitter.com/masimplo">@masimplo</a>,
+                    through my blog at masimplo.com and by sharing pictures of my creations on Instagram <a href="https://www.instagram.com/masimplo/">@masimplo</a>
                   </p>
                 </div>
               </PostFullContent>
