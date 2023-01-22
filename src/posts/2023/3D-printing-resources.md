@@ -39,6 +39,7 @@ This is just a list of links related to 3D printing, mainly here for my own refe
 - https://www.youtube.com/@3DPrintingNerd
 - https://www.youtube.com/@MihaiDesigns
 - https://www.youtube.com/@properprinting (mad scientist material)
+- https://www.youtube.com/@Nero3D
 - https://www.youtube.com/@TeachingTech (tutorials)
 - https://www.youtube.com/@FilamentFriday (tutorials)
 - https://www.youtube.com/@Tombof3DPrintedHorrors (nice guides and tips)
