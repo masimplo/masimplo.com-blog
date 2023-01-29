@@ -24,6 +24,8 @@ This is just a list of links related to 3D printing, mainly here for my own refe
 - https://www.e-wireless.gr/
 - https://www.3dhub.gr/
 - https://www.3dexpert.gr/eshop/
+- https://shop.anima.gr
+- https://get3d.gr/
 
 ### 3D model sites
 - https://www.printables.com/
