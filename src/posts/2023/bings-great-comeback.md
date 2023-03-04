@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Bings great comeback
+title: Bing's great comeback
 author: [masimplo]
 tags: [Technology, AI]
 image: ../../images/headers/bing.jpeg
