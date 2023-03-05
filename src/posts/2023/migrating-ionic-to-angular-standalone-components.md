@@ -30,7 +30,9 @@ This will convert all components in a project to standalone automatically, by co
 >Pro Tip: If you do not want to convert all components to standalone at once, you can either specify a path when running the schematic or use your source control to check in what you want each time.
 
 After all components have been converted, you will find that many modules are not used anymore. You can run the schematics again, selecting `Remove unnecessary NgModule classes` this time to remove them, or you can remove them manually - which I enjoyed doing.
+
 Some extra care should be given to modules that contain providers as they need to be loaded somewhere. In my case I had no modules that had both components and providers so I included everything in main.ts - more on that later.
+
 Modules that contain route definitions need some special handling also. If you are declaring the routes inline in the module, you should extract the route definitions to a separate file exporting a Routes variable. If you are using routing modules, you can get rid of the module definition and just export the Routes variable again.
 
 Here is an example:
@@ -123,5 +125,5 @@ constructor(
 
 That's it. If everything went as planned, you should have gotten rid of quite few lines of code - and mental overhead - and have a nice fresh, up to date project, to keep building amazing stuff on.
 
-You can read more about standalone components [in the Angular documentation](https://angular.io/guide/standalone-components)
-You can also find a nice overview of the steps needed for an Ionic project in [this article](https://ionic.zendesk.com/hc/en-us/articles/10386373742231-Angular-Standalone-Components-with-Ionic)
+*You can read more about standalone components [in the Angular documentation](https://angular.io/guide/standalone-components)*.
+*You can also find a nice overview of the steps needed for an Ionic project in [this article](https://ionic.zendesk.com/hc/en-us/articles/10386373742231-Angular-Standalone-Components-with-Ionic)*.
