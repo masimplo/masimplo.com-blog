@@ -24,6 +24,6 @@ device: {manufacturer} {model} {os} {osVersion} {uuid}
 
 I included this information because it's what the support team would need to know straight away to move forward with the support response. However, it's also important to provide additional information that can help support teams diagnose issues quickly. This can include details like the user's location, network connection, and any error messages they may have received.
 
-> hot tip: if you need to add new lines you can try entering `%0D%0A` for a newline as explained [here](https://stackoverflow.com/questions/22765834/insert-a-line-break-in-mailto-body)
+> hot tip: if you need to add new lines to the mailto link body section you can use `%0D%0A` for a newline as explained [here](https://stackoverflow.com/questions/22765834/insert-a-line-break-in-mailto-body)
 
 Next time you implement a "Contact support" link in your app, take some time to consider what information would make support easier for both your users and the support team. Providing device and user information can help support teams diagnose and resolve issues quickly, leading to happier customers and a better user experience overall. So, give it a try and see the difference it can make!
