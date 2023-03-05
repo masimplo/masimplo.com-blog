@@ -100,12 +100,14 @@ function About() {
                     I have done a lot of freelancing in the past, which gave me the opportunity to work with different
                     technologies, but also people. I have done about 7+ years of daily C# development, mostly for Geographic Information
                     Systems, 3D and Data Intensive applications. The last decade I am more into web technologies
-                    development mostly for front end and mobile (Ionic, Capacitor, Swift, Kotlin, you name it), but also DevOps, kubernetes and serverless.
+                    development mostly for front end and mobile (Ionic, Capacitor, Swift, Kotlin, you name it), but also DevOps, kubernetes and serverless,
+                    including scalability, security, performance, maintainability and cost considerations.
                   </p>
                   <p>
                     My MBA background gives me a unique perspective on software products and how they align with business goals. I am able to approach software
                     development with a strategic mindset, focusing on how the end product will serve the needs of both the business and the users.
-                    This allows me to be more involved with product development and business decisions
+                    This allows me to be more involved with product development and business decisions but also to be more mindful about mentoring and
+                    leading my team towards success and help them grow their skills and knowledge.
                   </p>
                   <p>
                     When I&apos;m not coding, I am an avid cook, 3d printing enthusiast, carpenter, traveler, and self-learner.
