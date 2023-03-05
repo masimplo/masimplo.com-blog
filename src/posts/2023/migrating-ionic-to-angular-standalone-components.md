@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Migrating Ionic App to use Angular standalone components
+title: Migrating an Ionic App to use Angular standalone components
 author: [masimplo]
 tags: [Code,Ionic]
 image: ../../images/headers/bernd-dittrich-pivF3guSUgI-unsplash.jpg
