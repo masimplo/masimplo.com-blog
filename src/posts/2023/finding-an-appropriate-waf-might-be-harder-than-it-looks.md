@@ -3,7 +3,7 @@ layout: post
 title: 'Finding an appropriate WAF might be harder than it looks'
 author: [masimplo]
 tags: [Security,Technology]
-image: ../images/headers/michael-dziedzic-gKyv6-Ev_TE-unsplash.jpg
+image: ../../images/headers/michael-dziedzic-gKyv6-Ev_TE-unsplash.jpg
 date: "2023-03-11"
 draft: false
 ---
