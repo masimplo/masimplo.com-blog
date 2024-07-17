@@ -87,7 +87,7 @@ function About() {
 
               <PostFullContent className="post-full-content">
                 <div className="post-content">
-                  <p>As a professional software developer for almost 20 years, I have always been fascinated by the power of technology to solve problems.
+                  <p>As a professional software engineer for more than 20 years, I have always been fascinated by the power of technology to solve problems.
                     From a very young age, I tinkered with computers and found joy in building things.
                     I approach new challenges with a creative and efficient mindset, constantly seeking innovative solutions to everyday problems.
                   </p>
@@ -98,10 +98,11 @@ function About() {
                   </p>
                   <p>
                     I have done a lot of freelancing in the past, which gave me the opportunity to work with different
-                    technologies, but also people. I have done about 7+ years of daily C# development, mostly for Geographic Information
-                    Systems, 3D and Data Intensive applications. The last decade I am more into web technologies
-                    development mostly for front end and mobile (Ionic, Capacitor, Swift, Kotlin, you name it), but also DevOps, kubernetes and serverless,
-                    including scalability, security, performance, maintainability and cost considerations.
+                    technologies, but also people. I have done 7+ years of daily C# development, mostly for Geographic Information
+                    Systems, 3D visualization and Data Intensive applications. The last decade I am more into web technologies
+                    development mostly for front end and mobile (Ionic, Capacitor, Swift, Kotlin, you name it), but also DevOps, Kubernetes and serverless,
+                    including scalability, security, performance, maintainability and cost considerations. Lastly since even before the latest boom of AI
+                    I have dabbled with machine learning and LLM training and trying to make the most of it in our projects.
                   </p>
                   <p>
                     My MBA background gives me a unique perspective on software products and how they align with business goals. I am able to approach software
@@ -110,10 +111,10 @@ function About() {
                     leading my team towards success and help them grow their skills and knowledge.
                   </p>
                   <p>
-                    When I&apos;m not coding, I am an avid cook, 3d printing enthusiast, carpenter, traveler, and self-learner.
+                    When I&apos;m not coding, I am an avid cook, 3d printing enthusiast, espresso snob, carpenter, traveler, and self-learner.
                     I also enjoy spending quality time with my two little boys, teaching them about the world around us.
                     I share my interests and thoughts on Twitter <a href="https://twitter.com/masimplo">@masimplo</a>,
-                    through my blog at masimplo.com and by sharing pictures of my creations on Instagram <a href="https://www.instagram.com/masimplo/">@masimplo</a>
+                    through my blog at masimplo.com and by sharing pictures of my physical creations on Instagram <a href="https://www.instagram.com/masimplo/">@masimplo</a>
                   </p>
                 </div>
               </PostFullContent>
