@@ -14,9 +14,9 @@ import { SubscribeModal } from '../subscribe/SubscribeModal';
 import { SiteNavLogo } from './SiteNavLogo';
 
 type SiteNavProps = {
-  isHome?: boolean;
-  isPost?: boolean;
-  post?: any;
+  readonly isHome?: boolean;
+  readonly isPost?: boolean;
+  readonly post?: any;
 };
 
 type SiteNavState = {

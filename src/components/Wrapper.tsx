@@ -2,8 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 type WrapperProps = {
-  className?: string;
-  children: React.ReactNode;
+  readonly className?: string;
+  readonly children: React.ReactNode;
 };
 
 export function Wrapper({ children, className }: WrapperProps) {

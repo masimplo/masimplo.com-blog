@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage, type ImageDataLike } from 'gatsby-plugin-image';
 import { kebabCase } from 'lodash-es';
 import { lighten } from 'polished';
 import React, { useState } from 'react';
@@ -12,8 +12,8 @@ import { AuthorProfileImage } from './PostCard';
 import styled from '@emotion/styled';
 
 type AuthorListItemProps = {
-  tooltip: 'small' | 'large';
-  author: Author;
+  readonly tooltip: 'small' | 'large';
+  readonly author: Author;
 };
 
 export function AuthorListItem(props: AuthorListItemProps) {
@@ -52,7 +52,7 @@ export function AuthorListItem(props: AuthorListItemProps) {
         <div css={[AuthorCardStyles, hovered && Hovered]} className="author-card">
           {props.author.avatar && (
             <GatsbyImage
-              image={getImage(props.author.avatar)!}
+              image={getImage(props.author.avatar as ImageDataLike)!}
               css={AuthorProfileImage}
               className="author-profile-image"
               alt={props.author.name}
@@ -76,7 +76,7 @@ export function AuthorListItem(props: AuthorListItemProps) {
         to={`/author/${kebabCase(props.author.name)}/`}
       >
         <GatsbyImage
-          image={getImage(props.author.avatar)!}
+          image={getImage(props.author.avatar as ImageDataLike)!}
           css={AuthorProfileImage}
           className="author-profile-image"
           alt={props.author.name}

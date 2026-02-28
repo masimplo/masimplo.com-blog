@@ -7,8 +7,8 @@ import favicon from '../../src/favicon.ico';
 import { colors } from '../styles/colors';
 
 type IndexProps = {
-  className?: string;
-  children: React.ReactNode;
+  readonly className?: string;
+  readonly children: React.ReactNode;
 };
 
 function IndexLayout(props: IndexProps) {

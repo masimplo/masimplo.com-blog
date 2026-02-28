@@ -16,9 +16,11 @@ import {
   SiteArchiveHeader,
   SiteHeader,
   SiteMain,
-  SiteNavMain
+  SiteNavMain,
 } from '../styles/shared';
-import { NoImage, PostFull, PostFullHeader, PostFullTitle } from '../templates/post';
+import {
+ NoImage, PostFull, PostFullHeader, PostFullTitle,
+} from '../templates/post';
 
 const PageTemplate = css`
   .site-main {

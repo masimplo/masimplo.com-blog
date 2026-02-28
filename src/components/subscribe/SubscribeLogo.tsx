@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unused-prop-types */
 import { graphql, StaticQuery } from 'gatsby';
-import { getSrc } from 'gatsby-plugin-image';
+import { getSrc, type ImageDataLike } from 'gatsby-plugin-image';
 import React from 'react';
 
 import { css } from '@emotion/react';
@@ -8,7 +8,7 @@ import { css } from '@emotion/react';
 import config from '../../website-config';
 
 type SiteNavLogoProps = {
-  logo?: any;
+  readonly logo?: any;
 };
 
 function SubscribeLogo() {
@@ -32,7 +32,7 @@ function SubscribeLogo() {
           <img
             css={SubscribeOverlayLogo}
             className="subscribe-overlay-logo"
-            src={getSrc(logo)}
+            src={getSrc(logo as ImageDataLike)}
             alt={config.title}
           />
         );
