@@ -8,15 +8,15 @@ date: 2026-02-28
 draft: false
 ---
 
-I have not written a single post in over two years. Not because I ran out of things to say — anyone who knows me will confirm that is not a risk — but because I spent that time doing something I had never done before: acting as owner-builder for our house. From permits to handover, I ran the whole thing alongside my regular job as a developer.
+I have not written a single post in over two years. Not because I ran out of things to say — anyone who knows me will confirm that is not a risk — but because I spent that time doing something I had never done before: acting as owner-builder for our house. From permits to handover, I ran the whole thing alongside my day job — which, a couple of years back, became CTO of Covve.
 
 It was, to put it mildly, eye-opening.
 
 ## A Second Job for Two Years
 
-The owner-builder path means you are not just a client who shows up to make decisions. You are the project manager, the procurement department, the quality inspector, and the person who has to explain to the electrician why the plumber's pipes are exactly where his conduit needs to go. All of this while still writing code during the day.
+The owner-builder path means you are not just a client who shows up to make decisions. You are the project manager, the procurement department, the quality inspector, and the person who has to explain to the electrician why the plumber's pipes are exactly where his conduit needs to go. All of this while running a company, leading a team, and — yes — still writing code.
 
-The parallel was exhausting in a specific way. Software problems follow you home but they stay in your head. Construction problems follow you home and they are also in your phone, your email, your WhatsApp, and occasionally your front yard at 7am on a Saturday when a delivery arrives that you had completely forgotten about.
+The parallel was exhausting in a specific way. Work problems follow you home but they stay in your head. Construction problems follow you home and they are also in your phone, your email, your WhatsApp, and occasionally your front yard at 7am on a Saturday when a delivery arrives that you had completely forgotten about. There is no context-switching out of a house build.
 
 ## Finding Good People Is The Hard Part
 
@@ -48,4 +48,4 @@ Two and a half years of this has genuinely changed how I think about quality and
 
 We are moved in. The house is ours, built the way we wanted it, with no compromises I regret. That last part matters to me more than I expected it to.
 
-I have a backlog of things I want to write about — some AI tooling I have been using heavily this past year, a few development patterns worth sharing, and at this point probably a dedicated post on the home automation setup I have been building since we moved in. Expect to hear more from me.
+I have a backlog of things I want to write about — AI tooling, some thoughts on engineering leadership, a few development patterns worth sharing, and probably a dedicated post on the home automation setup I have been building since we moved in. Expect to hear more from me.
