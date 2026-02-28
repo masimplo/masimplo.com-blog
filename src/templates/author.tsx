@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
-import { getSrc } from 'gatsby-plugin-image';
+import { getSrc, type ImageDataLike } from 'gatsby-plugin-image';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Footer } from '../components/Footer';
@@ -19,8 +19,8 @@ import config from '../website-config';
 import { type PageContext } from './post';
 
 type AuthorTemplateProps = {
-  location: Location;
-  data: {
+  readonly location: Location;
+  readonly data: {
     logo: {
       childImageSharp: {
         fluid: any;
@@ -103,7 +103,7 @@ function Author({ data, location }: AuthorTemplateProps) {
           </div>
 
           <ResponsiveHeaderBackground
-            backgroundImage={getSrc(author.profile_image)}
+            backgroundImage={getSrc(author.profile_image as ImageDataLike)}
             css={[outer, SiteHeaderBackground]}
             className="site-header-background"
           >
@@ -112,7 +112,7 @@ function Author({ data, location }: AuthorTemplateProps) {
                 <img
                   style={{ marginTop: '8px' }}
                   css={[AuthorProfileImage, AuthorProfileBioImage]}
-                  src={getSrc(data.authorYaml.avatar)}
+                  src={getSrc(data.authorYaml.avatar as ImageDataLike)}
                   alt={author.name}
                 />
                 <AuthHeaderContent className="author-header-content">

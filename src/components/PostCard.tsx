@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { format } from 'date-fns';
 import { Link } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage, type ImageDataLike } from 'gatsby-plugin-image';
 import { kebabCase } from 'lodash';
 import { lighten } from 'polished';
 import React from 'react';
@@ -12,8 +12,8 @@ import config from '../website-config';
 import { AuthorList } from './AuthorList';
 
 export type PostCardProps = {
-  post: PageContext;
-  isLarge?: boolean;
+  readonly post: PageContext;
+  readonly isLarge?: boolean;
 };
 
 export function PostCard({ post, isLarge = false }: PostCardProps) {
@@ -35,7 +35,7 @@ export function PostCard({ post, isLarge = false }: PostCardProps) {
           <PostCardImage className="post-card-image">
             {post.frontmatter?.image && (
               <GatsbyImage
-                image={getImage(post.frontmatter.image)!}
+                image={getImage(post.frontmatter.image as ImageDataLike)!}
                 alt={`${post.frontmatter.title} cover image`}
                 style={{ height: '100%' }}
                 loading={isLarge ? 'eager' : 'lazy'}

@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import { getSrc } from 'gatsby-plugin-image';
+import { getSrc, type ImageDataLike } from 'gatsby-plugin-image';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Footer } from '../components/Footer';
@@ -18,11 +18,11 @@ import config from '../website-config';
 import type { PageContext } from './post';
 
 type TagTemplateProps = {
-  location: Location;
-  pageContext: {
+  readonly location: Location;
+  readonly pageContext: {
     tag: string;
   };
-  data: {
+  readonly data: {
     allTagYaml: {
       edges: Array<{
         node: {
@@ -80,7 +80,7 @@ function Tags({ pageContext, data, location }: TagTemplateProps) {
           </div>
           <ResponsiveHeaderBackground
             css={[outer, SiteHeaderBackground]}
-            backgroundImage={getSrc(tagData?.node?.image)}
+            backgroundImage={getSrc(tagData?.node?.image as ImageDataLike)}
             className="site-header-background"
           >
             <SiteHeaderContent css={inner} className="site-header-content">

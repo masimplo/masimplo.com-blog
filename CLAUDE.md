@@ -8,7 +8,7 @@ A personal blog for [masimplo.com](https://masimplo.com), built as a Gatsby v5 s
 - **Language:** TypeScript 5 (strict mode)
 - **Styling:** Emotion (CSS-in-JS)
 - **Deployment:** Netlify
-- **Node version:** 18.12.0 (pinned via Volta)
+- **Node version:** 22.22.0 (pinned via Volta)
 
 ---
 

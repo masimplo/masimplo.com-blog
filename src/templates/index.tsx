@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
-import { getImage, getSrc } from 'gatsby-plugin-image';
+import { getImage, getSrc, type ImageDataLike } from 'gatsby-plugin-image';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Footer } from '../components/Footer';
@@ -23,12 +23,12 @@ import config from '../website-config';
 import type { PageContext } from './post';
 
 export type IndexProps = {
-  children: React.ReactNode;
-  pageContext: {
+  readonly children: React.ReactNode;
+  readonly pageContext: {
     currentPage: number;
     numPages: number;
   };
-  data: {
+  readonly data: {
     logo: any;
     header: any;
     allMarkdownRemark: {
@@ -40,8 +40,8 @@ export type IndexProps = {
 };
 
 function IndexPage(props: IndexProps) {
-  const width = getImage(props.data.header)?.width;
-  const height = getImage(props.data.header)?.height;
+  const width = getImage(props.data.header as ImageDataLike)?.width;
+  const height = getImage(props.data.header as ImageDataLike)?.height;
 
   return (
     <IndexLayout css={HomePosts}>
@@ -54,7 +54,7 @@ function IndexPage(props: IndexProps) {
         <meta property="og:title" content={config.title} />
         <meta property="og:description" content={config.description} />
         <meta property="og:url" content={config.siteUrl} />
-        <meta property="og:image" content={`${config.siteUrl}${getSrc(props.data.header)}`} />
+        <meta property="og:image" content={`${config.siteUrl}${getSrc(props.data.header as ImageDataLike)}`} />
         {config.facebook && <meta property="article:publisher" content={config.facebook} />}
         {config.googleSiteVerification && (
           <meta name="google-site-verification" content={config.googleSiteVerification} />
@@ -63,7 +63,7 @@ function IndexPage(props: IndexProps) {
         <meta name="twitter:title" content={config.title} />
         <meta name="twitter:description" content={config.description} />
         <meta name="twitter:url" content={config.siteUrl} />
-        <meta name="twitter:image" content={`${config.siteUrl}${getSrc(props.data.header)}`} />
+        <meta name="twitter:image" content={`${config.siteUrl}${getSrc(props.data.header as ImageDataLike)}`} />
         {config.twitter && (
           <meta
             name="twitter:site"
@@ -78,7 +78,7 @@ function IndexPage(props: IndexProps) {
           css={[outer, SiteHeader, SiteHeaderStyles]}
           className="site-header-background"
           style={{
-            backgroundImage: `url('${getSrc(props.data.header)}')`,
+            backgroundImage: `url('${getSrc(props.data.header as ImageDataLike)}')`,
           }}
         >
           <div css={inner}>
@@ -88,7 +88,7 @@ function IndexPage(props: IndexProps) {
                 {props.data.logo ? (
                   <img
                     style={{ maxHeight: '55px', height: '55px' }}
-                    src={getSrc(props.data.logo)}
+                    src={getSrc(props.data.logo as ImageDataLike)}
                     alt={config.title}
                   />
                 ) : (

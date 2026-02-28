@@ -6,8 +6,8 @@ import type { Author } from '../templates/post';
 import { AuthorListItem } from './AuthorListItem';
 
 type AuthorListProps = {
-  tooltip: 'small' | 'large';
-  authors: Author[];
+  readonly tooltip: 'small' | 'large';
+  readonly authors: Author[];
 };
 
 export function AuthorList(props: AuthorListProps) {

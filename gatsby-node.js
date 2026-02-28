@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/restrict-plus-operands, @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/restrict-plus-operands, @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-argument */
 const path = require('path');
 const _ = require('lodash');
 const readingTime = require('reading-time');
@@ -10,7 +10,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // interpreter if not a single content uses it. Therefore, we're putting them
   // through `createNodeField` so that the fields still exist and GraphQL won't
   // trip up. An empty string is still required in replacement to `null`.
-  // eslint-disable-next-line default-case
+
   switch (node.internal.type) {
     case 'MarkdownRemark': {
       const { permalink, layout, primaryTag } = node.frontmatter;
@@ -18,9 +18,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
       let slug = permalink;
 
-      if (!slug) {
-        slug = `/${name.replace('.md', '')}/`;
-      }
+      slug ||= `/${name.replace('.md', '')}/`;
 
       // Used to generate URL to view this content.
       createNodeField({
@@ -47,7 +45,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         name: 'readingTime',
         value: readingTime(node.rawMarkdownBody),
       });
+      break;
     }
+
+    default:
+      break;
   }
 };
 

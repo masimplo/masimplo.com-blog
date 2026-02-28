@@ -2,7 +2,9 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { format } from 'date-fns';
 import { graphql, Link } from 'gatsby';
-import { GatsbyImage, getImage, getSrc } from 'gatsby-plugin-image';
+import {
+ GatsbyImage, getImage, getSrc, type ImageDataLike,
+} from 'gatsby-plugin-image';
 import { kebabCase } from 'lodash-es';
 import { lighten, setLightness } from 'polished';
 import React from 'react';
@@ -26,8 +28,8 @@ export type Author = {
 };
 
 type PageTemplateProps = {
-  location: Location;
-  data: {
+  readonly location: Location;
+  readonly data: {
     markdownRemark: {
       html: string;
       htmlAst: any;
@@ -63,7 +65,7 @@ type PageTemplateProps = {
       }>;
     };
   };
-  pageContext: {
+  readonly pageContext: {
     prev: PageContext;
     next: PageContext;
   };
@@ -93,8 +95,8 @@ function PageTemplate({ data, pageContext, location }: PageTemplateProps) {
   let width: number | undefined;
   let height: number | undefined;
   if (post.frontmatter.image) {
-    width = getImage(post.frontmatter.image)?.width;
-    height = getImage(post.frontmatter.image)?.height;
+    width = getImage(post.frontmatter.image as ImageDataLike)?.width;
+    height = getImage(post.frontmatter.image as ImageDataLike)?.height;
   }
 
   const date = new Date(post.frontmatter.date);
@@ -118,7 +120,7 @@ function PageTemplate({ data, pageContext, location }: PageTemplateProps) {
         {post.frontmatter.image && (
           <meta
             property="og:image"
-            content={`${config.siteUrl}${getSrc(post.frontmatter.image)}`}
+            content={`${config.siteUrl}${getSrc(post.frontmatter.image as ImageDataLike)}`}
           />
         )}
         <meta property="article:published_time" content={post.frontmatter.date} />
@@ -137,7 +139,7 @@ function PageTemplate({ data, pageContext, location }: PageTemplateProps) {
         {post.frontmatter.image && (
           <meta
             name="twitter:image"
-            content={`${config.siteUrl}${getSrc(post.frontmatter.image)}`}
+            content={`${config.siteUrl}${getSrc(post.frontmatter.image as ImageDataLike)}`}
           />
         )}
         <meta name="twitter:label1" content="Written by" />
@@ -222,7 +224,7 @@ function PageTemplate({ data, pageContext, location }: PageTemplateProps) {
               {post.frontmatter.image && (
                 <PostFullImage>
                   <GatsbyImage
-                    image={getImage(post.frontmatter.image)!}
+                    image={getImage(post.frontmatter.image as ImageDataLike)!}
                     style={{ height: '100%' }}
                     alt={post.frontmatter.title}
                   />
