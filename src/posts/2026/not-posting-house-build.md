@@ -8,36 +8,44 @@ date: 2026-02-28
 draft: false
 ---
 
-I have not written a single post in over a year. Not because I ran out of things to say — anyone who knows me will confirm that is not a risk — but because I have been doing something I have never done before: overseeing the construction of our house from the ground up.
+I have not written a single post in over two years. Not because I ran out of things to say — anyone who knows me will confirm that is not a risk — but because I spent that time doing something I had never done before: acting as owner-builder for our house. From permits to handover, I ran the whole thing alongside my regular job as a developer.
 
-It started as "we'll just find a plot and hire a contractor." One thing led to another and here I was, twelve months later, tracking beam deliveries, arguing about waterproofing membranes, and learning more about concrete curing times than I ever expected to know.
+It was, to put it mildly, eye-opening.
 
-## You Think You Understand Systems Until You Build One
+## A Second Job for Two Years
 
-As a software engineer I spend a lot of time thinking about systems. Dependencies, interfaces, failure modes. Turns out, a house is just a very slow, very expensive distributed system with no rollback button.
+The owner-builder path means you are not just a client who shows up to make decisions. You are the project manager, the procurement department, the quality inspector, and the person who has to explain to the electrician why the plumber's pipes are exactly where his conduit needs to go. All of this while still writing code during the day.
 
-What struck me immediately is how much the construction process resembles software delivery — and how much worse the feedback loops are. In code, if you make a mistake you usually know within seconds. In construction, you might not discover that the electrician ran conduit through the exact spot the plumber needed until both crews are on-site at the same time, neither willing to move, and you are standing between them trying to find a compromise that does not require tearing out a wall.
+The parallel was exhausting in a specific way. Software problems follow you home but they stay in your head. Construction problems follow you home and they are also in your phone, your email, your WhatsApp, and occasionally your front yard at 7am on a Saturday when a delivery arrives that you had completely forgotten about.
 
-The dependency graph alone would make a seasoned backend engineer wince. Foundations before framing. Framing before rough-in. Rough-in before insulation. Insulation before drywall. Every trade has predecessors and every delay cascades. I started keeping a spreadsheet that looked suspiciously like a Gantt chart, which is something I swore I would never do.
+## Finding Good People Is The Hard Part
 
-## The Things That Actually Surprised Me
+Before I started I thought the technical complexity of building a house would be the main challenge. Structural decisions, building codes, material specifications — that kind of thing. It turned out those were all learnable. The genuinely hard problem was finding good subcontractors.
 
-I expected the big, obvious challenges — budget overruns, weather delays, the general chaos of coordinating multiple contractors. What I did not expect was how much of the job is just making decisions under uncertainty, constantly.
+Not just competent ones. Reliable, communicative, competent ones who would actually show up when scheduled. That combination is rarer than you would expect. I went through more interviews, trial jobs, and mid-project replacements than I care to admit. Every trade — electricians, plumbers, HVAC, tilers, you name it — had its own sourcing challenge.
 
-The architect gives you options. The contractor gives you options. The tile supplier gives you forty-seven options. And almost none of them come with enough information to make a truly informed choice. You learn to get comfortable saying "good enough" and moving on, which is, ironically, a skill I thought I had already developed from years of shipping software. I had not.
+The lesson I kept relearning: the time you invest upfront finding the right people is paid back tenfold during the build. Every shortcut there costs you later.
 
-The other thing I genuinely did not anticipate is how physical the oversight role is. I was on-site almost every day. Walking the structure, checking details, catching things before they got covered up by the next layer. There is a window in our bathroom that is exactly where I wanted it because I happened to be there the morning they were about to frame it in the wrong position. Half a meter to the left and we would have lived with it forever without knowing any different. That kind of thing keeps you sharp.
+## Design Changes Are Silent Cascade Failures
 
-## What It Taught Me About Attention
+Here is something nobody told me: a late design change in construction works exactly like a bad schema migration. It seems contained. It is not.
 
-I think what this experience reinforced most is something I already believed but had perhaps gotten lazy about: **the cost of inattention compounds**. In software, a wrong assumption early in a project becomes increasingly expensive to fix the further along you get. Construction makes this brutally literal. Moving a wall on a drawing costs nothing. Moving a wall after it is built costs time, money, and your relationship with the contractor.
+We made what felt like a minor layout adjustment about eight months in — moving a bathroom wall by about sixty centimetres. Straightforward on paper. In practice it triggered a cascade through the electrical rough-in, the plumbing stack, the HVAC ducting, and the waterproofing schedule. Each trade had to revisit work they considered done. Some of that work had already been partially covered. It cost us weeks and a significant amount of money.
 
-Heck, you can even draw a parallel to technical debt — the decisions you make under time pressure that you know are not quite right, but you accept because stopping to do it properly would delay everything else. We made a few of those. We will live with some of them. Others we will fix eventually.
+The parallel to software is almost too neat. In code, you feel the pain of tight coupling through refactoring cost. In construction, you feel it through rework cost. The physics are different but the lesson is identical: decisions that seem local rarely are.
 
-## Back to Writing
+## The Decisions Never Stop
 
-The house is done. We moved in a couple of months ago and the novelty of having light switches exactly where I wanted them has not fully worn off yet.
+I was prepared for the big decisions. Foundation type, structural system, facade materials. What I was not prepared for was the sheer volume of small ones.
 
-I have a backlog of things I have been meaning to write about — some AI tooling I have been using heavily, a few patterns I picked up on a project last year, and probably at least one post about the home automation setup I have been building since we moved in. It is nice to have a blank canvas to work with.
+At the peak of the project I was making dozens of decisions a day. Some mattered a lot. Most mattered a little. Almost none of them came with enough time to research them properly. Tile grout colour while standing in a showroom. Ceiling height in a room that does not exist yet. Light switch placement from a floor plan that does not match what is actually built.
 
-If you have been thinking about building rather than buying, I would encourage you to go in with eyes open. It is one of the more demanding things I have done, and also one of the more satisfying. The same is probably true of most things worth doing.
+You get faster at deciding. You also get better at distinguishing the decisions that are actually reversible from the ones that are not — and treating them accordingly. That distinction, I think, is one of the more useful things I took out of the experience.
+
+## What It Felt Like From the Other Side
+
+Two and a half years of this has genuinely changed how I think about complexity. Not in a grand philosophical way, but in a practical one. I have a much sharper instinct now for the difference between a problem that looks complicated and a problem that actually is. Construction is full of the latter. Most of software, I have come to think, is more of the former.
+
+We are moved in. The house is ours, built the way we wanted it, with the layout we designed and the materials we chose after making far too many decisions about things I previously had no opinions on. It feels good.
+
+I have a backlog of things I want to write about — some AI tooling I have been using heavily this past year, a few development patterns worth sharing, and at this point probably a dedicated post on the home automation setup I have been building since we moved in. Expect to hear more from me.
