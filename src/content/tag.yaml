@@ -50,6 +50,9 @@
 - id: Security
   description: Threats, hardening, and safe defaults.
   image: ../images/headers/fly-d-mT7lXZPjk7U-unsplash.jpg
+- id: Smart Home
+  description: Home automation, local-first control, and smart devices.
+  image: ../images/headers/immo-wegmann-2nsQWyPU6tw-unsplash.jpg
 - id: Technology
   description: Tools, platforms, and where things are heading.
   image: ../images/headers/florian-olivo-4hbJ-eymZ1o-unsplash.jpg

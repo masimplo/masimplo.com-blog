@@ -8,7 +8,7 @@ A personal blog for [masimplo.com](https://masimplo.com), built as a Gatsby v5 s
 - **Language:** TypeScript 5 (strict mode)
 - **Styling:** Emotion (CSS-in-JS)
 - **Deployment:** Netlify
-- **Node version:** 22.22.0 (pinned via Volta)
+- **Node version:** 22.22.1 (pinned via Volta)
 
 ---
 
@@ -34,6 +34,9 @@ npm run lint
 
 # Auto-fix linting issues
 npm run lint:fix
+
+# Netlify CLI (pinned in devDependencies; e.g. `npx netlify --version`, `npx netlify status`)
+npx netlify <command>
 ```
 
 There are no tests configured. `npm test` exits with an error by design.
@@ -280,7 +283,7 @@ Each template contains a co-located `pageQuery` using Gatsby's GraphQL layer. Co
 
 GitHub Actions runs on every push and pull request (`.github/workflows/ci.yml`):
 
-1. Install Node 18 dependencies via `npm ci`
+1. Install Node 22 dependencies via `npm ci`
 2. Run `npm run lint`
 
 The pipeline does **not** run a build or tests. Merging to `master` triggers a Netlify deployment.
