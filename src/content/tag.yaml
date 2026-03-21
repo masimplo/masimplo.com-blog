@@ -71,3 +71,6 @@
 - id: speeches
   description: Some of the greatest words ever spoken.
   image: img/speeches-cover.jpg
+
+- id: Life
+  description: Things that happen outside the editor.
