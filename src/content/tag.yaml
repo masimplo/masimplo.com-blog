@@ -1,3 +1,73 @@
+# Tag archive metadata (id must match frontmatter tag names exactly)
+- id: 3D Printing
+  description: FDM, slicers, and desktop fabrication notes.
+  image: ../images/headers/jakub-zerdzicki-MzLDrWp3NYc-unsplash.jpg
+- id: AI
+  description: Machine learning, assistants, and the shape of software.
+  image: ../images/headers/florian-olivo-4hbJ-eymZ1o-unsplash.jpg
+- id: Bash
+  description: Shell scripts and command-line glue.
+  image: ../images/headers/teamcity-post-banner.jpg
+- id: Blogging
+  description: Writing, platforms, and publishing on the web.
+  image: ../images/headers/welcome-to-ghost.jpg
+- id: Code
+  description: Languages, patterns, and implementation details.
+  image: ../images/headers/kevs-gSMY1wNNlvY-unsplash.jpg
+- id: CSS
+  description: Layout, styling, and front-end craft.
+  image: ../images/headers/gaelle-marcel-161096-unsplash.jpg
+- id: Docker
+  description: Containers, images, and shipping services.
+  image: ../images/headers/docker.png
+- id: Firebase
+  description: Google Firebase snippets and backend glue.
+  image: ../images/headers/sarah-kilian-xit3LjRvKvM-unsplash.jpg
+- id: Hobbies
+  description: Side projects and shop time away from the keyboard.
+  image: ../images/headers/kadir-celep-HsefvbLbNWc-unsplash.jpg
+- id: Ionic
+  description: Hybrid apps and the Ionic toolchain.
+  image: ../images/headers/ionicrc0.png
+- id: Javascript
+  description: JS runtimes, APIs, and language features.
+  image: ../images/headers/async-javascript.jpg
+- id: Lifehacks
+  description: Small fixes that make the day easier.
+  image: ../images/headers/kelly-sikkema-411622-unsplash.jpg
+- id: Online Shopping
+  description: E-commerce gripes and observations.
+  image: ../images/headers/hello-i-m-nik-616779-unsplash.jpg
+- id: Opinions
+  description: Hot takes, industry commentary, and lessons learned.
+  image: ../images/headers/stackoverflow.png
+- id: Performance
+  description: Speed, measurement, and real-world web perf.
+  image: ../images/headers/caleb-woods-170974-unsplash.jpg
+- id: Personal
+  description: Personal stories alongside the tech.
+  image: ../images/headers/patrick-fore-381200-unsplash.jpg
+- id: Security
+  description: Threats, hardening, and safe defaults.
+  image: ../images/headers/fly-d-mT7lXZPjk7U-unsplash.jpg
+- id: Technology
+  description: Tools, platforms, and where things are heading.
+  image: ../images/headers/florian-olivo-4hbJ-eymZ1o-unsplash.jpg
+- id: Tips
+  description: Shortcuts, workflows, and practical notes.
+  image: ../images/headers/markus-winkler-Lp4jsVg8gpY-unsplash.jpg
+- id: Tools
+  description: CLI utilities, apps, and gear that earns its disk space.
+  image: ../images/headers/weekly-header-boxes-retina.png
+- id: Testing
+  description: Automated checks, confidence, and quality gates.
+  image: ../images/headers/rxjs-testing.jpg
+- id: Web Design
+  description: Visual design, layout, and UX on the web.
+  image: ../images/headers/domenico-loia-EhTcC9sYXsw-unsplash.jpg
+- id: .Net
+  description: Microsoft .NET and ecosystem notes.
+  image: ../images/headers/ts.png
 - id: speeches
   description: Some of the greatest words ever spoken.
   image: img/speeches-cover.jpg
