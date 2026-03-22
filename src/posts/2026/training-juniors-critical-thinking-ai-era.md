@@ -3,7 +3,7 @@ layout: post
 title: Training juniors in the AI era — judgment, struggle, and why the field still needs new data
 author: [masimplo]
 tags: [Opinions, Code, Technology]
-image: ../../images/headers/florian-olivo-4hbJ-eymZ1o-unsplash.jpg
+image: ../../images/headers/sb7rkosb7rkosb7r.png
 date: 2026-03-21
 draft: false
 ---
