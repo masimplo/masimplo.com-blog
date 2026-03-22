@@ -1,7 +1,3 @@
 [build]
   command = "npm run build"
   publish = "public"
-
-# v5 and below cap Node at <20; v6 supports Node 20+ (see plugin engines on npm).
-[[plugins]]
-  package = "@netlify/plugin-lighthouse@6"
