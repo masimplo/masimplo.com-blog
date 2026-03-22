@@ -3,7 +3,7 @@ layout: post
 title: Home Assistant and the local-first smart home
 author: [masimplo]
 tags: [Smart Home, Technology, Hobbies]
-image: ../../images/headers/immo-wegmann-2nsQWyPU6tw-unsplash.jpg
+image: ../../images/headers/homeassistant.png
 date: 2026-01-12
 draft: false
 excerpt: Smart home products love to sell you convenience. What they do not mention is that most of that convenience runs through someone else's server.

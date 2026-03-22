@@ -3,7 +3,7 @@ layout: post
 title: DeepSeek R1 and the week the pricing story broke
 author: [masimplo]
 tags: [Technology, AI, Opinions]
-image: ../../images/headers/michael-dziedzic-gKyv6-Ev_TE-unsplash.jpg
+image: ../../images/headers/deepseek-r1-1minai.png
 date: 2025-01-24
 draft: false
 ---

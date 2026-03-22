@@ -15,7 +15,7 @@ I have been building a three-floor house in a suburb of Athens for the better pa
 
 ## Choosing the heat pump
 
-After a lot of research I settled on a Daikin Monobloc as the primary heating and cooling system. Monobloc means all the refrigerant components are in one outdoor unit, with just water circuits going into the house — simpler installation, no refrigerant pipes to worry about inside. The emitters are **hydronic fan coil units** on the two of the three floors — the same water loop does heating in winter and cooling in summer, which is exactly the kind of load a monobloc and buffer tank arrangement is built for.
+After a lot of research I settled on a Daikin Monobloc as the primary heating and cooling system. Monobloc means all the refrigerant components are in one outdoor unit, with just water circuits going into the house — simpler installation, no refrigerant pipes to worry about inside. The emitters are **hydronic fan coil units** on two of the three floors — the same water loop does heating in winter and cooling in summer, which is exactly the kind of load a monobloc and buffer tank arrangement is built for.
 
 The installer set it up, commissioned it, and left. That is where my involvement really began.
 
