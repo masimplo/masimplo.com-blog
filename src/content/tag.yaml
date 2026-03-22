@@ -73,4 +73,4 @@
   image: ../images/headers/ts.png
 - id: speeches
   description: Some of the greatest words ever spoken.
-  image: img/speeches-cover.jpg
+  image: ../images/headers/speeches-cover.jpg

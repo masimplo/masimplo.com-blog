@@ -36,13 +36,20 @@ declare module '*.svg' {
 }
 
 declare module 'rehype-react' {
+  import { type Processor } from 'unified';
   type RehypeOptions = {
-    createElement: any;
-    components: any;
+    Fragment?: any;
+    jsx?: any;
+    jsxs?: any;
+    createElement?: any;
+    components?: Record<string, any>;
+    elementAttributeNameCase?: 'html' | 'react';
+    stylePropertyNameCase?: 'css' | 'dom';
   };
   class RehypeReact {
-    Compiler: any;
+    compiler: (...args: any[]) => any;
     constructor(options: RehypeOptions);
+    freeze(): Processor;
   }
   export default RehypeReact;
 }

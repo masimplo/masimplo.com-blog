@@ -76,8 +76,13 @@ function Author({ data, location }: AuthorTemplateProps) {
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={`${author.name} - ${config.title}`} />
         <meta property="og:url" content={config.siteUrl + location.pathname} />
-        <meta property="article:publisher" content="https://www.facebook.com/ghost" />
-        <meta property="article:author" content="https://www.facebook.com/ghost" />
+        {config.facebook && <meta property="article:publisher" content={config.facebook} />}
+        {author.twitter && (
+          <meta
+            property="article:author"
+            content={`https://twitter.com/${author.twitter}`}
+          />
+        )}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={`${author.name} - ${config.title}`} />
         <meta name="twitter:url" content={config.siteUrl + location.pathname} />
@@ -93,6 +98,19 @@ function Author({ data, location }: AuthorTemplateProps) {
             content={`@${config.twitter.split('https://twitter.com/')[1]}`}
           />
         )}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: author.name,
+            url: config.siteUrl + location.pathname,
+            ...(author.twitter && {
+              sameAs: [`https://twitter.com/${author.twitter}`],
+            }),
+            ...(author.website && { url: author.website }),
+            ...(author.bio && { description: author.bio }),
+          })}
+        </script>
       </Helmet>
       <Wrapper>
         <header className="site-archive-header" css={[SiteHeader, SiteArchiveHeader]}>

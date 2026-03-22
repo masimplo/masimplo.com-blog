@@ -66,7 +66,7 @@ const config: WebsiteConfig = {
   mailchimpAction: 'https://gmail.us20.list-manage.com/subscribe/post?u=e751f209dff476297e609e4d2&amp;id=876a986ffe',
   mailchimpName: 'b_e751f209dff476297e609e4d2_876a986ffe',
   mailchimpEmailFieldName: 'MERGE0',
-  googleSiteVerification: 'GoogleCode',
+  // googleSiteVerification: 'REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_TOKEN',
   footer: 'is based on Gatsby Casper',
   showAllTags: true,
 };

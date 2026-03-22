@@ -160,6 +160,29 @@ function PageTemplate({ data, pageContext, location }: PageTemplateProps) {
         )}
         {width && <meta property="og:image:width" content={width?.toString()} />}
         {height && <meta property="og:image:height" content={height?.toString()} />}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: post.frontmatter.title,
+            description: post.frontmatter.excerpt || post.excerpt,
+            datePublished: post.frontmatter.date,
+            url: config.siteUrl + location.pathname,
+            ...(post.frontmatter.image && {
+              image: `${config.siteUrl}${getSrc(post.frontmatter.image as ImageDataLike)}`,
+            }),
+            author: {
+              '@type': 'Person',
+              name: post.frontmatter.author[0].name,
+              url: `${config.siteUrl}/author/${kebabCase(post.frontmatter.author[0].name)}/`,
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: config.title,
+              url: config.siteUrl,
+            },
+          })}
+        </script>
       </Helmet>
       <Wrapper css={PostTemplate}>
         <header className="site-header">

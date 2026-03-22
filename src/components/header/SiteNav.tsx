@@ -1,6 +1,8 @@
 import { Link } from 'gatsby';
 import { darken } from 'polished';
-import React from 'react';
+import React, {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -19,128 +21,169 @@ type SiteNavProps = {
   readonly post?: any;
 };
 
-type SiteNavState = {
-  showTitle: boolean;
-};
+function useDarkMode(): [boolean, () => void] {
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
 
-class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
-  subscribe = React.createRef<SubscribeModal>();
-  titleRef = React.createRef<HTMLSpanElement>();
-  lastScrollY = 0;
-  ticking = false;
-  state = { showTitle: false };
+    try {
+      const stored = localStorage.getItem('theme');
 
-  openModal = () => {
-    if (this.subscribe.current) {
-      this.subscribe.current.open();
+      if (stored) {
+        return stored === 'dark';
+      }
+
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch {
+      return false;
+    }
+  });
+
+  const toggle = useCallback(() => {
+    setIsDark(prev => {
+      const next = !prev;
+
+      try {
+        localStorage.setItem('theme', next ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', next);
+      } catch {
+        // ignore
+      }
+
+      return next;
+    });
+  }, []);
+
+  return [isDark, toggle];
+}
+
+function SiteNav({ isHome = false, isPost = false, post = {} }: SiteNavProps) {
+  const subscribeRef = useRef<SubscribeModal>(null);
+  const titleRef = useRef<HTMLSpanElement>(null);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
+  const [showTitle, setShowTitle] = useState(false);
+  const [isDark, toggleDark] = useDarkMode();
+
+  const openModal = () => {
+    if (subscribeRef.current) {
+      subscribeRef.current.open();
     }
   };
 
-  componentDidMount(): void {
-    this.lastScrollY = window.scrollY;
-    if (this.props.isPost) {
-      window.addEventListener('scroll', this.onScroll, { passive: true });
-    }
-  }
-
-  componentWillUnmount(): void {
-    window.removeEventListener('scroll', this.onScroll);
-  }
-
-  onScroll = () => {
-    if (!this.titleRef?.current) {
+  const update = useCallback(() => {
+    if (!titleRef.current) {
       return;
     }
 
-    if (!this.ticking) {
-      requestAnimationFrame(this.update);
-    }
+    lastScrollY.current = window.scrollY;
 
-    this.ticking = true;
-  };
+    const trigger = titleRef.current.getBoundingClientRect().top;
+    const triggerOffset = titleRef.current.offsetHeight + 35;
 
-  update = () => {
-    if (!this.titleRef?.current) {
+    setShowTitle(lastScrollY.current >= trigger + triggerOffset);
+    ticking.current = false;
+  }, []);
+
+  const onScroll = useCallback(() => {
+    if (!titleRef.current) {
       return;
     }
 
-    this.lastScrollY = window.scrollY;
-
-    const trigger = this.titleRef.current.getBoundingClientRect().top;
-    const triggerOffset = this.titleRef.current.offsetHeight + 35;
-
-    // show/hide post title
-    if (this.lastScrollY >= trigger + triggerOffset) {
-      this.setState({ showTitle: true });
-    } else {
-      this.setState({ showTitle: false });
+    if (!ticking.current) {
+      requestAnimationFrame(update);
     }
 
-    this.ticking = false;
-  };
+    ticking.current = true;
+  }, [update]);
 
-  render() {
-    const { isHome = false, isPost = false, post = {} } = this.props;
-    return (
-      <>
-        {config.showSubscribe && <SubscribeModal ref={this.subscribe} />}
-        <nav css={SiteNavStyles}>
-          <SiteNavLeft className="site-nav-left">
-            {!isHome && <SiteNavLogo />}
-            <SiteNavContent css={[this.state.showTitle ? HideNav : '']}>
-              <ul css={NavStyles} role="menu">
-                <li role="menuitem">
-                  <Link to="/" activeClassName="nav-current">
-                    Home
-                  </Link>
-                </li>
-                <li role="menuitem">
-                  <Link to="/about" activeClassName="nav-current">
-                    About
-                  </Link>
-                </li>
-              </ul>
-              {isPost && (
-                <NavPostTitle ref={this.titleRef} className="nav-post-title">
-                  {post.title}
-                </NavPostTitle>
-              )}
-            </SiteNavContent>
-          </SiteNavLeft>
-          <SiteNavRight>
-            <SocialLinks>
-              {config.facebook && (
-                <a
-                  className="social-link-fb"
-                  css={[SocialLink, SocialLinkFb]}
-                  href={config.facebook}
-                  target="_blank"
-                  title="Facebook"
-                  rel="noopener noreferrer"
-                >
-                  <Facebook />
-                </a>
-              )}
-              {config.twitter && (
-                <a
-                  css={SocialLink}
-                  href={config.twitter}
-                  title="Twitter"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Twitter />
-                </a>
-              )}
-            </SocialLinks>
-            {config.showSubscribe && (
-              <SubscribeButton onClick={this.openModal}>Subscribe</SubscribeButton>
+  useEffect(() => {
+    lastScrollY.current = window.scrollY;
+
+    if (isPost) {
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, [isPost, onScroll]);
+
+  return (
+    <>
+      {config.showSubscribe && <SubscribeModal ref={subscribeRef} />}
+      <nav css={SiteNavStyles}>
+        <SiteNavLeft className="site-nav-left">
+          {!isHome && <SiteNavLogo />}
+          <SiteNavContent css={[showTitle ? HideNav : '']}>
+            <ul css={NavStyles} role="menu">
+              <li role="menuitem">
+                <Link to="/" activeClassName="nav-current">
+                  Home
+                </Link>
+              </li>
+              <li role="menuitem">
+                <Link to="/about" activeClassName="nav-current">
+                  About
+                </Link>
+              </li>
+            </ul>
+            {isPost && (
+              <NavPostTitle ref={titleRef} className="nav-post-title">
+                {post.title}
+              </NavPostTitle>
             )}
-          </SiteNavRight>
-        </nav>
-      </>
-    );
-  }
+          </SiteNavContent>
+        </SiteNavLeft>
+        <SiteNavRight>
+          <SocialLinks>
+            {config.facebook && (
+              <a
+                className="social-link-fb"
+                css={[SocialLink, SocialLinkFb]}
+                href={config.facebook}
+                target="_blank"
+                title="Facebook"
+                rel="noopener noreferrer"
+              >
+                <Facebook />
+              </a>
+            )}
+            {config.twitter && (
+              <a
+                css={SocialLink}
+                href={config.twitter}
+                title="Twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Twitter />
+              </a>
+            )}
+          </SocialLinks>
+          <DarkModeToggle
+            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            onClick={toggleDark}
+          >
+            {isDark ? (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z" clipRule="evenodd" />
+              </svg>
+            )}
+          </DarkModeToggle>
+          {config.showSubscribe && (
+            <SubscribeButton onClick={openModal}>Subscribe</SubscribeButton>
+          )}
+        </SiteNavRight>
+      </nav>
+    </>
+  );
 }
 
 export const SiteNavMain = css`
@@ -264,6 +307,27 @@ const SocialLinks = styled.div`
   flex-shrink: 0;
   display: flex;
   align-items: center;
+`;
+
+const DarkModeToggle = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  margin: 0 0 0 6px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  opacity: 0.8;
+  cursor: pointer;
+
+  :hover {
+    opacity: 1;
+  }
+
+  svg {
+    display: block;
+  }
 `;
 
 const SubscribeButton = styled.a`

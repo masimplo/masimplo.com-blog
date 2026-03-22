@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 
 import favicon from '../../src/favicon.ico';
 import { colors } from '../styles/colors';
+import config from '../website-config';
 
 type IndexProps = {
   readonly className?: string;
@@ -16,6 +17,20 @@ function IndexLayout(props: IndexProps) {
     <div className={props.className}>
       <Helmet>
         <link rel="icon" href={favicon} type="image/x-icon" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: config.title,
+            url: config.siteUrl,
+            description: config.description,
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: `${config.siteUrl}/?s={search_term_string}`,
+              'query-input': 'required name=search_term_string',
+            },
+          })}
+        </script>
       </Helmet>
       <Global
         styles={css`
@@ -496,6 +511,20 @@ function IndexLayout(props: IndexProps) {
             img {
               opacity: 0.9;
             }
+          }
+
+          html.dark body {
+            color: rgba(255, 255, 255, 0.75);
+            background: ${colors.darkmode};
+          }
+          html.dark img {
+            opacity: 0.9;
+          }
+          html.dark .site-main {
+            background: ${colors.darkmode};
+          }
+          html.dark .post-full-content {
+            background: ${colors.darkmode};
           }
         `}
       />

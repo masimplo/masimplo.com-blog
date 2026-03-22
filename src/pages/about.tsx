@@ -66,7 +66,28 @@ function About() {
   return (
     <IndexLayout>
       <Helmet>
-        <title>About</title>
+        <title>About — masimplo.com</title>
+        <meta
+          name="description"
+          content="Software engineer for 20+ years, father, cook, 3D printing enthusiast and tinkerer. Writing about code, technology, and the things I build."
+        />
+        <meta property="og:title" content="About — masimplo.com" />
+        <meta
+          property="og:description"
+          content="Software engineer for 20+ years, father, cook, 3D printing enthusiast and tinkerer. Writing about code, technology, and the things I build."
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'masimplo',
+            url: 'https://masimplo.com',
+            sameAs: ['https://twitter.com/masimplo', 'https://www.instagram.com/masimplo/'],
+            jobTitle: 'Software Engineer',
+            description:
+              'Software engineer for 20+ years, father, cook, 3D printing enthusiast and tinkerer.',
+          })}
+        </script>
       </Helmet>
       <Wrapper css={PageTemplate}>
         <header className="site-archive-header no-image" css={[SiteHeader, SiteArchiveHeader]}>

@@ -4,7 +4,7 @@ title: Hello world
 author: [masimplo]
 tags: [Blogging]
 image: ../../images/headers/welcome-to-ghost.jpg
-date: 2011-06-06T23:46:37.121Z
+date: 2011-06-06
 draft: false
 ---
 

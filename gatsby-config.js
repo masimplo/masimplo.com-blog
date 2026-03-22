@@ -17,7 +17,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
-        defaultQuality: 100,
+        defaultQuality: 85,
         stripMetadata: true,
       },
     },
@@ -59,7 +59,7 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 2000,
-              quality: 100,
+              quality: 85,
             },
           },
         ],
@@ -143,8 +143,7 @@ module.exports = {
         "G-SKNLCK1W2K", // Google Analytics / GA
         ],
         pluginConfig: {
-          // Puts tracking script in the head instead of the body
-          head: true,
+          head: false,
         },
       },
     },
