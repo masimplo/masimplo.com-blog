@@ -35,6 +35,12 @@ const PageTemplate = css`
       background: ${colors.darkmode};
     }
   }
+
+  html.dark & {
+    .site-main {
+      background: ${colors.darkmode};
+    }
+  }
 `;
 
 const PostFullImage = styled.figure`

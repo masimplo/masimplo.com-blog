@@ -93,6 +93,16 @@ const SubscribeEmail = styled.input`
       border-color: ${lighten('0.25', colors.darkmode)};
     }
   }
+
+  html.dark & {
+    border-color: ${lighten('0.06', colors.darkmode)};
+    color: rgba(255, 255, 255, 0.9);
+    background: ${lighten('0.03', colors.darkmode)};
+
+    :focus {
+      border-color: ${lighten('0.25', colors.darkmode)};
+    }
+  }
 `;
 
 const SubscribeFormButton = styled.button`
@@ -135,6 +145,10 @@ const SubscribeFormButton = styled.button`
   }
 
   @media (prefers-color-scheme: dark) {
+    opacity: 0.9;
+  }
+
+  html.dark & {
     opacity: 0.9;
   }
 `;

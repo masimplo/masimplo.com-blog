@@ -58,6 +58,17 @@ function useDarkMode(): [boolean, () => void] {
   return [isDark, toggle];
 }
 
+/** Keep `html.dark` in sync with stored preference + toggle (styles use `html.dark`, not only OS media). */
+function useSyncDarkClass(isDark: boolean) {
+  useEffect(() => {
+    try {
+      document.documentElement.classList.toggle('dark', isDark);
+    } catch {
+      // ignore
+    }
+  }, [isDark]);
+}
+
 function SiteNav({ isHome = false, isPost = false, post = {} }: SiteNavProps) {
   const subscribeRef = useRef<SubscribeModal>(null);
   const titleRef = useRef<HTMLSpanElement>(null);
@@ -65,6 +76,7 @@ function SiteNav({ isHome = false, isPost = false, post = {} }: SiteNavProps) {
   const ticking = useRef(false);
   const [showTitle, setShowTitle] = useState(false);
   const [isDark, toggleDark] = useDarkMode();
+  useSyncDarkClass(isDark);
 
   const openModal = () => {
     if (subscribeRef.current) {

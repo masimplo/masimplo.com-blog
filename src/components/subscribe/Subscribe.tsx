@@ -53,12 +53,22 @@ const SubscribeFormSection = styled.section`
 
   @media (prefers-color-scheme: dark) {
     border: none;
-    /* background: linear-gradient(color(var(--darkmode) l(-6%)), color(var(--darkmode) l(-3%))); */
-    /* background: linear-gradient(
+    background: linear-gradient(
       ${lighten('-0.06', colors.darkmode)},
       ${lighten('-0.03', colors.darkmode)}
-    ); */
-    background: linear-gradient(#000, #000);
+    );
+
+    p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  html.dark & {
+    border: none;
+    background: linear-gradient(
+      ${lighten('-0.06', colors.darkmode)},
+      ${lighten('-0.03', colors.darkmode)}
+    );
 
     p {
       color: rgba(255, 255, 255, 0.7);
@@ -80,6 +90,10 @@ const SubscribeFormTitle = css`
   }
 
   @media (prefers-color-scheme: dark) {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  html.dark & {
     color: rgba(255, 255, 255, 0.9);
   }
 `;

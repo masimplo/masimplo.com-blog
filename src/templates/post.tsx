@@ -298,6 +298,12 @@ const PostTemplate = css`
       background: ${colors.darkmode};
     }
   }
+
+  html.dark & {
+    .site-main {
+      background: ${colors.darkmode};
+    }
+  }
 `;
 
 export const PostFull = css`
@@ -366,6 +372,10 @@ const PostFullCustomExcerpt = styled.p`
     /* color: color(var(--midgrey) l(+10%)); */
     color: ${lighten('0.1', colors.midgrey)};
   }
+
+  html.dark & {
+    color: ${lighten('0.1', colors.midgrey)};
+  }
 `;
 
 const PostFullByline = styled.div`
@@ -432,6 +442,18 @@ const PostFullByline = styled.div`
       color: #fff;
     }
   }
+
+  html.dark & {
+    border-top-color: ${lighten('0.15', colors.darkmode)};
+
+    .post-full-byline-meta h4 a {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .post-full-byline-meta h4 a:hover {
+      color: #fff;
+    }
+  }
 `;
 
 export const PostFullTitle = styled.h1`
@@ -443,6 +465,10 @@ export const PostFullTitle = styled.h1`
   }
 
   @media (prefers-color-scheme: dark) {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  html.dark & {
     color: rgba(255, 255, 255, 0.9);
   }
 `;

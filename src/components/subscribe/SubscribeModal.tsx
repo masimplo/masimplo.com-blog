@@ -142,6 +142,12 @@ const SubscribeOverlay = styled.div<SubscribeOverlayProps>`
       color: rgba(255, 255, 255, 0.7);
     }
   }
+
+  html.dark & {
+    p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
 `;
 
 const SubscribeOverlayClose = styled.a`

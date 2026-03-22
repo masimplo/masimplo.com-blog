@@ -216,6 +216,15 @@ const AuthorCardStyles = css`
       border-top-color: ${lighten('0.04', colors.darkmode)};
     }
   }
+
+  html.dark & {
+    background: ${lighten('0.04', colors.darkmode)};
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
+
+    :before {
+      border-top-color: ${lighten('0.04', colors.darkmode)};
+    }
+  }
 `;
 
 const AuthorAvatar = css`
@@ -235,6 +244,10 @@ const AuthorAvatar = css`
 
   @media (prefers-color-scheme: dark) {
     /* border-color: color(var(--darkgrey) l(+2%)); */
+    border-color: ${lighten('0.02', colors.darkgrey)};
+  }
+
+  html.dark & {
     border-color: ${lighten('0.02', colors.darkgrey)};
   }
 `;

@@ -33,6 +33,10 @@ export const SiteMain = css`
   @media (prefers-color-scheme: dark) {
     background: ${colors.darkmode};
   }
+
+  html.dark & {
+    background: ${colors.darkmode};
+  }
 `;
 
 export const SiteTitle = styled.h1`
@@ -80,6 +84,10 @@ export const PostFeed = css`
   border-top-right-radius: 3px;
 
   @media (prefers-color-scheme: dark) {
+    background: ${colors.darkmode};
+  }
+
+  html.dark & {
     background: ${colors.darkmode};
   }
 `;
@@ -157,6 +165,12 @@ export const SiteHeaderStyles = css`
       background: rgba(0, 0, 0, 0.6);
     }
   }
+
+  html.dark & {
+    :before {
+      background: rgba(0, 0, 0, 0.6);
+    }
+  }
 `;
 
 export const AuthorProfileImage = css`
@@ -167,6 +181,11 @@ export const AuthorProfileImage = css`
   border: none;
 
   @media (prefers-color-scheme: dark) {
+    box-shadow: 0 0 0 6px hsla(0, 0%, 100%, 0.04);
+    background: ${colors.darkmode};
+  }
+
+  html.dark & {
     box-shadow: 0 0 0 6px hsla(0, 0%, 100%, 0.04);
     background: ${colors.darkmode};
   }
@@ -226,6 +245,12 @@ export const ResponsiveHeaderBackground = styled.div<{ backgroundImage?: string 
     }
 
     @media (prefers-color-scheme: dark) {
+      &:before {
+        background: rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    html.dark & {
       &:before {
         background: rgba(0, 0, 0, 0.6);
       }
@@ -324,6 +349,19 @@ export const ResponsiveHeaderBackground = styled.div<{ backgroundImage?: string 
       color: rgba(255, 255, 255, 0.75);
     }
   }
+
+  html.dark & {
+    color: rgba(255, 255, 255, 0.9);
+    background: ${colors.darkmode};
+
+    .site-header-content {
+      border-bottom-color: #272a30;
+    }
+
+    .author-social-link a {
+      color: rgba(255, 255, 255, 0.75);
+    }
+  }
   `}
 `;
 
@@ -403,6 +441,21 @@ export const NoImage = css`
 
     .no-image .site-header-content {
       /* border-bottom-color: color(var(--darkmode) l(+15%)); */
+      border-bottom-color: ${lighten('0.15', colors.darkmode)};
+    }
+
+    .no-image .author-social-link a {
+      color: rgba(255, 255, 255, 0.75);
+    }
+  }
+
+  html.dark & {
+    .no-image {
+      color: rgba(255, 255, 255, 0.9);
+      background: ${colors.darkmode};
+    }
+
+    .no-image .site-header-content {
       border-bottom-color: ${lighten('0.15', colors.darkmode)};
     }
 

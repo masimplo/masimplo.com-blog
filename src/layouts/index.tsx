@@ -526,6 +526,33 @@ function IndexLayout(props: IndexProps) {
           html.dark .post-full-content {
             background: ${colors.darkmode};
           }
+
+          /* Manual dark mode (html.dark): nested Emotion selectors on styled components may not
+             resolve to a global html.dark ancestor; keep article chrome readable. */
+          html.dark .post-full-header .post-full-title,
+          html.dark h1.post-full-title {
+            color: rgba(255, 255, 255, 0.9);
+          }
+
+          html.dark .post-full-tags {
+            color: rgba(255, 255, 255, 0.5);
+          }
+
+          html.dark .post-full-tags a {
+            color: rgba(255, 255, 255, 0.55);
+          }
+
+          html.dark .post-full-tags a:hover {
+            color: rgba(255, 255, 255, 0.85);
+          }
+
+          html.dark .post-full-custom-excerpt {
+            color: ${lighten('0.1', colors.midgrey)};
+          }
+
+          html.dark a.post-card-content-link {
+            color: rgba(255, 255, 255, 0.85);
+          }
         `}
       />
       {props.children}
