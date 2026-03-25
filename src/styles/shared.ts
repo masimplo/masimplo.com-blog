@@ -132,9 +132,9 @@ export const SiteHeaderStyles = css`
   /* margin-top: 64px; */
   padding-bottom: 12px;
   color: #fff;
-  /* background: color(var(--darkgrey) l(-5%)) no-repeat center center; */
   background: ${lighten('-0.05', colors.darkgrey)} no-repeat center center;
   background-size: cover;
+  background-image: var(--header-bg-light);
 
   :before {
     content: '';
@@ -161,12 +161,16 @@ export const SiteHeaderStyles = css`
   }
 
   @media (prefers-color-scheme: dark) {
+    background-image: var(--header-bg-dark);
+
     :before {
       background: rgba(0, 0, 0, 0.6);
     }
   }
 
   html.dark & {
+    background-image: var(--header-bg-dark);
+
     :before {
       background: rgba(0, 0, 0, 0.6);
     }

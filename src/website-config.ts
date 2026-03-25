@@ -56,7 +56,7 @@ export type WebsiteConfig = {
 const config: WebsiteConfig = {
   title: 'masimplo.com',
   description: '"Love many things, for therein lies the true strength, and whosoever loves much performs much, and can accomplish much, and what is done in love is done well." - Van Gogh',
-  coverImage: 'blog-cover.jpg',
+  coverImage: 'blog-cover-sunset.jpg',
   logo: 'logo.png',
   lang: 'en',
   siteUrl: 'https://masimplo.com',

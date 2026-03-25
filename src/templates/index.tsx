@@ -31,6 +31,7 @@ export type IndexProps = {
   readonly data: {
     logo: any;
     header: any;
+    headerLight: any;
     allMarkdownRemark: {
       edges: Array<{
         node: PageContext;
@@ -78,8 +79,9 @@ function IndexPage(props: IndexProps) {
           css={[outer, SiteHeader, SiteHeaderStyles]}
           className="site-header-background"
           style={{
-            backgroundImage: `url('${getSrc(props.data.header as ImageDataLike)}')`,
-          }}
+            '--header-bg-dark': `url('${getSrc(props.data.header as ImageDataLike)}')`,
+            '--header-bg-light': `url('${getSrc(props.data.headerLight as ImageDataLike)}')`,
+          } as React.CSSProperties}
         >
           <div css={inner}>
             <SiteNav isHome />
@@ -133,7 +135,12 @@ export const pageQuery = graphql`
         gatsbyImageData(layout: FIXED)
       }
     }
-    header: file(relativePath: { eq: "blog-cover.jpg" }) {
+    header: file(relativePath: { eq: "blog-cover-sunset.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(width: 2000, quality: 100, layout: FIXED, formats: [AUTO, WEBP, AVIF])
+      }
+    }
+    headerLight: file(relativePath: { eq: "blog-cover-sunrise.png" }) {
       childImageSharp {
         gatsbyImageData(width: 2000, quality: 100, layout: FIXED, formats: [AUTO, WEBP, AVIF])
       }
