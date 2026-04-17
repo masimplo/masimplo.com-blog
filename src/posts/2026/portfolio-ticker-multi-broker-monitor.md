@@ -77,16 +77,8 @@ The thing that separates a side project you demo once from a side project you ac
 
 **Market-status awareness.** A small composable knows which exchange a ticker trades on and whether that market is currently open. If it is closed, the "daily change" is the last session's change, not a meaningless flatline.
 
-## What I would not do again
-
-I reached for `lodash-es` early and then regretted half the places I used it. Modern JavaScript covers enough ground now that pulling in a utility library is usually solving a problem you do not have. I have been ripping it out piece by piece.
-
-I also spent too long trying to make the frontend "framework-agnostic" at first. Vue 3 is fine. Committing to the framework and using its idioms is better than building your own abstraction on top of it just in case you switch later.
-
 ## If you want to use it
 
 Just go to [portfolio-ticker.web.app](https://portfolio-ticker.web.app), sign in with Google, and start adding holdings. Your data is yours. You can delete your account and everything goes with it.
-
-If you want to run your own copy, the repo is set up for it — copy the env template, point it at your own Firebase project, `firebase deploy`. One command, one vendor, one bill.
 
 This was one of those projects where the journey from "I wish someone made this" to "I guess I will make this" was shorter than I expected. If you have a similar little itch that three weekends could scratch, my advice is the usual: just start. Nothing beats how easy it is to iterate on something once the boring plumbing is already in place.
