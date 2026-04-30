@@ -40,13 +40,13 @@ I have written before about [using AI agents for development](/vibe-coding-a-dev
 
 We ran it as a series of focused sessions, each with one clear goal. Before any code changed, we had the agent produce a design document: folder layout, which libraries to extract, path aliases, risks. That document became the reference for every session after. Without it, every new chat would start by re-discovering the architecture and making slightly different decisions each time.
 
-The rough sequence:
+The rough sequence was:
 
-1. **Planning** — library boundaries, migration order, what could go wrong. No code.
-2. **Scaffold and move** — create the Nx workspace, bring the three apps in using `git subtree` so we keep the full commit history from each repo. The first build broke immediately: wrong import paths, missing SCSS includes, a gitignored `index.html` that the build actually needed, and a shared dependency bump that forced an API migration across all three apps at once. Fixed in one batch.
+1. **Planning** — library boundaries, migration order, what could go wrong. No code yet.
+2. **Scaffold and move** — create the Nx workspace, bring the three apps in using `git subtree` to keep the full commit history from each repo. The first build broke immediately: wrong import paths, missing SCSS includes, a gitignored `index.html` that the build actually needed, and a shared dependency bump that forced an API migration across all three apps at once. Fixed in one batch.
 3. **Extract shared libraries** — the big mechanical pass. Pull out shared HTTP, logging, analytics, and core utilities into `libs/`. Wire up `tsconfig` path aliases. Update imports across hundreds of files. This is where the agent earned its keep. Consistency over hundreds of files matters more than creativity.
-4. **Lint consolidation** — kill per-app ESLint configs, one config at the root, fix whatever it complains about.
-5. **CI consolidation** — replace three CircleCI projects with one, using path filtering so changes to app A do not trigger builds for B and C. The actual hard part was not YAML. It was cataloguing all the secrets and context variables that used to live in three different places and figuring out which ones are shared and which are per-app. We also wrote a short runbook for whoever has to operate this six months from now.
+4. **Lint consolidation** — kill per-app ESLint configs, one config at the root, fix whatever it complained about.
+5. **CI consolidation** — replace three CircleCI projects with one, using path filtering so changes to app A do not trigger builds for B and C. The actual hard part was not the YAML. It was cataloguing all the secrets and context variables that used to live in three different places and figuring out which ones are shared and which are per-app. We also wrote a short runbook for whoever has to operate this six months from now.
 
 I am skipping the blow-by-blow of every build failure. The pattern is simple: big structural change across hundreds of files and three products. If you cannot batch that atomically, you are paying merge tax forever.
 

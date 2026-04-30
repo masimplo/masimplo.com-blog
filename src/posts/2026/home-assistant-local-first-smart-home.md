@@ -53,13 +53,13 @@ The solution was a budget pure sine wave inverter connected to an existing car b
 
 It is not an elaborate solution but it solves a real problem cleanly, which is usually the best kind.
 
-## Brand philosophy
+## What I was going for with hardware choices
 
 Looking across the whole house, there is a pattern to what I have chosen: Shelly for monitoring and control (local API, great HA support), Daikin for HVAC (reliable, well-documented, premium), Ubiquiti for networking (prosumer, solid, no subscription nonsense), and Duravit, Alumil, AEG for the fixtures and fittings. All European, all in the premium tier of their category, all chosen because I expect them to still be working properly in twenty years.
 
-That philosophy ends up costing more upfront. It also means significantly less frustration, less replacing things, and a system that feels coherent rather than patched together.
+It costs more upfront. It also means significantly less frustration, less replacing things, and a system that feels coherent rather than patched together. I got tired of fighting cheap hardware.
 
-## What is next
+## Still on the list
 
 Still to come: IR blasters (Broadlink RM4 Mini) for the floor fan coils where a wired thermostat was not practical, a Toshiba Daisekai 10 split for the basement playroom, and continued refinement of the energy monitoring dashboards as the picture of the whole house's consumption gets clearer.
 
