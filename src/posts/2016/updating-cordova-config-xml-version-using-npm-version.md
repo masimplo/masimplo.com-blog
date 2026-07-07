@@ -6,6 +6,7 @@ tags: [Bash]
 image: ../../images/headers/cordova_logo_normal_dark_large.png
 date: 2016-11-17
 draft: false
+excerpt: Using the npm version script hook to update Cordova's config.xml version number automatically and commit it alongside package.json.
 ---
 
 I like using npm scripts to do all my build and maintenance tasks. They are clear and can be reasoned with. I also like using the tooling built into npm like `npm version`. For those that don't already know you can write something like `npm version 3.5.1` and set the package.json version to the semver you passed or even do something like `npm version (major | minor | patch )` which will increment the respective version part in package json, commit it and add a git tag as well. For a complete guide of what npm version can do take look [here](https://docs.npmjs.com/cli/version).

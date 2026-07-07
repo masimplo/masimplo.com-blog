@@ -6,6 +6,7 @@ tags: [Code]
 image: ../../images/headers/ben-white-292680-unsplash.jpg
 date: 2012-11-22
 draft: false
+excerpt: A simple static event class that lets any deeply nested code update the main form's progressbar without passing references around.
 ---
 
 When an application has many time-consuming processes then a progressbar in the central form is necessary, so that there are not 200 progressbars left and right.

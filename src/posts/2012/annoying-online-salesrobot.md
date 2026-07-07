@@ -6,6 +6,7 @@ tags: [Online Shopping]
 image: ../../images/headers/hello-i-m-nik-616779-unsplash.jpg
 date: 2012-01-03
 draft: false
+excerpt: Amazon spends millions on product recommendations, yet its cross-selling emails still can't match a good in-store saleswoman.
 ---
 
 Going shopping on a Saturday morning, even though we don't feel like it, can be a common occurrence. We open our closet and realize that something is missing. However, as soon as we enter the store, the otherwise sweet saleswoman starts to pressure us with suggestions and questions. Some people enjoy this form of cross-selling, while others find it unbearable.

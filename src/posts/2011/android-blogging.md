@@ -6,6 +6,7 @@ tags: [Blogging]
 image: ../../images/headers/patrick-fore-381200-unsplash.jpg
 date: 2011-07-17
 draft: false
+excerpt: I installed the WordPress app on my Android phone so I can manage posts, pages, comments and stats, and I even wrote this post with it.
 ---
 
 

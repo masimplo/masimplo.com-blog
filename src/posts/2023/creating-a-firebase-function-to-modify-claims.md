@@ -6,6 +6,7 @@ tags: [Code, Firebase]
 image: ../../images/headers/sarah-kilian-xit3LjRvKvM-unsplash.jpg
 date: 2023-01-05
 draft: false
+excerpt: Ever wanted to give some Firebase users special privileges? Here is how to write a Firebase function that sets custom user claims.
 ---
 
 Hey there, long time no see!

@@ -6,6 +6,7 @@ tags: [Tips]
 image: ../../images/headers/gaelle-marcel-161096-unsplash.jpg
 date: 2011-07-20
 draft: false
+excerpt: Google Apps has no traditional email forwarders, but with a few steps you can configure its Groups feature to forward mail to any addresses you like.
 ---
 
 If you’ve signed up for Google Apps, it may not be immediately apparent if email forwarders are supported; fortunately for everyone, they are. But they’re not called “forwarders” and aren’t managed quite like traditional forwarders. Instead, Google Apps provides a much more robust Groups feature which allows greater control over who can send mail and how many people receive it. With just a few steps, we can configure Groups to act just like a traditional forwarder.

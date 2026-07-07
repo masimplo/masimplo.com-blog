@@ -6,6 +6,7 @@ tags: [Code,Ionic]
 image: ../../images/headers/bernd-dittrich-pivF3guSUgI-unsplash.jpg
 date: 2023-03-05
 draft: false
+excerpt: How I migrated an Ionic app with over 500 components to Angular standalone components using the official schematic, and what needed manual fixes.
 ---
 
 

@@ -6,6 +6,7 @@ tags: [Security,Technology]
 image: ../../images/headers/michael-dziedzic-gKyv6-Ev_TE-unsplash.jpg
 date: "2023-03-11"
 draft: false
+excerpt: Shopping for a Web Application Firewall on a small budget is rough — opaque pricing, call-for-quote tiers, and GDPR clashes with CDN offerings.
 ---
 
 When you deploy anything on the internet, it immediately becomes a target for cyber attacks. There are many measures that need to be taken for even a simple site to be secure, let alone SaaS, eshops, APIs and many complex systems that might need protection across multiple layers. A Web Application Firewall is a must nowadays, providing protection from DDOS, bot attacks, various malicious injection attempts, brute force attacks and more.

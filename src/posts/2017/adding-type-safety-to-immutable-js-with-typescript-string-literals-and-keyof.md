@@ -6,6 +6,7 @@ tags: [Code]
 image: ../../images/headers/ts.png
 date: 2017-05-08
 draft: false
+excerpt: How I use TypeScript string literals and keyof to make Immutable.js get calls type safe, so property renames break at compile time instead of runtime.
 ---
 
 

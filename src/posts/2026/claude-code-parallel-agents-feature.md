@@ -6,6 +6,7 @@ tags: [AI, Code, Tools]
 image: ../../images/headers/iyr7iiiyr7iiiyr7.png
 date: 2026-03-22
 draft: false
+excerpt: The single-agent model has a ceiling. Claude Code's parallel agents let you split a feature into independent pieces and work like a focused team.
 ---
 
 I wrote a few weeks ago about [vibe coding and what three years of AI-assisted development actually looks like](/vibe-coding-a-developers-honest-take/). One thing I glossed over is that the single-agent model — one conversation, one task, one agent — has a ceiling. Once a feature touches more than one layer of the stack or more than one independent concern, a single agent serializes work it doesn't have to.

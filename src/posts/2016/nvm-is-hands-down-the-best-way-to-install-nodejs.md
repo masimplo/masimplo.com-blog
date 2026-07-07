@@ -6,6 +6,7 @@ tags: [Tools]
 image: ../../images/headers/sven-read-623749-unsplash.jpg
 date: 2016-11-02
 draft: false
+excerpt: After trying every way to install NodeJS, NVM is my favourite since I can switch versions instantly and migrate global packages too.
 ---
 
 With NodeJS rapidly releasing newer version since the node community got back on its feet, it is now necessary to have an easy way to maintain your [NodeJS](https://node.org/) installations.

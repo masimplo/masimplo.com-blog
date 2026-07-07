@@ -6,6 +6,7 @@ tags: [Tools]
 image: ../../images/headers/patrick-tomasso-71909-unsplash.jpg
 date: 2012-01-04
 draft: false
+excerpt: After years on SnagIt I switched to GreenShot, a free open-source screenshot tool with handy capture hotkeys and a built-in editor.
 ---
 
 As a developer, taking screenshots has been a recurrent need for me. Whether it's to demonstrate something to a colleague, include it in a manual, or simply to keep a record of a specific form's parameters. I used to rely on SnagIt, a tool that truly revolutionized the screenshot process. However, given the amount of developer tools I have running on my PC, I can't afford to have bloatware installed. Additionally, SnagIt has grown into a suite over the years and I've been searching for a replacement for a long time.

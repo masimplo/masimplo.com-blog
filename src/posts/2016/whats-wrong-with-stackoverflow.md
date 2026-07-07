@@ -6,6 +6,7 @@ tags: [Opinions]
 image: ../../images/headers/stackoverflow.png
 date: 2016-11-25
 draft: false
+excerpt: Why I stopped answering questions on StackOverflow, where low-effort posts and point farming are eroding a great platform.
 ---
 
 I have been a [StackOverflow](http://stackoverflow.com) member for over 6 years now and as most developers nowadays, visit it a few times a day looking for possible answers to hard problems. Using SO like that is just priceless, you find answers with a lot of information that are already curated by a demanding community.

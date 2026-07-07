@@ -6,6 +6,7 @@ tags: [Tips, Hobbies]
 image: ../../images/headers/opc-engine-bay.jpg
 date: 2025-06-14
 draft: false
+excerpt: Old does not mean good enough. What happened when I stopped trusting other people's checklists and kept my Astra OPC running like clockwork.
 ---
 
 Mine is an **Opel Astra H OPC** — the 2.0-litre turbo, six-speed manual, front-wheel-drive GTC from the mid-2000s era. It is not a garage queen and it is not a modern car. I still want it **in great shape**: tight, predictable, no excuses — old does not mean “good enough.”

@@ -6,6 +6,7 @@ tags: [Lifehacks, Tips]
 image: ../../images/headers/paulo-mergulhao-1121662-unsplash.jpg
 date: 2019-05-01
 draft: false
+excerpt: Baking soda mixed with rubbing alcohol removes laptop sticker residue in seconds, after nail polish remover, vinegar and alcohol alone all failed.
 ---
 
 I really like laptop stickers. They make our boring work laptops seem a bit more jolly, so I stick a ton of them on the back of my macbook.

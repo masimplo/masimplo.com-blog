@@ -6,6 +6,7 @@ tags: [Ionic, Code]
 image: ../../images/headers/rsz_elizabeth-lies.jpg
 date: 2017-09-12
 draft: false
+excerpt: Separate development and production config in Ionic2 using a typed environment module, an OpaqueToken and NODE_ENV to pick values at build time.
 ---
 
 After you finish building your app and you are ready to deploy to the App Stores you will realize that you need to use specific variables for the production environment that are different than your development environment. After a lot of reading and some experimentation I came upon what I consider the best and most versatile way to build apks and ipas that have different "settings" for development and production.

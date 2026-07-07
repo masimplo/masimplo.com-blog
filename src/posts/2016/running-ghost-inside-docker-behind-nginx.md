@@ -6,6 +6,7 @@ tags: [Tips, Docker, Blogging]
 image: ../../images/headers/docker.png
 date: 2016-09-25
 draft: false
+excerpt: How I run my Ghost blog inside a docker container behind an nginx reverse proxy, with the full docker-compose and nginx config.
 ---
 
 ##Let's get us some segregation

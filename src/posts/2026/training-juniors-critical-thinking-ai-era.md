@@ -6,6 +6,7 @@ tags: [Opinions, Code, Technology]
 image: ../../images/headers/sb7rkosb7rkosb7r.png
 date: 2026-03-21
 draft: false
+excerpt: AI makes junior developers look productive on week two. If we train them for speed alone, we hollow out the next decade of engineering judgment.
 ---
 
 I wrote separately about [how day-to-day coding with AI has changed the job](/vibe-coding-a-developers-honest-take/). That story is mostly about people who already have a mental model of systems, failure modes, and when to be suspicious. Juniors are in a different position — and if we get how we train them wrong, we do not only hollow out the next decade of engineering. We also starve the future of the very thing models will need next: **fresh human judgment, edge cases nobody tokenized yet, and mistakes honest enough to learn from.**

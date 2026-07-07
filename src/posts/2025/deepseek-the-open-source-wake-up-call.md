@@ -6,6 +6,7 @@ tags: [Technology, AI, Opinions]
 image: ../../images/headers/deepseek-r1-1minai.png
 date: 2025-01-24
 draft: false
+excerpt: When DeepSeek dropped R1, my first reaction was not hype — it was spreadsheet panic. The comfortable pricing story suddenly had a counterexample.
 ---
 
 I spend my working life thinking about systems, vendors, and risk. So when DeepSeek dropped R1 in late January and the internet spent a week arguing whether a Chinese lab had just made a serious open-weight reasoning model look “cheap,” my first reaction was not hype — it was **spreadsheet panic**.

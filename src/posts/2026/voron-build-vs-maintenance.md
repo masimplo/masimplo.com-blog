@@ -6,6 +6,7 @@ tags: [3D Printing, Hobbies]
 image: ../../images/headers/jakub-zerdzicki-MzLDrWp3NYc-unsplash.jpg
 date: 2025-11-14
 draft: false
+excerpt: Finishing the Voron build feels like crossing a finish line. That high is real. It is also misleading — the real project is what comes after.
 ---
 
 When I finished assembling my Voron, I felt like I had crossed a finish line. Aluminum extrusions, belts, wiring, the first scary power-on — it was challenging, but it had a shape. You follow the manual, you solve the snag, you power it on, the toolhead moves. You take a photo and exhale.

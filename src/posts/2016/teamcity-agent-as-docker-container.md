@@ -6,6 +6,7 @@ tags: [Tools, Docker]
 image: ../../images/headers/teamcity-post-banner.jpg
 date: 2016-10-16
 draft: false
+excerpt: Instead of committing hand-tweaked containers, I build custom TeamCity build agents from a Dockerfile so they are versioned and reproducible.
 ---
 
 Updating teamcity agents with external project dependencies (e.g. gulp cli or nodejs version) can be a pain, especially if you have many build agents that are not maintained through some tooling like puppet, ansible etc. [Jetbrains](https://www.jetbrains.com/) have recently released official docker images for both the [TeamCity](https://www.jetbrains.com/teamcity/) server and agents. If you follow their [guide](https://hub.docker.com/r/jetbrains/teamcity-agent/) you will see they recommend starting the vanilla image, bashing in, installing everything you need and then commit this container as your custom image. Unfortunately this cannot be versioned controlled, is hard to reproduce and even harder to remember what's in that magical container a few days after creating.

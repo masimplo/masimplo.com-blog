@@ -6,6 +6,7 @@ tags: [AI, Code, Testing, Opinions]
 image: ../../images/headers/guardrails-ai-code.png
 date: 2026-04-30
 draft: false
+excerpt: You cannot prompt AI-generated code into being reliable. What works is what always worked with new hires — guardrails that say no.
 ---
 
 I have been shipping AI-assisted code in production for a while now, and the failure mode I keep seeing is not the obvious one. It is not a model hallucinating an API that does not exist — that gets caught the second you try to run the thing. The dangerous bugs are the ones where the code compiles, the tests the model wrote pass, the PR description sounds reasonable, and the function quietly does the wrong thing on the third Tuesday of the month.

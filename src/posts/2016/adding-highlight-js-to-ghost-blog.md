@@ -6,6 +6,7 @@ tags: [Blogging]
 image: ../../images/headers/highlighted-code.png
 date: 2016-10-17
 draft: false
+excerpt: A quick way to add highlight.js syntax highlighting to a Ghost blog using the admin panel's Code Injection tool instead of editing theme files.
 ---
 
 Markdown has an out of the box code formatting syntax using the single or triple ` symbol but it does not feature any syntax highlighting or horizontal scrolling for that matter, making somewhat larger code blocks unreadable.

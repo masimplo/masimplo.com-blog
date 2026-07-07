@@ -113,5 +113,5 @@ draft: false
 
 - **No breaking changes to frontmatter schema** — `gatsby-node.js` and every template query depend on it.
 - Posts reference tags/authors by exact name; keep `tag.yaml` / `author.yaml` in sync or the build breaks.
-- Frontmatter `image` paths are relative to the Markdown file (`../../images/headers/...`) and the file must exist — a dangling path fails the build. Never commit a post with a placeholder image path.
+- Frontmatter `image` paths are relative to the Markdown file (`../../images/headers/...`) and the file must exist — a dangling path does NOT fail the build; it silently publishes the post with no header image and no og:image/twitter:image. Never commit a post with a placeholder image path.
 - Renaming a post file changes its URL; there is no redirect automation (`src/static/_redirects` is hand-maintained).

@@ -6,6 +6,7 @@ tags: [Web Design, CSS]
 image: ../../images/headers/phuong-tran-1190168-unsplash.jpg
 date: "2012-01-05"
 draft: false
+excerpt: I came across a red-team-design.com article showing a simple way to build CSS3 tables with rounded corners and hover effects, so I am sharing it here.
 ---
 
 Searching as always for something unrelated, I came across an article by red-team-design.com that shows a great way to create beautiful HTML tables with rounded corners and hover effects using CSS3.

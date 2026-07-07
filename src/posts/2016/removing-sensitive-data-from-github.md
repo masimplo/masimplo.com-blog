@@ -6,6 +6,7 @@ tags: [Tools, Security, Tips]
 image: ../../images/headers/bfg.png
 date: 2016-10-28
 draft: false
+excerpt: I accidentally pushed an API key to github, so here is how to scrub sensitive data from git history using the BFG repo cleaner.
 ---
 
 Today I accidentally pushed a commit containing an API key to github. It wasn't an important API key, but could be. Reverting the commit will have no effect, as the API key is forever stored in git history.

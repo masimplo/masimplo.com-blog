@@ -6,6 +6,7 @@ tags: [Blogging]
 image: ../../images/headers/welcome-to-ghost.jpg
 date: 2011-06-06
 draft: false
+excerpt: I have started and abandoned several blogs before, so this is another attempt to write about my studies, my work and my hobbies.
 ---
 
 👋 The default blog post I just installed...Hello World! I thought for a moment to delete it and start writing my own posts, but what more suitable for a welcoming post of the blog of a computer literate person - what many Greeks call "κομπιουτεράς" -

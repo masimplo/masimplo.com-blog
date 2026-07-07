@@ -6,6 +6,7 @@ tags: [3D Printing]
 image: ../../images/headers/bed-mesh.png
 date: "2023-01-18"
 draft: false
+excerpt: My Voron's bed mesh deviation jumped to 0.32mm and I feared a warped 3D printer bed — the real culprit turned out to be the gantry.
 ---
 
 Voron printers are known for their heavy-duty bed plates, which use an 8mm thick (or more) MIC-6 cast aluminum plate instead of a thin piece of aluminum or an electronic plate. The reason for this is that cast aluminum plates are stress-relieved, which means they do not warp excessively when heated to temperatures of 110C, unlike rolled aluminum plates.

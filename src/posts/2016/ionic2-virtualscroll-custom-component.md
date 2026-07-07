@@ -6,6 +6,7 @@ tags: [Ionic]
 image: ../../images/headers/ionicrc0.png
 date: 2016-10-18
 draft: false
+excerpt: Ionic2 VirtualScroll won't render custom components yet, but wrapping the component in a plain div works around the open issue.
 ---
 
 Simply put virtual scroll is a performance related technique to have a scrollable list of a vast amounts of records that does not impact performance by rendering too many DOM elements. What it does to accomplish that is render just a few items and replace the item contents while scrolling in such a fashion so that the user perceives it as she/he is actually scrolling a large list of items. This has a major impact on performance and is paramount for any app handling large amounts of data to function correctly.

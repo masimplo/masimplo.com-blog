@@ -6,6 +6,7 @@ tags: [Security, Opinions]
 image: ../../images/headers/fly-d-mT7lXZPjk7U-unsplash.jpg
 date: 2023-01-17
 draft: false
+excerpt: Treating software security as an occasional audit is a mistake — small companies compete by making security part of every decision they take.
 ---
 
 As technology continues to evolve, the importance of security in software and infrastructure becomes more and more critical. However, many organizations still treat security as an ad-hoc review matter, rather than recognizing it as a fundamental aspect of the development and deployment process. Smaller companies, in particular, may face challenges in keeping up with larger corporations in terms of security due to limited resources and high recurring costs for security services.

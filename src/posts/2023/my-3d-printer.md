@@ -6,6 +6,7 @@ tags: [3D Printing, Hobbies]
 image: ../../images/headers/kadir-celep-HsefvbLbNWc-unsplash.jpg
 date: 2023-01-02
 draft: false
+excerpt: How I went from a modded Ender 3 Pro to building a Voron from 150 separate part orders, and why DIY 3D printing is such a rewarding hobby.
 ---
 
 I have always been fascinated by the concept of creating something out of "nothing". That is one of the reasons that led me to become a developer in the first place.. I remember seeing the first 3D printer that opened the positibilities of owning one (remember the Darwin RepRap printer?) and I wanted one since then. It wasn't until the lockdown that I decided to get one. So back in 2021 I got an Ender 3 Pro as many do for their first printer. The printer was much better than I expected. I lost myself reading hours and hours per day about printable materials and their properties, looking into FDM 3D design (even learned a few CAD programs at the time) but most of all I got fascinated by the parts and mechanics that made 3D printing possible.

@@ -6,6 +6,7 @@ tags: [Blogging, Personal]
 image: ../../images/headers/caleb-woods-170974-unsplash.jpg
 date: 2012-01-02
 draft: false
+excerpt: Six months of blog silence, two months without an internet connection at my new home, and a rant about paying for service I never got.
 ---
 
 OK, I admit it... once again, I created a blog, wrote 2 posts, and left it for 6+ months! But today, times have changed, and I remembered its existence. To excuse my absence, I'll mention the lack of internet connection at my new home for the last 2+ months. Yes, 2 months to reconnect with the world, 2 months to connect 2 cables and press 3 buttons on a PC.

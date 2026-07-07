@@ -6,6 +6,7 @@ tags: [Technology, AI]
 image: ../../images/headers/bing.jpeg
 date: 2023-02-13
 draft: false
+excerpt: Microsoft wired ChatGPT into Bing and used the waitlist to push Bing onto millions of devices — pure marketing genius in my book.
 ---
 
 Today, I decided to check the hype about the Bing search engine that got superpowers all of a sudden, by integrating with chatGPT. I mainly got the buzz from many Twitter accounts I follow, but a post by [Scott Hanselman](https://twitter.com/shanselman) sold it for me. It appears that Bing "understands" your query using chatGPT's language analysis power, then searches the web to fulfill the query looking for current data (something chatGPT is not able to do currently), feeds it back to chatGPT for analysis and/or summarizing, and then returns a much more human-like response than what we are used to getting when using Google or other present search engines.

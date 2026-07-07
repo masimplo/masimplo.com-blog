@@ -6,6 +6,7 @@ tags: [Performance, Code]
 image: ../../images/headers/veri-ivanova-17904-unsplash.jpg
 date: 2019-03-23
 draft: false
+excerpt: Using the Performance API with performance.mark and performance.measure to see how your code really runs on users' devices, not just in the lab.
 ---
 Every developer at some point gets a task to make something faster.
 

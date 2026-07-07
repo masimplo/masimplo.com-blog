@@ -6,6 +6,7 @@ tags: [Tools, Tips]
 image: ../../images/headers/abraham-osorio-184519.jpg
 date: 2017-10-18
 draft: false
+excerpt: Enabling git rerere makes git remember your conflict resolutions, so repeated rebases of a feature branch stop asking you to fix the same conflicts.
 ---
 
 When working on a feature branch you are sometimes isolated by all the fun that happens on the develop and master branches. You are developing feature A and someone merges onto develop utility X which you would like to use for your feature. First thought would be to merge develop branch onto your feature and then you would have access to the new shiny code snippet you so much desired. Merging develop into a feature branch creates an ugly, unhelpfull, troublesome when doing `git bisect` commit, reading "Merge develop into feature/A".

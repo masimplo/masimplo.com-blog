@@ -6,6 +6,7 @@ tags: [Ionic, Code, Testing]
 image: ../../images/headers/kelly-sikkema-411622-unsplash.jpg
 date: 2017-06-30
 draft: false
+excerpt: A reusable mock for testing Ionic presentables like modals, alerts and toasts, so you can trigger onDidDismiss and assert what your page does.
 ---
 
 I frequently come across the question of how we can test a presentable in Ionic. A presentable is component that is presented in a separate navigation stack like a Modal, an Alert, an ActionSheet, a Toast, a LoadingModal etc.

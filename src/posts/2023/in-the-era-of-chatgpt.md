@@ -6,6 +6,7 @@ tags: [Technology, AI]
 image: ../../images/headers/possessed-photography-jIBMSMs4_kA-unsplash.jpg
 date: 2023-01-13
 draft: false
+excerpt: If you can no longer tell whether ChatGPT or a human wrote a piece of text, what does that do to authenticity and trust in what we read?
 ---
 
 AI technology is advancing rapidly and changing many aspects of our lives, including the way we communicate and write. One of the most striking examples of this is the ability of computer models such as GPT-3 to produce text that mimics human writing so effectively, that it can be difficult to distinguish it from work produced by actual authors and thinkers.

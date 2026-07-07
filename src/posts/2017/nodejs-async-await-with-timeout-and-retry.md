@@ -6,6 +6,7 @@ tags: [Code]
 image: ../../images/headers/async-javascript.jpg
 date: 2017-10-15
 draft: false
+excerpt: A small async/await retry middleware with timeout for NodeJS, replacing the tangled promise-retry code I used to talk to an unreliable database.
 ---
 
 Some time ago I wrote a microservice in plain es5 javascript running on node 4.x I recently wanted to make some changes to the service and update dependencies, as some of them had some security vulnerabilities.

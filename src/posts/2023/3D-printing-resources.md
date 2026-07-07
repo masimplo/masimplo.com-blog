@@ -6,6 +6,7 @@ tags: [3D Printing]
 image: ../../images/headers/osman-talha-dikyar-NMCABEhN0RE-unsplash.jpg
 date: "2023-01-23"
 draft: false
+excerpt: This is just a list of links related to 3D printing, mainly here for my own reference, but pretty sure you might find something useful in them also.
 ---
 
 This is just a list of links related to 3D printing, mainly here for my own reference, but pretty sure you might find something useful in them also.

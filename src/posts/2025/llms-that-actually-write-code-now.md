@@ -6,6 +6,7 @@ tags: [Technology, AI, Code]
 image: ../../images/headers/florian-olivo-4hbJ-eymZ1o-unsplash.jpg
 date: 2025-03-05
 draft: false
+excerpt: Claude 3.7 Sonnet was the first time I caught myself delegating context, not lines. AI coding assistants stopped pretending to be autocomplete.
 ---
 
 If you write software for a living, you develop a reflex for classifying tools. “Helpful sometimes.” “Annoying often.” “Fine for boilerplate.” For a long time, that is where AI coding assistants lived — supercharged snippets, easy to verify, easy to discard.

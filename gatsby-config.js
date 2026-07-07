@@ -125,7 +125,6 @@ module.exports = {
             `,
             output: '/rss.xml',
             title: 'Masimplo\'s Blog',
-            match: '^/blog/',
           },
         ],
       },

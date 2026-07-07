@@ -6,6 +6,7 @@ tags: [Technology, AI, Code, Opinions]
 image: ../../images/headers/olumuyiwa-sobowale-kQIdjLbCghA-unsplash.jpg
 date: 2026-03-07
 draft: false
+excerpt: Three years of AI-assisted development later, vibe coding is real. The thinking is yours, the judgment is yours — the typing was never the point.
 ---
 
 Long time no see. Three years ago I wrote a post about the dawn of the ChatGPT era and how it felt like we were standing at a genuinely unusual inflection point in history. I used the analogy of low-background steel — the idea that pre-AI content might one day be considered uniquely valuable, untainted by machines. Reading that now feels both prescient and a little dramatic.

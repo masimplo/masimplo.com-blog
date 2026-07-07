@@ -79,5 +79,5 @@ Only in technical posts; opinion/hobby posts often have none. TypeScript is the 
 ## After writing
 
 1. Run the `optimize-post` skill on the draft (slop scan, audience fit, SEO surface).
-2. Remind the user to add a real header image to `src/images/headers/` and update the `image` field — a dangling path fails the build.
+2. Remind the user to add a real header image to `src/images/headers/` and update the `image` field — a dangling path does not fail the build; it silently ships the post with no header and no social-card image.
 3. Verify every tag exists as an exact `id` in `src/content/tag.yaml`.

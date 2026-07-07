@@ -6,6 +6,7 @@ tags: [.Net]
 image: ../../images/headers/jake-hills-36605-unsplash.jpg
 date: 2011-07-07
 draft: false
+excerpt: Entity Framework returns dynamic proxies whose GetType() breaks generic repositories, so I use ObjectContext.GetObjectType to get the real entity type.
 ---
 
 Working with the Entity Framework of .NET and having implemented a Repository Pattern with generics, I found myself in the position of having to make a Repository of an unknown type until runtime, so I did something like:

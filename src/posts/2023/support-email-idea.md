@@ -6,6 +6,7 @@ tags: [Tips]
 image: ../../images/headers/markus-winkler-Lp4jsVg8gpY-unsplash.jpg
 date: 2023-03-04
 draft: false
+excerpt: A small trick that makes app support better — prefill your mailto contact link with device and user info so the helpdesk skips the back-and-forth.
 ---
 
 Mobile apps are a crucial part of our daily lives, but when something goes wrong, it's important to have a quick and easy way to contact support. Most mobile apps provide a "Contact support" link, but have you ever thought about the information you're providing in the support request? In this article, I'll share my personal experience of needing support for an app and how it led me to discover the importance of providing device and user information in support requests.

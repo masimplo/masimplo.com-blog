@@ -6,6 +6,7 @@ tags: [Javascript, Code]
 image: ../../images/headers/kevs-gSMY1wNNlvY-unsplash.jpg
 date: 2023-01-11
 draft: false
+excerpt: Three ways to manage collections in JavaScript models — exposing the raw array, wrapping it in methods, or extending Array for the best of both.
 ---
 
 In many JavaScript applications, it's common to have models that contain collections of other objects. For example, a user profile might have a list of emails associated with it. Managing these collections can be a tricky task, as it's important to ensure that the data is valid, prevent duplicates, and maintain control over how the data is manipulated.

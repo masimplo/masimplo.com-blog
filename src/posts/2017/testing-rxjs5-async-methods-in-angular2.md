@@ -6,6 +6,7 @@ tags: [Code, Testing]
 image: ../../images/headers/rxjs-testing.jpg
 date: 2017-03-15
 draft: false
+excerpt: Testing time-based RxJS5 observables in Angular2 without waiting real seconds, using fakeAsync and tick after jasmine.clock let me down.
 ---
 
 For some time now I am struggling to find a way to test RxJS code that uses functions with time in them.

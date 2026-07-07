@@ -6,6 +6,7 @@ tags: [Tips, Tools]
 image: ../../images/headers/tagging.png
 date: 2016-11-19
 draft: false
+excerpt: One-liner commands to bulk delete unwanted git tags matching a pattern from both the remote repo and your local clone, using awk and xargs.
 ---
 
 When I first set up a teamcity build server I thought it would be a good idea to tag my git commits with the build number that teamcity processed that commit. Back then I wasn't really using tags for much and thought I would be adding value to my repo, which I later discovered was only adding noise.

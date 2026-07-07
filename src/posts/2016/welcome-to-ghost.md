@@ -6,6 +6,7 @@ tags: [Docker]
 image: ../../images/headers/ghost-logo.png
 date: 2016-09-21
 draft: false
+excerpt: A fresh start for my blog on Ghost, a minimal nodejs blogging platform, running inside a docker container behind an nginx proxy.
 ---
 
 ##Getting Started... again

@@ -6,6 +6,7 @@ tags: [Hobbies, Lifehacks]
 image: ../../images/headers/ginger-honey-lemon-elixir.png
 date: 2026-06-21
 draft: false
+excerpt: Fresh ginger, lemon juice, and honey is already a drink worth making. Then I started fermenting it, and now I cannot go back.
 ---
 
 There is a version of this drink I have been making for years: fresh ginger, lemon juice, and honey, blended together and diluted with water. Warming, sharp, a little sweet, genuinely good for you. I make it when I feel something coming on, when I need to wake up, or just when I want something that tastes like it has intention behind it.
