@@ -1,301 +1,117 @@
 # CLAUDE.md — AI Assistant Guide for masimplo.com-blog
 
-## Project Overview
+masimplo.com is the personal blog of a software engineer of 20+ years — first-person, essay-style posts about AI-assisted development, software engineering practice, 3D printing, smart home tinkering, and industry opinions, written for practicing developers and hands-on makers. It is a Gatsby 5 static site (TypeScript strict + Emotion CSS-in-JS, a port of the Ghost Casper theme) deployed on Netlify; content is Markdown under `src/posts/<year>/`.
 
-A personal blog for [masimplo.com](https://masimplo.com), built as a Gatsby v5 static site generator. It is a TypeScript/React port of the Ghost Casper theme. The blog covers software engineering, 3D printing, AI, and technology topics.
-
-- **Framework:** Gatsby 5
-- **Language:** TypeScript 5 (strict mode)
-- **Styling:** Emotion (CSS-in-JS)
-- **Deployment:** Netlify
-- **Node version:** 22.22.1 (pinned via Volta)
+**Writing or editing a post? Use the project skills:** `write-post` (draft a new post in the author's voice) and `optimize-post` (de-slop, audience fit, and SEO polish for an existing draft). The conventions they encode are summarized below, but the skills are the source of truth for content work.
 
 ---
 
 ## Development Commands
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server (http://localhost:8000)
-npm run dev
-# or
-npm start
-
-# GraphQL explorer (development only)
-# http://localhost:8000/___graphql
-
-# Production build (output to /public)
-npm run build
-
-# Lint TypeScript/TSX files
-npm run lint
-
-# Auto-fix linting issues
-npm run lint:fix
-
-# Netlify CLI (pinned in devDependencies; e.g. `npx netlify --version`, `npx netlify status`)
-npx netlify <command>
+npm install            # install dependencies
+npm run dev            # dev server at http://localhost:8000 (alias: npm start)
+                       # GraphQL explorer: http://localhost:8000/___graphql
+npm run build          # production build to /public
+npm run lint           # ESLint over .js/.ts/.tsx
+npm run lint:fix       # auto-fix lint issues
+npx netlify <command>  # Netlify CLI (pinned in devDependencies)
 ```
 
-There are no tests configured. `npm test` exits with an error by design.
+- Node **22.22.1**, pinned via Volta.
+- There are **no tests** — `npm test` exits with an error by design. Do not attempt to run tests.
+- Stale build artifacts: run `npx gatsby clean` (or delete `.cache/` and `public/`).
+- CI (`.github/workflows/ci.yml`) runs `npm ci` + `npm run lint` only — no build, no tests. Pushing to `master` triggers a Netlify deploy.
 
 ---
 
 ## Repository Structure
 
 ```
-masimplo.com-blog/
-├── src/
-│   ├── components/           # Reusable React components
-│   │   ├── header/           # Navigation bar components
-│   │   ├── icons/            # SVG icon components
-│   │   └── subscribe/        # Email subscription modal
-│   ├── layouts/
-│   │   └── index.tsx         # Root layout with global CSS
-│   ├── pages/
-│   │   ├── about.tsx         # Static /about page
-│   │   └── 404.tsx           # 404 page
-│   ├── templates/            # Gatsby page templates (generated at build)
-│   │   ├── index.tsx         # Blog home / paginated list
-│   │   ├── post.tsx          # Individual post page
-│   │   ├── author.tsx        # Author archive
-│   │   └── tags.tsx          # Tag archive
-│   ├── styles/
-│   │   ├── colors.ts         # Centralized color palette
-│   │   └── shared.ts         # Shared Emotion CSS mixins/breakpoints
-│   ├── posts/                # Markdown blog content (organized by year)
-│   │   ├── 2011/
-│   │   ├── 2012/
-│   │   ├── 2016/
-│   │   ├── 2017/
-│   │   ├── 2019/
-│   │   └── 2023/
-│   ├── content/
-│   │   ├── author.yaml       # Author metadata
-│   │   ├── tag.yaml          # Tag definitions
-│   │   └── img/              # Legacy images
-│   ├── images/
-│   │   ├── headers/          # Post featured images
-│   │   └── avatars/          # Author avatars
-│   ├── static/
-│   │   └── _redirects        # Netlify redirect rules
-│   ├── website-config.ts     # Site-wide configuration
-│   └── typings.d.ts          # Custom TypeScript type declarations
-├── gatsby-config.js          # Gatsby plugin and metadata config
-├── gatsby-node.js            # Dynamic page creation, reading time
-├── tsconfig.json             # TypeScript compiler options
-├── .eslintrc.js              # ESLint rules (XO base + React + TypeScript)
-├── .prettierrc               # Prettier formatting rules
-└── .github/workflows/
-    └── ci.yml                # GitHub Actions: lint on push/PR
+src/
+├── components/           # Reusable React components (header/, icons/, subscribe/)
+├── layouts/index.tsx     # Root layout + global CSS
+├── pages/                # Static pages: about.tsx, 404.tsx
+├── templates/            # Build-time page templates: index, post, author, tags
+├── styles/               # colors.ts (palette), shared.ts (mixins/breakpoints)
+├── posts/<year>/         # Markdown content, one folder per year (2011–2026)
+├── content/              # author.yaml, tag.yaml, legacy img/
+├── images/               # headers/ (post header images), avatars/
+├── static/               # _redirects, _headers, robots.txt (copied to site root)
+└── website-config.ts     # Site-wide config (title, siteUrl, twitter, mailchimp)
+gatsby-config.js          # Plugins and siteMetadata
+gatsby-node.js            # Slugs, page creation, reading time, related posts
+.claude/skills/           # Project skills: write-post, optimize-post
 ```
 
 ---
 
-## Adding Blog Posts
+## Content Model
 
-Create a new Markdown file under `src/posts/<year>/post-title.md`:
+### Posts
+
+One Markdown file per post at `src/posts/<year>/<kebab-case-slug>.md`. All 50+ posts use the same frontmatter block, in this field order:
 
 ```markdown
 ---
 layout: post
-title: Your Post Title
+title: Post Title Here
 author: [masimplo]
-tags: [Technology, Tag2]
-image: ../../images/headers/your-image.jpg
-date: 2024-01-15
+tags: [Tag1, Tag2]
+image: ../../images/headers/some-image.jpg
+date: YYYY-MM-DD
 draft: false
 ---
-
-Post content here in Markdown...
 ```
 
-**Frontmatter fields:**
-| Field | Type | Required | Notes |
-|---|---|---|---|
-| `layout` | string | Yes | Always `post` |
-| `title` | string | Yes | Display title |
-| `author` | array | Yes | Must match name in `content/author.yaml` |
-| `tags` | array | Yes | Must match entries in `content/tag.yaml` |
-| `image` | string | No | Relative path from the post file |
-| `date` | ISO date | Yes | `YYYY-MM-DD` format |
-| `draft` | boolean | No | `true` excludes from build |
-| `excerpt` | string | No | Custom excerpt (otherwise auto-generated) |
-| `permalink` | string | No | Custom URL slug |
-
-### Adding a new tag
-
-Edit `src/content/tag.yaml`:
-```yaml
-- name: YourTag
-  description: Description of the tag
-  image: ../images/headers/tag-image.jpg
-```
-
----
-
-## Component Conventions
-
-### File Naming
-- **Components:** PascalCase — `PostCard.tsx`, `AuthorList.tsx`
-- **Pages:** camelCase — `about.tsx`, `404.tsx`
-- **Styles/Utilities:** camelCase — `colors.ts`, `shared.ts`
-
-### Component Structure
-
-All components are **functional React components** with TypeScript prop interfaces:
-
-```typescript
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-
-export type PostCardProps = {
-  post: PageContext;
-  isLarge?: boolean;
-};
-
-export function PostCard({ post, isLarge = false }: PostCardProps) {
-  return (
-    <article css={PostCardStyles}>
-      {/* ... */}
-    </article>
-  );
-}
-
-const PostCardStyles = css`
-  /* Emotion styles */
-`;
-```
-
-### Styling with Emotion
-
-- Use `css` prop for component-scoped styles
-- Use `styled` components for reusable styled elements
-- Global styles are defined in `src/layouts/index.tsx`
-- Use colors from `src/styles/colors.ts` — do not hardcode color values
-- Use mixins/breakpoints from `src/styles/shared.ts`
-- Dark mode: use `@media (prefers-color-scheme: dark)` within Emotion styles
-
-```typescript
-import { colors } from '../styles/colors';
-import { outer, inner } from '../styles/shared';
-```
-
-### Import Order (by convention)
-
-1. External libraries (`react`, `gatsby`, `@emotion/*`)
-2. Third-party utilities (`date-fns`, `lodash-es`)
-3. Internal components
-4. Local styles and config
-
----
-
-## TypeScript Configuration
-
-TypeScript is in **strict mode** with these enforced rules:
-
-- `strict: true` — full strict checking
-- `noUnusedLocals: true` — no unused variables
-- `noUnusedParameters: true` — no unused function params
-- `noImplicitAny: true` — explicit types required
-- `target: ESNext`
-- `jsx: preserve` — for Emotion compatibility
-
-Custom type declarations are in `src/typings.d.ts`.
-
----
-
-## Code Style & Linting
-
-Formatting is enforced via Prettier (`.prettierrc`):
-
-```json
-{
-  "semi": true,
-  "singleQuote": true,
-  "trailingComma": "all",
-  "printWidth": 100,
-  "arrowParens": "avoid"
-}
-```
-
-ESLint uses the XO style guide with React and TypeScript extensions (`.eslintrc.js`). Run `npm run lint:fix` before committing to resolve auto-fixable issues.
-
----
-
-## Site Configuration
-
-Edit `src/website-config.ts` to change global site settings:
-
-```typescript
-export interface WebsiteConfig {
-  title: string;           // Site title displayed in header
-  description: string;     // Site description for meta tags
-  language: string;        // HTML lang attribute
-  siteUrl: string;         // Canonical base URL
-  twitter?: string;        // Twitter profile URL
-  mailchimpAction?: string; // Mailchimp subscribe URL
-  showAllTags: boolean;    // Whether to show all tags in nav
-}
-```
-
----
-
-## Gatsby Architecture
-
-### Page Generation (`gatsby-node.js`)
-
-Pages are generated dynamically at build time:
-
-- **Posts** → `/blog/{slug}` using `src/templates/post.tsx`
-- **Tags** → `/tags/{tag}` using `src/templates/tags.tsx`
-- **Authors** → `/author/{author}` using `src/templates/author.tsx`
-- **Home** → `/` using `src/templates/index.tsx`
-
-Related posts are computed by shared tags. Reading time is calculated and injected as a GraphQL field.
-
-### GraphQL Queries
-
-Each template contains a co-located `pageQuery` using Gatsby's GraphQL layer. Content comes from:
-
-- `gatsby-transformer-remark` (Markdown files)
-- `gatsby-transformer-yaml` (YAML data files)
-
-### Plugins (key ones)
-
-| Plugin | Purpose |
+| Field | Notes |
 |---|---|
-| `gatsby-transformer-remark` | Markdown → HTML |
-| `gatsby-remark-images` | Responsive post images |
-| `gatsby-remark-prismjs` | Syntax highlighting |
-| `gatsby-plugin-image` | Optimized `<GatsbyImage>` |
-| `gatsby-plugin-sharp` | Image processing (max 2000px, quality 100) |
-| `gatsby-plugin-emotion` | Emotion SSR support |
-| `gatsby-plugin-feed` | RSS feed at `/rss.xml` |
-| `gatsby-plugin-google-gtag` | Google Analytics 4 |
-| `gatsby-plugin-netlify` | Netlify headers/redirects |
+| `layout` | Always `post` (selects `src/templates/post.tsx`) |
+| `title` | Unquoted unless it contains a colon |
+| `author` | Always `[masimplo]`; must match `content/author.yaml` |
+| `tags` | Inline array `[A, B, C]` with spaces; every tag must match an `id` in `content/tag.yaml` exactly (TitleCase) |
+| `image` | Relative path from the post file; **without it the post gets no og:image/twitter:image at all** |
+| `date` | ISO `YYYY-MM-DD` |
+| `draft` | `true` excludes the post from pages, sitemap, and RSS |
+| `excerpt` | Optional single sentence; becomes the meta description (see SEO below) |
+| `permalink` | Supported by `gatsby-node.js` but used by zero posts — avoid |
+
+### Tags and authors
+
+- Tag vocabulary lives in `src/content/tag.yaml` (`id`, `description`, `image`). Posts referencing a tag not in that file break the tag archive. Most-used tags: Code, Tools, Technology, Tips, AI, Opinions, Hobbies.
+- Author metadata lives in `src/content/author.yaml`; the about page (`src/pages/about.tsx`) carries the author's positioning.
 
 ---
 
-## CI/CD
+## URLs, SEO, and Feeds (how it actually works)
 
-GitHub Actions runs on every push and pull request (`.github/workflows/ci.yml`):
-
-1. Install Node 22 dependencies via `npm ci`
-2. Run `npm run lint`
-
-The pipeline does **not** run a build or tests. Merging to `master` triggers a Netlify deployment.
+- **Post URLs are at the site root**: slug = `/<filename-without-.md>/` (`gatsby-node.js`). There is **no `/blog/` prefix**. The filename IS the permanent URL — choose it carefully, never rename a published post's file.
+- Tag pages: `/tags/<kebab-case-tag>/`; author pages: `/author/<kebab-case-name>/`. The index is effectively a single page (`postsPerPage = 1000`).
+- **Meta description** (also og/twitter description and JSON-LD): frontmatter `excerpt` if present, otherwise Gatsby's auto-excerpt (~140-char truncation). Only a handful of posts set `excerpt`; set it on any post you care about.
+- **Only `tags[0]` reaches meta tags** (`article:tag`, `twitter:data2`) and drives related-post selection (`primaryTag`). Order tags most-relevant-first.
+- Post pages emit full OG + Twitter cards + a `BlogPosting` JSON-LD block (`src/templates/post.tsx`). Canonical URLs come from `gatsby-plugin-canonical-urls`; sitemap from `gatsby-plugin-sitemap` (referenced by `src/static/robots.txt` as `/sitemap-index.xml`).
+- RSS at `/rss.xml` via `gatsby-plugin-feed` — items include full post HTML. Note: the feed's `match: '^/blog/'` option means no post page injects the feed `<link>` into its head (post paths don't start with `/blog/`); the feed itself is still complete.
+- Analytics: `gatsby-plugin-google-gtag` (GA4, `G-SKNLCK1W2K`).
+- Images: `gatsby-plugin-sharp` / `gatsby-remark-images` at quality 85, `maxWidth` 2000, WEBP/AVIF variants. Recent posts use **one header image and no inline body images**.
+- `siteMetadata.description` in `gatsby-config.js` ("Pressing keys, generating bytes") feeds only the RSS feed; the homepage meta description comes from `src/website-config.ts` — they differ on purpose. Edit `website-config.ts` for anything user-facing.
 
 ---
 
-## Key Constraints & Notes
+## Code Conventions
 
-- **No test suite** — there are no unit or integration tests. Do not attempt to run tests.
-- **No breaking changes to frontmatter** — changing the YAML schema in `gatsby-node.js` can break all post queries.
-- **Author/tag YAML must stay in sync** — posts reference author names and tag names that must exist in `content/author.yaml` and `content/tag.yaml`.
-- **Emotion + SSR** — styles must work server-side; avoid browser-only APIs in styled components.
-- **Image paths are relative** — images referenced in frontmatter use paths relative to the Markdown file location.
-- **Gatsby cache** — if you see stale build artifacts, run `gatsby clean` (or delete `.cache/` and `public/`).
-- **Lodash is lodash-es** — use `lodash-es` imports (ESM), not `lodash` (CommonJS).
+- **Components**: functional React + TypeScript prop types, PascalCase filenames. Pages and utilities are camelCase.
+- **Styling**: Emotion — `css` prop for component-scoped styles, `styled` for reusable elements, global styles in `src/layouts/index.tsx`. Use `colors` from `src/styles/colors.ts` (no hardcoded colors) and mixins/breakpoints from `src/styles/shared.ts`. Dark mode via `@media (prefers-color-scheme: dark)`.
+- **TypeScript**: strict mode, `noUnusedLocals`, `noUnusedParameters`, `noImplicitAny`. Custom declarations in `src/typings.d.ts`.
+- **Lint/format**: ESLint (XO base + React + TypeScript) and Prettier (semi, single quotes, trailing commas, printWidth 100, `arrowParens: avoid`). Run `npm run lint:fix` before committing.
+- **Lodash is `lodash-es`** — ESM imports only, never `lodash` (CommonJS).
+- **Emotion + SSR**: no browser-only APIs in styled components; styles must render server-side.
+- Import order: external libs → third-party utils (`date-fns`, `lodash-es`) → internal components → local styles/config.
+
+---
+
+## Key Constraints & Gotchas
+
+- **No breaking changes to frontmatter schema** — `gatsby-node.js` and every template query depend on it.
+- Posts reference tags/authors by exact name; keep `tag.yaml` / `author.yaml` in sync or the build breaks.
+- Frontmatter `image` paths are relative to the Markdown file (`../../images/headers/...`) and the file must exist — a dangling path fails the build. Never commit a post with a placeholder image path.
+- Renaming a post file changes its URL; there is no redirect automation (`src/static/_redirects` is hand-maintained).
