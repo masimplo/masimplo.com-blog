@@ -4,7 +4,7 @@ title: Building a second brain in Obsidian — and telling my AI agents what not
 author: [masimplo]
 tags: [AI, Tools, Tips]
 image: ../../images/headers/obsidian-second-brain.png
-date: 2026-08-08
+date: 2026-07-31
 draft: false
 excerpt: I finally built an Obsidian second brain that stuck — by writing down what my AI agents are and aren't allowed to put in it.
 ---
