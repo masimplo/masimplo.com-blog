@@ -1,5 +1,5 @@
 import { lighten, saturate } from 'polished';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 import { css } from '@emotion/react';
@@ -8,17 +8,51 @@ import { colors } from '../../styles/colors';
 import config from '../../website-config';
 
 export function SubscribeForm() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!config.mailchimpAction) return;
+
+    setStatus('sending');
+    setMessage(null);
+
+    const url = config.mailchimpAction.replace('/post?', '/post-json?');
+    const callbackName = `mailchimpCallback_${Math.round(Math.random() * 10000)}`;
+
+    const script = document.createElement('script');
+    script.src = `${url}&EMAIL=${encodeURIComponent(email)}&c=${callbackName}`;
+
+    (window as any)[callbackName] = (data: any) => {
+      delete (window as any)[callbackName];
+      document.body.removeChild(script);
+
+      if (data.result === 'success') {
+        setStatus('success');
+        setMessage(data.msg);
+        const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
+        gtag?.('event', 'newsletter_subscribe', {
+          method: 'mailchimp',
+          page_path: window.location.pathname,
+        });
+      } else {
+        setStatus('error');
+        const cleanMessage = data.msg.replace(/^[0-9]+ - /, '');
+        setMessage(cleanMessage);
+      }
+    };
+
+    document.body.appendChild(script);
+  };
+
   return (
-    // eslint-disable-next-line react/jsx-no-target-blank
     <form
       noValidate
       css={SubscribeFormStyles}
-      action={config.mailchimpAction}
-      method="post"
-      id="mc-embedded-subscribe-form"
-      name="mc-embedded-subscribe-form"
+      onSubmit={onSubmit}
       className="subscribe-form"
-      target="_blank"
     >
       {/* This is required for the form to work correctly  */}
       <FormGroup className="form-group">
@@ -28,14 +62,22 @@ export function SubscribeForm() {
           name={config.mailchimpEmailFieldName}
           id={config.mailchimpEmailFieldName}
           placeholder="youremail@example.com"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
         />
       </FormGroup>
       <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
         <input type="text" name={config.mailchimpName} tabIndex={-1} />
       </div>
-      <SubscribeFormButton type="submit">
-        <span>Subscribe</span>
+      <SubscribeFormButton type="submit" disabled={status === 'sending'}>
+        <span>{status === 'sending' ? 'Subscribing...' : 'Subscribe'}</span>
       </SubscribeFormButton>
+      {status === 'success' && message && (
+        <SuccessMessage dangerouslySetInnerHTML={{ __html: message }} />
+      )}
+      {status === 'error' && message && (
+        <ErrorMessage dangerouslySetInnerHTML={{ __html: message }} />
+      )}
     </form>
   );
 }
@@ -43,6 +85,7 @@ export function SubscribeForm() {
 const SubscribeFormStyles = css`
   display: flex;
   /* flex-direction: column; */
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
@@ -156,5 +199,26 @@ const SubscribeFormButton = styled.button`
 const FormGroup = styled.div`
   @media (max-width: 500px) {
     width: 100%;
+  }
+`;
+
+const SuccessMessage = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  color: ${colors.green};
+  font-size: 1.5rem;
+`;
+
+const ErrorMessage = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  color: ${colors.red};
+  font-size: 1.5rem;
+
+  a {
+    color: ${colors.red};
+    text-decoration: underline;
   }
 `;
