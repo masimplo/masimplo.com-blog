@@ -7,17 +7,35 @@ import { css } from '@emotion/react';
 import { colors } from '../../styles/colors';
 import config from '../../website-config';
 
+type MailchimpResponse = {
+  result: string;
+  msg: string;
+};
+
+type MailchimpCallback = (data: MailchimpResponse) => void;
+
+type WindowWithGtag = Window & {
+  gtag?: (...args: unknown[]) => void;
+};
+
+function setMailchimpCallback(name: string, callback: MailchimpCallback | undefined) {
+  // JSONP callbacks must live on window; assign/clear without dynamic delete.
+  (window as WindowWithGtag & Record<string, MailchimpCallback | undefined>)[name] = callback;
+}
+
 export function SubscribeForm() {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<string | null>(null);
-  const [message, setMessage] = useState<string | null>(null);
+  const [status, setStatus] = useState<string | undefined>();
+  const [message, setMessage] = useState<string | undefined>();
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!config.mailchimpAction) return;
+    if (!config.mailchimpAction) {
+      return;
+    }
 
     setStatus('sending');
-    setMessage(null);
+    setMessage(undefined);
 
     const url = config.mailchimpAction.replace('/post?', '/post-json?');
     const callbackName = `mailchimpCallback_${Math.round(Math.random() * 10000)}`;
@@ -25,14 +43,14 @@ export function SubscribeForm() {
     const script = document.createElement('script');
     script.src = `${url}&EMAIL=${encodeURIComponent(email)}&c=${callbackName}`;
 
-    (window as any)[callbackName] = (data: any) => {
-      delete (window as any)[callbackName];
+    setMailchimpCallback(callbackName, (data: MailchimpResponse) => {
+      setMailchimpCallback(callbackName, undefined);
       document.body.removeChild(script);
 
       if (data.result === 'success') {
         setStatus('success');
         setMessage(data.msg);
-        const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
+        const { gtag } = window as WindowWithGtag;
         gtag?.('event', 'newsletter_subscribe', {
           method: 'mailchimp',
           page_path: window.location.pathname,
@@ -42,18 +60,13 @@ export function SubscribeForm() {
         const cleanMessage = data.msg.replace(/^[0-9]+ - /, '');
         setMessage(cleanMessage);
       }
-    };
+    });
 
     document.body.appendChild(script);
   };
 
   return (
-    <form
-      noValidate
-      css={SubscribeFormStyles}
-      onSubmit={onSubmit}
-      className="subscribe-form"
-    >
+    <form noValidate css={SubscribeFormStyles} className="subscribe-form" onSubmit={onSubmit}>
       {/* This is required for the form to work correctly  */}
       <FormGroup className="form-group">
         <SubscribeEmail
