@@ -1,0 +1,7 @@
+https://kind-almeida-4abe69.netlify.com/* https://masimplo.com/:splat 301!
+https://masimplo.netlify.com/* https://masimplo.com/:splat 301!
+https://www.masimplo.com/* https://masimplo.com/:splat 301!
+
+# First-party proxy for gtag.js — some networks block googletagmanager.com.
+# Force (!): win over Gatsby's SPA 404 fallback.
+/gtag/js  https://www.googletagmanager.com/gtag/js  200!

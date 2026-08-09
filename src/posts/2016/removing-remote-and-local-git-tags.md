@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Removing remote and local git tags
+title: Delete git tags in bulk — remote and local one-liners
 author: [masimplo]
 tags: [Tips, Tools]
 image: ../../images/headers/tagging.png
 date: 2016-11-19
 draft: false
-excerpt: One-liner commands to bulk delete unwanted git tags matching a pattern from both the remote repo and your local clone, using awk and xargs.
+excerpt: How to delete git tags matching a pattern from origin and your local clone in one shot, using git ls-remote, awk, and xargs.
 ---
 
 When I first set up a teamcity build server I thought it would be a good idea to tag my git commits with the build number that teamcity processed that commit. Back then I wasn't really using tags for much and thought I would be adding value to my repo, which I later discovered was only adding noise.
@@ -17,7 +17,7 @@ I can no longer justify manually deleting them so I had to look for a more robus
 
 The tags I want to delete in bulk have a common characteristic that they contain the word _build_ in them. Your case might be different so you will want to modify the following to fit your needs.
 
-**Delete remote tags command:**
+## Delete remote git tags matching a pattern
 
     git ls-remote --tags origin | awk '/^(.*)(\s+)(.*build.*[0-9])$/ {print ":" $2}' | xargs git push origin
 
@@ -36,7 +36,7 @@ We only want to keep the last part so we use awk.`(.*)` will match the hash, `(\
 
 Finally you want to delete local tags matching the same pattern as well, so that you don't push the "bad" tags back to origin next time you push all tags.
 
-**Delete local tags command:**
+## Delete local git tags matching a pattern
 
     git tag -l | awk '/^(.*build.*)$/ {print $1}' | xargs git tag -d
 
@@ -49,7 +49,7 @@ will take care of the local tags with output similar to the following:
 
 If you are confident that you don't have any local tags that do not exist on the remote (other than the ones you don't want) it might be easier to delete all local tags and then just fetch from origin. You can do this by simply skipping the awk part.
 
-**Delete all local tags command:**
+## Delete all local tags and re-fetch
 
     git tag -l | xargs git tag -d
 

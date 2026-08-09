@@ -44,3 +44,5 @@ I said in 2023 that it's up to us to decide how to navigate this landscape. Thre
 The thinking is yours. The judgment is yours. The accountability is yours.
 
 The typing? That was always the least interesting part.
+
+Related: [how I think we should train juniors when AI makes them look productive on week two](/training-juniors-critical-thinking-ai-era/).
