@@ -54,3 +54,5 @@ If you are confident that you don't have any local tags that do not exist on the
     git tag -l | xargs git tag -d
 
 If some day I manage to find a way to annihilate those tags completely and forever, I will let you know. Until we win that war, at least lets win some battles.
+
+Related: [enable git rerere for repeated rebase conflicts](/git-rerere-to-the-rererescue/), and [scrub secrets from git history with BFG](/removing-sensitive-data-from-github/) when the cleanup is bigger than tags.

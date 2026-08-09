@@ -47,7 +47,7 @@ The build filters for patience and basic competence. Long-term ownership filters
 
 ## My actual honest opinion
 
-I still love mine. I also respect that "love" here includes frustration, rework, and the occasional week where I printed calibration artifacts instead of the thing I promised my wife I would make.
+I still love mine. I also respect that "love" here includes frustration, rework, and the occasional week where I printed calibration artifacts instead of the thing I promised my wife I would make. One early scare was a [bed mesh that looked like a warped plate — and turned out to be the gantry](/fear-of-the-warped-bed/).
 
 If you are on the fence: assume the build is only chapter one. If chapter two sounds exhausting rather than interesting, save your weekends — there are great printers that will not ask you to be a part-time mechanic.
 
