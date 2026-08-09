@@ -44,7 +44,7 @@ Nothing fancy, four steps.
 3. **Run the skill on a real task with the small model.** Do not skip this. The skill that reads perfectly to you will still fail in ways neither of you predicted.
 4. **Feed the failures back to Fable 5 and tighten.** Two or three rounds is usually enough for the small-model output to stop needing correction on that task type.
 
-For `CLAUDE.md` files the loop is even simpler: I hand Fable 5 a few transcripts of small-model sessions in that repo and ask one question — *what rule would have prevented each correction I had to make?* The answers go straight into the file. It is the same instinct as adding a lint rule after a code review comment, which regular readers will recognize as [a hobby horse of mine](/guardrails-beat-guidelines-for-ai-code/).
+For `CLAUDE.md` files the loop is even simpler: I hand Fable 5 a few transcripts of small-model sessions in that repo and ask one question — *what rule would have prevented each correction I had to make?* The answers go straight into the file — and into the shared [`AGENTS.md` every agent reads](/one-agents-md-for-every-coding-agent/), not three vendor copies. It is the same instinct as adding a lint rule after a code review comment, which regular readers will recognize as [a hobby horse of mine](/guardrails-beat-guidelines-for-ai-code/).
 
 ## A before and after
 
