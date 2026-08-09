@@ -119,3 +119,5 @@ None of this is AI-specific. Guardrails are just good engineering — it is the 
 The model is not going to grade itself. The reviewer is not going to read every line. The spec is not going to mention every edge case. Something has to hold the line — and the things best suited for that job have been sitting in your repo, switched off or half-configured, the whole time.
 
 Turn them on. Then let the AI cook.
+
+Once generation is cheap, the next fight is [review capacity](/ai-code-review-bottleneck/) — guardrails clear the trivia so humans can still say no on the things that matter.

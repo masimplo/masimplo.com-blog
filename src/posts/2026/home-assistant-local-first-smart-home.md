@@ -64,3 +64,5 @@ It costs more upfront. It also means significantly less frustration, less replac
 Still to come: IR blasters (Broadlink RM4 Mini) for the floor fan coils where a wired thermostat was not practical, a Toshiba Daisekai 10 split for the basement playroom, and continued refinement of the energy monitoring dashboards as the picture of the whole house's consumption gets clearer.
 
 The house is not finished and neither is the automation. But that is also part of what makes it interesting.
+
+For the battery layer and new long-lived devices, I have settled on a blunt radio rule: [Zigbee first, Matter later](/zigbee-first-matter-later-home-assistant/).
