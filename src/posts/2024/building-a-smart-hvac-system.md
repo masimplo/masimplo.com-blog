@@ -25,7 +25,7 @@ The Daikin BRC1HHDA controller exposes something called a weather compensation c
 
 The defaults the installer leaves in are almost never optimal for your house. Your insulation, glazing, room-by-room loads, orientation, and how the fan coils actually behave at different supply temperatures — all of it affects what the right curve should be. I spent a fair amount of time adjusting the curve parameters and monitoring the results, comparing electricity consumption against indoor comfort, before landing on settings that actually made sense for our house.
 
-It is one of those things that makes a real difference to both comfort and electricity bills, and yet most people who own heat pumps have no idea it exists.
+It is one of those things that makes a real difference to both comfort and electricity bills, and yet most people who own heat pumps have no idea it exists. I later wrote up the [March tune that cut heat-pump energy about 21%](/daikin-weather-compensation-curve/) — one offset, Shelly receipts.
 
 ## DHW setpoints and the solar loop
 
