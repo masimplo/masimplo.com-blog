@@ -65,4 +65,4 @@ Still to come: IR blasters (Broadlink RM4 Mini) for the floor fan coils where a 
 
 The house is not finished and neither is the automation. But that is also part of what makes it interesting.
 
-For the battery layer and new long-lived devices, I wrote up the blunt radio rule earlier: [Zigbee first, Matter later](/zigbee-first-matter-later-home-assistant/).
+For battery sensors I still do not own, the plan is written up here: [Zigbee first, Matter later — while the house stays Shelly on Wi‑Fi](/zigbee-first-matter-later-home-assistant/).
