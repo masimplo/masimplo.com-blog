@@ -17,7 +17,7 @@ The marketing answer to "what next?" is always "Matter — the future." The answ
 
 ## Why Wi‑Fi won here
 
-The network was designed for it. This is a Greek concrete-and-brick house — **τούβλα**, not plasterboard — and RF does not wander through slabs and masonry the way American drywall blogs pretend. Ubiquiti throughout: a **U7 access point on each floor** so coverage is planned, not hoped for, and **Ethernet drops in every room** so the APs, cameras, and anything that should never roam sit on copper. Shellys still talk Wi‑Fi, but they talk to a radio plan built for dense IoT on hostile walls, not a single router in a cupboard.
+The network was designed for it. This is a Greek concrete-and-brick house — masonry and slabs, not plasterboard — and RF does not wander through them the way American drywall blogs pretend. Ubiquiti throughout: a **U7 access point on each floor** so coverage is planned, not hoped for, and **Ethernet drops in every room** so the APs, cameras, and anything that should never roam sit on copper. Shellys still talk Wi‑Fi, but they talk to a radio plan built for dense IoT on hostile walls, not a single router in a cupboard.
 
 Shelly's local API is good. The Home Assistant integration is good. Circuit monitors, relays, and plugs sit on mains power and need to move real telemetry — Wi‑Fi is the right tool for that job *when the Wi‑Fi is this deliberate*. I got to sixty-plus devices partly by refusing to leave sub-panels blind, and that density only works because every endpoint is a boring LAN citizen on a network that can absorb them.
 
