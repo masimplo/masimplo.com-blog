@@ -55,7 +55,7 @@ It is not an elaborate solution but it solves a real problem cleanly, which is u
 
 ## What I was going for with hardware choices
 
-Looking across the whole house, there is a pattern to what I have chosen: Shelly for monitoring and control (local API, great HA support), Daikin for HVAC (reliable, well-documented, premium), Ubiquiti for networking (prosumer, solid, no subscription nonsense), and Duravit, Alumil, AEG for the fixtures and fittings. All European, all in the premium tier of their category, all chosen because I expect them to still be working properly in twenty years.
+Looking across the whole house, there is a pattern to what I have chosen: Shelly for monitoring and control (local API, great HA support), Daikin for HVAC (reliable, well-documented, premium), Ubiquiti for networking — **U7 on each floor**, Ethernet in every room, prosumer gear with no subscription nonsense — and Duravit, Alumil, AEG for the fixtures and fittings. All European, all in the premium tier of their category, all chosen because I expect them to still be working properly in twenty years.
 
 It costs more upfront. It also means significantly less frustration, less replacing things, and a system that feels coherent rather than patched together. I got tired of fighting cheap hardware.
 

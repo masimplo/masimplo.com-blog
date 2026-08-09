@@ -11,17 +11,19 @@ excerpt: My house is Wi‑Fi and Shelly end to end. When I finally add battery s
 
 After [building the HVAC side from scratch](/building-a-smart-hvac-system/), the rest of the house automation is catching up on Home Assistant. What I keep glossing over in conversations is the radio question people ask the moment they open a shopping tab: Zigbee, Matter, Thread, Z-Wave, more Wi‑Fi?
 
-Here is the honest starting point: **I do not run Zigbee.** The house is almost entirely Shelly on local Wi‑Fi, plus Local Tuya thermostats on the LAN and Ubiquiti underneath. No mesh stick. No battery sensor fleet. Wi‑Fi only.
+Here is the honest starting point: **I do not run Zigbee.** The house is almost entirely Shelly on local Wi‑Fi, plus Local Tuya thermostats on the LAN. No mesh stick. No battery sensor fleet. Wi‑Fi only — on purpose.
 
 The marketing answer to "what next?" is always "Matter — the future." The answer that matches how this house actually behaves is duller. **Keep Shelly on Wi‑Fi for powered gear. When I add a battery layer, start on Zigbee. Treat Matter as a purchase filter, not a religion.**
 
 ## Why Wi‑Fi won here
 
-Shelly's local API is good. The Home Assistant integration is good. Circuit monitors, relays, and plugs sit on mains power and need to move real telemetry — Wi‑Fi is the right tool for that job. I got to sixty-plus devices partly by refusing to leave sub-panels blind, and that density only works because every endpoint is a boring LAN citizen.
+The network was designed for it. Ubiquiti throughout — a **U7 access point on each floor** so coverage is not a prayer, and **Ethernet drops in every room** so the APs, cameras, and anything that should never roam sit on copper. Shellys still talk Wi‑Fi, but they talk to a radio plan that was built for density, not a single router in a cupboard hoping for the best.
 
-I am not looking for a reason to rip that out. A working Shelly fleet is not technical debt. It is the load-bearing wall.
+Shelly's local API is good. The Home Assistant integration is good. Circuit monitors, relays, and plugs sit on mains power and need to move real telemetry — Wi‑Fi is the right tool for that job *when the Wi‑Fi is this deliberate*. I got to sixty-plus devices partly by refusing to leave sub-panels blind, and that density only works because every endpoint is a boring LAN citizen on a network that can absorb them.
 
-What Wi‑Fi is a *bad* default for is the class of devices I have not bought yet: door contacts, leak sensors, scene buttons — anything that should last years on a coin cell and should not eat another DHCP lease or another slice of 2.4 GHz contention on a three-floor Ubiquiti plan.
+I am not looking for a reason to rip that out. A working Shelly fleet on a wired-backbone UniFi house is not technical debt. It is the load-bearing wall.
+
+What Wi‑Fi is still a *bad* default for is the class of devices I have not bought yet: door contacts, leak sensors, scene buttons — anything that should last years on a coin cell and should not eat another DHCP lease or another slice of 2.4 GHz airtime, even when the U7s are doing their job.
 
 So the open problem was never "replace Shelly with Zigbee." It is: when I finally buy that sleepy layer, which radio do I refuse to regret.
 
