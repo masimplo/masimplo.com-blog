@@ -4,20 +4,20 @@ title: AI code review is the bottleneck — writing got cheap
 author: [masimplo]
 tags: [AI, Opinions, Code]
 image: ../../images/headers/ai-code-review-bottleneck.png
-date: 2026-08-09
+date: 2025-04-28
 draft: false
 excerpt: Agents fill the merge queue faster than humans can read. The constraint moved from typing to verification — and most teams still review like nothing changed.
 ---
 
-I can open three pull requests in an afternoon now without breaking a sweat. Parallel agents, a clear plan, a repo with [guardrails that say no](/guardrails-beat-guidelines-for-ai-code/) — the writing side of the loop is no longer where I wait.
+I can open three pull requests in an afternoon now without breaking a sweat. A clear plan, more than one agent session, a repo that actually fails CI when types and tests are wrong — the writing side of the loop is no longer where I wait.
 
 The waiting moved. It sits in review.
 
-That sounds like a complaint about lazy teammates. It is not. It is Amdahl's law showing up in the merge queue. Compress the "write" stage and the next slowest stage becomes the schedule. For a lot of teams in 2026, that stage is a human with a finite attention budget staring at diffs that got larger, denser, and more frequent.
+That sounds like a complaint about lazy teammates. It is not. It is Amdahl's law showing up in the merge queue. Compress the "write" stage and the next slowest stage becomes the schedule. For a lot of teams right now, that stage is a human with a finite attention budget staring at diffs that got larger, denser, and more frequent.
 
 ## The queue I keep creating for myself
 
-When I [split a feature across Claude Code's parallel agents](/claude-code-parallel-agents-feature/), the happy path is three coherent slices landing close together. The unhappy path is three coherent-looking slices landing close together. Same shape. Different cost.
+When I fan a feature out across parallel agent sessions — the same instinct as [splitting work across Claude Code agents](/claude-code-parallel-agents-feature/) — the happy path is three coherent slices landing close together. The unhappy path is three coherent-looking slices landing close together. Same shape. Different cost.
 
 I used to review my own work as I wrote it — the thinking and the typing shared a brain. Now the typing is outsourced and the thinking has to catch up *after* the code exists. That lag is the bottleneck. I am not waiting on CI. I am waiting on myself to actually understand what just showed up.
 
@@ -35,7 +35,7 @@ I have started treating PR size as a hard product constraint again — the way w
 
 ## Guardrails clear the cheap questions
 
-I already argued that [guidelines in a prompt are soft constraints](/guardrails-beat-guidelines-for-ai-code/). Review is where that argument becomes operational.
+[Prompt guidelines are soft constraints](/guardrails-beat-guidelines-for-ai-code/). Review is where that argument becomes operational.
 
 Lint, types, unit tests, contract tests — those are not "nice to have" when agents are prolific. They are the only way a human reviewer stays solvent. If I am spending senior attention on missing semicolons and `any` leaks, I have already lost. The machine should have failed the PR before I opened it.
 
@@ -46,7 +46,7 @@ What remains for humans is the expensive stuff:
 - What happens when the upstream contract changes?
 - Is the failure mode loud or silent?
 
-That is the same judgment I keep insisting we [still have to train juniors for](/training-juniors-critical-thinking-ai-era/). Review is where that judgment either shows up or gets outsourced to green checkmarks.
+That is the same judgment we still have to [train juniors for](/training-juniors-critical-thinking-ai-era/). Review is where that judgment either shows up or gets outsourced to green checkmarks.
 
 ## Intent before code — or review is archaeology
 
@@ -72,6 +72,6 @@ If your merge queue grew when agents arrived, try the boring order:
 4. Route high-risk paths to slower human review by policy, not by hope.
 5. Measure review lead time and revert rate on agent-touched PRs — not lines shipped.
 
-[Vibe coding](/vibe-coding-a-developers-honest-take/) made typing optional. It did not make understanding optional. The bottleneck moved to whoever still has to say yes — and on a good day, that person is you.
+[Coding assistants stopped being autocomplete](/llms-that-actually-write-code-now/) months ago. Typing got optional. Understanding did not. The bottleneck moved to whoever still has to say yes — and on a good day, that person is you.
 
 Writing got cheap. Attention did not. Spend it like it matters.

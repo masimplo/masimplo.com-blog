@@ -4,12 +4,12 @@ title: Zigbee first, Matter later — radios for a local Home Assistant house
 author: [masimplo]
 tags: [Smart Home, Technology, Hobbies]
 image: ../../images/headers/zigbee-matter-home-assistant.png
-date: 2026-08-09
+date: 2024-11-18
 draft: false
 excerpt: For a local-first Home Assistant house I would still start on Zigbee for sensors and buttons — and treat Matter as a buying filter, not a wholesale replacement.
 ---
 
-I already wrote about [why the house runs local-first on Home Assistant](/home-assistant-local-first-smart-home/) and about [building the HVAC side from scratch](/building-a-smart-hvac-system/). What I glossed over both times is the radio question people ask the moment they open a shopping tab: Zigbee, Matter, Thread, Z-Wave, more Wi‑Fi?
+After [building the HVAC side from scratch](/building-a-smart-hvac-system/), the rest of the house automation is catching up on Home Assistant. What I keep glossing over in conversations is the radio question people ask the moment they open a shopping tab: Zigbee, Matter, Thread, Z-Wave, more Wi‑Fi?
 
 The marketing answer is always "Matter — the future." The answer that matches how this house actually behaves is duller. **Zigbee first for the battery layer. Wi‑Fi where power and bandwidth already live. Matter later, as a purchase filter.**
 
@@ -33,9 +33,9 @@ Coordinator choice matters more than people admit. Put it on USB extension away 
 
 ## What Matter is actually good for
 
-Matter is real. Home Assistant's Matter server work in 2025–26 made the controller side less of a science project. Cross-ecosystem portability is a genuine feature if you care that a lock or a bulb might need to speak Apple and Google and HA without a proprietary bridge.
+Matter is real enough to take seriously. Cross-ecosystem portability matters if you care that a lock or a bulb might need to speak Apple and Google and HA without a proprietary bridge. The controller side in Home Assistant is improving; the device catalog is still uneven.
 
-What Matter is *not*, in my house, is a reason to rip out a working Zigbee mesh or a working Shelly fleet. Thread adds border-router homework. IPv6 multicast has opinions about your router. Device maturity is uneven by category — great for some bulbs and plugs, still "read the forum thread twice" for others.
+What Matter is *not*, in my house, is a reason to rip out a working Shelly fleet or to wait on Zigbee sensors until every Matter SKU matures. Thread adds border-router homework. IPv6 multicast has opinions about your router. Some bulbs and plugs are fine. Other categories still mean reading the forum thread twice.
 
 So I use Matter as a **screen for new purchases**, not a religion. If I am buying something expensive and long-lived — a lock, a thermostat family I might standardize on — I ask whether a mature Matter path exists *and* whether local control still works when the vendor's app is gone. If the answer is fuzzy, I buy Zigbee or stick with the Shelly pattern I already trust.
 
@@ -60,7 +60,7 @@ I would not "go all Matter" for sensors. I would not put circuit-level energy mo
 
 ## Local-first is a control path, not a purity test
 
-People get religious about offline purity. I got tired of that fight. Local-first, for me, means the paths that matter on a bad day — heat, pumps, alarms, "is the basement flooding" — do not depend on someone else's API staying funded.
+People get religious about offline purity. I got tired of that fight. Local-first, for me, means the paths that matter on a bad day — heat, pumps, alarms, "is the basement flooding" — do not depend on someone else's API staying funded. That is the same rule that shapes the rest of the [Home Assistant setup](/home-assistant-local-first-smart-home/).
 
 Zigbee helps that story for sleepy devices. Shelly helps it for powered ones. Matter can help it for new multi-ecosystem hardware when the implementation is honest. Cloud voice and remote UI can sit on top without owning the switches.
 

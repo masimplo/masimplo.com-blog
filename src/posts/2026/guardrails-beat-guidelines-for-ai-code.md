@@ -120,4 +120,4 @@ The model is not going to grade itself. The reviewer is not going to read every 
 
 Turn them on. Then let the AI cook.
 
-Once generation is cheap, the next fight is [review capacity](/ai-code-review-bottleneck/) — guardrails clear the trivia so humans can still say no on the things that matter.
+Once generation is cheap, the next fight is still [review capacity](/ai-code-review-bottleneck/) — guardrails clear the trivia so humans can still say no on the things that matter.
