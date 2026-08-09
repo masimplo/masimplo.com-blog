@@ -139,10 +139,13 @@ module.exports = {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [
-        "G-SKNLCK1W2K", // Google Analytics / GA
+          'G-SKNLCK1W2K', // Google Analytics / GA
         ],
         pluginConfig: {
-          head: false,
+          // Load earlier, and from our own origin so networks that block
+          // googletagmanager.com can still fetch the library (proxied in _redirects).
+          head: true,
+          origin: 'https://masimplo.com',
         },
       },
     },

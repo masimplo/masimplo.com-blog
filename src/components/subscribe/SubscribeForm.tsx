@@ -23,6 +23,51 @@ function setMailchimpCallback(name: string, callback: MailchimpCallback | undefi
   (window as WindowWithGtag & Record<string, MailchimpCallback | undefined>)[name] = callback;
 }
 
+function getGaClientId(): string {
+  const match = /(?:^|;\s*)_ga=GA\d+\.\d+\.(\d+\.\d+)/.exec(document.cookie);
+  if (match?.[1]) {
+    return match[1];
+  }
+
+  const id = `${Math.floor(Math.random() * 1e9)}.${Math.floor(Date.now() / 1000)}`;
+  document.cookie = `_ga=GA1.1.${id};path=/;max-age=63072000;SameSite=Lax`;
+  return id;
+}
+
+function sendGa4Collect(eventName: string, params: Record<string, string>) {
+  // Direct collect hit — works even when googletagmanager.com (gtag.js) is blocked.
+  const url = new URL('https://www.google-analytics.com/g/collect');
+  url.searchParams.set('v', '2');
+  url.searchParams.set('tid', 'G-SKNLCK1W2K');
+  url.searchParams.set('cid', getGaClientId());
+  url.searchParams.set('en', eventName);
+  url.searchParams.set('dl', window.location.href);
+  url.searchParams.set('_s', '1');
+  for (const [key, value] of Object.entries(params)) {
+    url.searchParams.set(`ep.${key}`, value);
+  }
+
+  const href = url.toString();
+  // GET pixel is the most reliable when the gtag.js library never loads.
+  const img = new Image();
+  img.src = href;
+}
+
+function trackNewsletterSubscribe() {
+  const params = {
+    method: 'mailchimp',
+    page_path: window.location.pathname,
+  };
+
+  sendGa4Collect('newsletter_subscribe', params);
+  sendGa4Collect('sign_up', { method: 'mailchimp' });
+
+  // Still queue via gtag when the library is available.
+  const { gtag } = window as WindowWithGtag;
+  gtag?.('event', 'newsletter_subscribe', { ...params, send_to: 'G-SKNLCK1W2K' });
+  gtag?.('event', 'sign_up', { method: 'mailchimp', send_to: 'G-SKNLCK1W2K' });
+}
+
 export function SubscribeForm() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<string | undefined>();
@@ -45,22 +90,30 @@ export function SubscribeForm() {
 
     setMailchimpCallback(callbackName, (data: MailchimpResponse) => {
       setMailchimpCallback(callbackName, undefined);
-      document.body.removeChild(script);
+      if (script.parentNode) {
+        document.body.removeChild(script);
+      }
 
       if (data.result === 'success') {
         setStatus('success');
         setMessage(data.msg);
-        const { gtag } = window as WindowWithGtag;
-        gtag?.('event', 'newsletter_subscribe', {
-          method: 'mailchimp',
-          page_path: window.location.pathname,
-        });
+        trackNewsletterSubscribe();
       } else {
         setStatus('error');
         const cleanMessage = data.msg.replace(/^[0-9]+ - /, '');
         setMessage(cleanMessage);
       }
     });
+
+    script.onerror = () => {
+      setMailchimpCallback(callbackName, undefined);
+      if (script.parentNode) {
+        document.body.removeChild(script);
+      }
+
+      setStatus('error');
+      setMessage('Subscription failed. Please try again.');
+    };
 
     document.body.appendChild(script);
   };
