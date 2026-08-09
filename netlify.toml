@@ -4,3 +4,10 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Shadow Gatsby's SPA fallback so the gtag proxy actually runs.
+[[redirects]]
+  from = "/gtag/js"
+  to = "https://www.googletagmanager.com/gtag/js"
+  status = 200
+  force = true
