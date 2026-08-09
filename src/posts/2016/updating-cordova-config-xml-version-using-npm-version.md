@@ -1,19 +1,23 @@
 ---
 layout: post
-title: Updating Cordova config.xml version using npm version
+title: Sync Cordova config.xml version with npm version
 author: [masimplo]
-tags: [Bash]
+tags: [Bash, Tips, Ionic]
 image: ../../images/headers/cordova_logo_normal_dark_large.png
 date: 2016-11-17
 draft: false
-excerpt: Using the npm version script hook to update Cordova's config.xml version number automatically and commit it alongside package.json.
+excerpt: Hook npm version so Cordova config.xml gets the same semver as package.json in the same commit and tag.
 ---
 
 I like using npm scripts to do all my build and maintenance tasks. They are clear and can be reasoned with. I also like using the tooling built into npm like `npm version`. For those that don't already know you can write something like `npm version 3.5.1` and set the package.json version to the semver you passed or even do something like `npm version (major | minor | patch )` which will increment the respective version part in package json, commit it and add a git tag as well. For a complete guide of what npm version can do take look [here](https://docs.npmjs.com/cli/version).
 
 I frequently found myself in projects that might have another file, other than package.json, that defines a version field for a specific reason. For instance I am working on an Ionic2 cross platform mobile project that uses Cordova's config.xml file to set the mobile application version. It makes sense that this version number should match the one in package json. Editing it manually is a hassle, as is oftenly overlooked and because `npm version` command commits after changing the version number, changing config.xml by hand would require a separate commit.
 
+## Why not a git hook
+
 First I thought of using a git commit hook which can be accomplished by using the fact that npm version tags the version changing commit, but I don't like that git hooks are not version controlled and as such cannot be shared within a team and are short of like a hidden artifact that might slip through the cracks.
+
+## Use the npm version script hook
 
 Reading throught the npm version documentation trying to find ways of extending or hooking onto it, I came upon a, what I think, is an elegant solution. After version 2.13.0 npm offers support for three version related scripts - `preversion, version and postversion`. As the documentation states:
 
@@ -27,6 +31,8 @@ Reading throught the npm version documentation trying to find ways of extending 
 > 6.  Run the postversion script. Use it to clean up the file system or automatically push the commit and/or tag.
 
 For my specific use case makes sense to use the version script (step 4) which takes place after the new version is available as a variable, but package.json is not committed yet. That way I can edit config.xml and then stage it for commit so it will be committed and tagged alongside package.json. It doesn't get any better than this.
+
+## update-config-version.sh
 
 For npm scripts longer than a line I like to use an external bash script and reference that in the npm script. In my **package.json** we add:
 
@@ -56,3 +62,5 @@ and in **update-config-version.sh**:
 We first replace the old version with the new one using sed and then stage the edited file.
 
 Note that the new version is available by npm in an environmental variable name `npm_package_version` and we are using this variable in our script.
+
+Related: [Ionic environment config with NODE_ENV](/using-environment-config-in-ionic2/) · [delete git tags in bulk](/removing-remote-and-local-git-tags/).

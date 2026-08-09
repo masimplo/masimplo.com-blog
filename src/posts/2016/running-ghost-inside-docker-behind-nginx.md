@@ -1,15 +1,15 @@
 ---
 layout: post
-title: Running Ghost inside docker behind nginx
+title: Run Ghost in Docker behind an nginx reverse proxy
 author: [masimplo]
-tags: [Tips, Docker, Blogging]
+tags: [Docker, Blogging, Tips]
 image: ../../images/headers/docker.png
 date: 2016-09-25
 draft: false
-excerpt: How I run my Ghost blog inside a docker container behind an nginx reverse proxy, with the full docker-compose and nginx config.
+excerpt: docker-compose for Ghost plus a custom nginx proxy image — full compose file, nginx.conf, and Dockerfile.
 ---
 
-##Let's get us some segregation
+## Why put nginx in front of Ghost
 
 So you want to run Ghost inside docker so you don't have to mess around with your perfectly running server and you want to segregate ghost from the rest of the services on the same server and all these other goodies that docker gives you out of the box.
 
@@ -19,7 +19,8 @@ Ghost is a single nodejs process serving dynamically generated pages with data f
 
 But why am I telling you that? Well, doing something small but doing it great is the new kid in the block. This is a big part of the nodejs philosophy, having [micro modules](https://github.com/parro-it/awesome-micro-npm-packages), with small focus that they do one thing awesomely. Nodejs is great for IO performance, but not so great for other thinks like caching, compressing, proxying etc. Don't get me wrong you can do all that with node, point is you probably shouldn't. That's why we have nginx. Placing an nginx proxy in front of you node server app is a win-win situation. You are offloading tasks from you project, so you don't have to worry about them, and you delegate them to someone that is really really good at doing them. Everyone should be happy :D
 
-### docker compose
+## docker-compose for Ghost and nginx
+
 Best way to get two or more containers running together is docker compose. You write a yaml file - *not really crazy about yaml but what are you gonna do?* - that describes your services - *also storage, network etc if you need to* - and their correlation, you run a single command and everything is up and running.
 Let's take a look at how a yaml for a Ghost blog behind an nginx would look.
 
@@ -53,7 +54,8 @@ Then we declare our Ghost blog service, which uses the official ghost image from
 
 Notice that we are not binding the Ghost port (2368) to the host, instead we are exposing it so that it can be accessed by linked containers that will hit `container-ip:exposed-port` and since we know the port and the container ip can be retrieved by using the link alias - an entry in `/etc/hosts` has been automatically added due the linking resolving the alias to the linked container's ip - we can just do `ghost:2846` in the nginx container to access ghost.
 
-###nginx config
+## nginx reverse proxy config
+
 In nginx we just have to define a virtual host that will answer on port 80 (possible 443 as well if we need https) and if the requested domain is the one of our blog, then we tell nginx to forward that request to the ghost container. Here is how we do that.
 
 **nginx.conf**
@@ -131,3 +133,5 @@ COPY ghost.conf /etc/nginx/conf.d/ghost.conf
 ```
 
 and that's it. All you have to do now is write `docker compose up -d` and everything should be running. You can also do `docker ps` to make sure containers are running and the correct ports are used.
+
+Related: [custom TeamCity agent from a Dockerfile](/teamcity-agent-as-docker-container/) · [add highlight.js to Ghost](/adding-highlight-js-to-ghost-blog/).

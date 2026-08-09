@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Writing a Firebase function to modify user claims
+title: Set Firebase custom user claims with a Cloud Function
 author: [masimplo]
-tags: [Code, Firebase]
+tags: [Firebase, Code]
 image: ../../images/headers/sarah-kilian-xit3LjRvKvM-unsplash.jpg
 date: 2023-01-05
 draft: false
-excerpt: Ever wanted to give some Firebase users special privileges? Here is how to write a Firebase function that sets custom user claims.
+excerpt: Callable Cloud Function that calls setCustomUserClaims, plus Firestore rules and client checks for a moderator claim.
 ---
 
 Hey there, long time no see!
@@ -14,6 +14,8 @@ Hey there, long time no see!
 Have you ever wanted to give certain users in your Firebase project special privileges, like being able to access certain data or perform certain actions that regular users can't? Well, you can use user claims to do just that!
 
 User claims are a way to assign custom attributes to users in your Firebase project. These claims can be used to determine a user's access level or permissions within your app. For example, you might have a group of users who are considered "moderators" and have the ability to delete inappropriate content. You can assign these users a "moderator" claim, which can be checked within your app's security rules to grant them the necessary permissions.
+
+## Scaffold the Functions project
 
 But how do you actually assign these claims to your users? One way is to use a Firebase function.
 
@@ -38,6 +40,9 @@ import * as admin from 'firebase-admin';
 
 admin.initializeApp();
 ```
+
+## Callable setClaims function
+
 Next, create a function that will modify the user's claims. This function should take in a user ID and the desired claims, and use the setCustomUserClaims method to update the user's claims in the Firebase Auth service:
 
 ```typescript
@@ -68,6 +73,7 @@ export const setClaims = functions.https.onCall((data, context) => {
     });
 });
 ```
+
 Finally, deploy your function using the Firebase CLI:
 
 ```bash
@@ -75,6 +81,8 @@ firebase deploy --only functions
 ```
 
 And that's it! You now have a Firebase function that can modify user claims. You can call this function from your app or from the Firebase CLI to update the claims for any user in your project.
+
+## Use claims in Firestore rules and the client
 
 You can now use these claims in your app or website to change what each user accesses but also to restrict other firebase services like firestore or storage.
 
@@ -95,3 +103,5 @@ this.isModerator = token.claims?.team === 'moderator';
 ```
 
 The possibilities are endless, so go ahead and start experimenting!
+
+Related: [software security is a culture](/software-security-is-a-culture-not-a-calendar-event/).

@@ -1,15 +1,17 @@
 ---
 layout: post
-title: Batch resize pictures on Mac using Preview
+title: Batch resize images on Mac with Preview
 author: [masimplo]
 tags: [Tips, Tools]
 image: ../../images/headers/domenico-loia-EhTcC9sYXsw-unsplash.jpg
 date: 2023-01-03
 draft: false
-excerpt: A quick step-by-step way to batch resize images on a Mac using nothing but Preview, plus ImageOptim to shrink them for the web.
+excerpt: Open a batch in Preview, Select All, Adjust Size — no third-party app required. Optional ImageOptim pass for web-ready files.
 ---
 
-Resizing images can be a tedious task, especially if you have a large batch of them. But with the help of Preview on Mac, it’s a breeze! Here’s a step-by-step guide on how to batch resize pictures using Preview:
+Resizing images can be a tedious task, especially if you have a large batch of them. But with the help of Preview on Mac, it’s a breeze!
+
+## Step-by-step in Preview
 
 1) Select all the images you want to resize.
 
@@ -24,6 +26,8 @@ Resizing images can be a tedious task, especially if you have a large batch of t
 6) Once you have made your selections, click "OK". The images will be resized and saved to their original location, replacing the previous files.
 
 Once you’ve entered the new size for the images, click Ok. The images will be resized and saved to the original location, replacing the original files.
+
+## Shrink further with ImageOptim
 
 As an extra step you can use [ImageOptim](https://imageoptim.com/mac) to reduce the size of your images (and remove metadata if you intend to post them online). Just drag all the images to the imageOptim window and give it a few seconds.
 

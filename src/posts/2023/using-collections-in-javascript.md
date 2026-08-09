@@ -1,15 +1,17 @@
 ---
 layout: post
-title: Managing Collections in Javascript
+title: Manage model collections in JavaScript without leaking Array
 author: [masimplo]
 tags: [Javascript, Code]
 image: ../../images/headers/kevs-gSMY1wNNlvY-unsplash.jpg
 date: 2023-01-11
 draft: false
-excerpt: Three ways to manage collections in JavaScript models — exposing the raw array, wrapping it in methods, or extending Array for the best of both.
+excerpt: Expose a raw array, wrap mutations in methods, or extend Array — three patterns for typed collections that block duplicates and invalid data.
 ---
 
 In many JavaScript applications, it's common to have models that contain collections of other objects. For example, a user profile might have a list of emails associated with it. Managing these collections can be a tricky task, as it's important to ensure that the data is valid, prevent duplicates, and maintain control over how the data is manipulated.
+
+## Expose the raw Array (risky)
 
 One approach to managing collections is to expose the collection (usually an Array) directly to users of the model. This can be problematic, as it gives maximum power to the collection users and it can be difficult to control how the collection is manipulated.
 
@@ -22,6 +24,8 @@ profile.emails.push('132132'); // no way to check for validity
 profile.emails.length = 0;     // oh no!
 ```
 
+## Private array with add/get methods
+
 A better approach is to keep the collection private, and instead expose methods for manipulating the collection. This way, you can ensure that the data is valid, prevent duplicates, and control how the collection is manipulated.
 
 ```typescript
@@ -33,6 +37,8 @@ profile.getEmails(); // get an array copy of the emails array
 ```
 
 This approach has a couple of downsides. It can add a lot of code to the model, which can make it harder to read and maintain, and it can make it harder to reuse the collection management code. Additionally, it can be difficult to change the implementation from an exposed array to something like this, as it would require a lot of refactoring.
+
+## Extend Array for controlled collections
 
 Another approach that can be useful in some circumstances is to use an array-extending class to have the best of both worlds.
 
@@ -98,3 +104,6 @@ profile.emails; // get the emails array as normal
 By using an array-extending class, you can take advantage of the built-in array methods like `map`, `filter`, and `find`, while also adding custom methods like `addEmail`, `updateEmail`, and `deleteEmail`. Additionally, using the `Symbol.species` getter prevent mutations of the array.
 
 It's important to note that this approach is not suitable for all use cases, and the choice of how to manage collections will depend on the specific requirements of the application. However, using an array-extending class can provide a good balance between control and flexibility, and can make code more maintainable and less prone to errors.
+
+Related: [async/await retry with timeout in Node](/nodejs-async-await-with-timeout-and-retry/).
+
