@@ -1,15 +1,17 @@
 ---
 layout: post
-title: Testing Ionic presentables
+title: Mock Ionic ModalController to test onDidDismiss
 author: [masimplo]
-tags: [Ionic, Code, Testing]
+tags: [Ionic, Testing, Code]
 image: ../../images/headers/kelly-sikkema-411622-unsplash.jpg
 date: 2017-06-30
 draft: false
-excerpt: A reusable mock for testing Ionic presentables like modals, alerts and toasts, so you can trigger onDidDismiss and assert what your page does.
+excerpt: A reusable PresentableControllerMock so unit tests can dismiss modals, alerts, and toasts and assert the page callback.
 ---
 
 I frequently come across the question of how we can test a presentable in Ionic. A presentable is component that is presented in a separate navigation stack like a Modal, an Alert, an ActionSheet, a Toast, a LoadingModal etc.
+
+## The presentable pattern
 
 Our code will normally look like:
 ```typescript
@@ -24,6 +26,8 @@ private openEditorModal() {
 
 So how can we test that this.note will take the value returned from the modal? We need a way to trigger onDidDismiss.
 After gathering a few similar cases that I wanted to test I came up with a mock that can be used to test such functionality, mimicking the behaviour of normal presentables.
+
+## PresentableControllerMock
 
 ```typescript
 export class PresentableControllerMock {
@@ -48,6 +52,8 @@ export class PresentableControllerMock {
 }
 ```
 
+## Assert the dismiss callback
+
 Now this opens up a few possibilities in our tests. Let's have a look at a simple case first.
 
 ```typescript
@@ -65,3 +71,5 @@ it('updates the note if it is edited', function () {
   expect(sut.notes).toEqual('new note');
 });
 ```
+
+Related: [test RxJS timers without wall-clock waits](/testing-rxjs5-async-methods-in-angular2/) · [Ionic Angular standalone migration](/migrating-ionic-to-angular-standalone-components/).

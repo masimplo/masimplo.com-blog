@@ -1,12 +1,12 @@
 ---
 layout: post
-title: NodeJS async/await with retry
+title: Async/await retry with timeout in Node.js
 author: [masimplo]
-tags: [Code]
+tags: [Code, Tips]
 image: ../../images/headers/async-javascript.jpg
 date: 2017-10-15
 draft: false
-excerpt: A small async/await retry middleware with timeout for NodeJS, replacing the tangled promise-retry code I used to talk to an unreliable database.
+excerpt: A small Express middleware that wraps async handlers with timeout and retry for flaky database calls — cleaner than chaining promise-retry.
 ---
 
 Some time ago I wrote a microservice in plain es5 javascript running on node 4.x I recently wanted to make some changes to the service and update dependencies, as some of them had some security vulnerabilities.
@@ -17,9 +17,11 @@ Functions with promise chains of 80 lines got reduced down to 30 lines or less a
 
 Using promises to talk to a remote database that was not very reliable, required the use of promise-timeout and promise-retry libraries and also some rather complicated code to replay promises after they timeout. I looked around for a similar solution to async await and although I found a couple, wasn't really happy with them.
 
+## Retry middleware for Express handlers
+
 What I ended up doing is writing a "middleware" function that wraps every express callback that talks to the database. One issue is to timeout if you don't get a db response for say over 2secs and second one to retry the operation if certain conditions are met. For timeout I kept promise-timeout as I find it rather efficient.
 
-**Retry**
+### Retry
 
 ```javascript
 const asyncRetryMiddleware = fn =>
@@ -79,3 +81,5 @@ Also notice that next(error) is called in all cases for us and thus we do not ha
 Rather straight forward.
 
 This is the first I done in writting node code with async await (had written loads in C# in the past) and I think they make code look cleaner than using just promises. Of course promises are still there and have their use cases, but since I have been using observables in my JS code for some time now, they don't seem that appealing to me anymore. Now if only RxJS and async/await played nice with each other without having to convert to and from promises...
+
+Related: [testing time-based RxJS code without waiting real seconds](/testing-rxjs5-async-methods-in-angular2/).

@@ -1,15 +1,17 @@
 ---
 layout: post
-title: Teamcity agent as Docker container
+title: Custom TeamCity build agent from a Dockerfile
 author: [masimplo]
-tags: [Tools, Docker]
+tags: [Docker, Tools]
 image: ../../images/headers/teamcity-post-banner.jpg
 date: 2016-10-16
 draft: false
-excerpt: Instead of committing hand-tweaked containers, I build custom TeamCity build agents from a Dockerfile so they are versioned and reproducible.
+excerpt: Build a reproducible TeamCity agent image with Node and gulp from a Dockerfile instead of docker commit on a hand-tweaked container.
 ---
 
 Updating teamcity agents with external project dependencies (e.g. gulp cli or nodejs version) can be a pain, especially if you have many build agents that are not maintained through some tooling like puppet, ansible etc. [Jetbrains](https://www.jetbrains.com/) have recently released official docker images for both the [TeamCity](https://www.jetbrains.com/teamcity/) server and agents. If you follow their [guide](https://hub.docker.com/r/jetbrains/teamcity-agent/) you will see they recommend starting the vanilla image, bashing in, installing everything you need and then commit this container as your custom image. Unfortunately this cannot be versioned controlled, is hard to reproduce and even harder to remember what's in that magical container a few days after creating.
+
+## Prefer a Dockerfile over docker commit
 
 In my opinion a much nicer way is to use the more established approach in the docker community of starting off with their image as a base in a Dockerfile and setting up everything inside that Dockerfile.
 
@@ -57,3 +59,5 @@ So we base our docker image from `jetbrains/teamcity-agent` then install nodejs 
 I chose to have a separate RUN command for the global packages as they are changing more often than nodejs version changes and would hate to have to build that whole layer again and again.
 
 All you have to do now is run `docker build -t username/teamcity-agent .` in the same directory as the above Dockerfile and you are good to go.
+
+Related: [list globally installed npm packages](/listing-global-npm-installed-packages/) · [install and switch Node with nvm](/nvm-is-hands-down-the-best-way-to-install-nodejs/).

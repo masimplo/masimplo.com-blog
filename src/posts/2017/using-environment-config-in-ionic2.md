@@ -1,15 +1,17 @@
 ---
 layout: post
-title: Using environment config in Ionic2
+title: Ionic environment config with NODE_ENV and Angular DI
 author: [masimplo]
-tags: [Ionic, Code]
+tags: [Ionic, Code, Tips]
 image: ../../images/headers/rsz_elizabeth-lies.jpg
 date: 2017-09-12
 draft: false
-excerpt: Separate development and production config in Ionic2 using a typed environment module, an OpaqueToken and NODE_ENV to pick values at build time.
+excerpt: Typed dev/prod config via OpaqueToken and a NODE_ENV factory so Ionic2 builds pick the right API keys at compile time.
 ---
 
 After you finish building your app and you are ready to deploy to the App Stores you will realize that you need to use specific variables for the production environment that are different than your development environment. After a lot of reading and some experimentation I came upon what I consider the best and most versatile way to build apks and ipas that have different "settings" for development and production.
+
+## Typed environment variables
 
 So say you have some specific values for each environment that you want to use throughout your app, lets first declare an interface for these values, so that typescript can help us not forget declaring any and we have an easier time using them in our code.
 
@@ -51,6 +53,8 @@ export const productionConfig: IEnvironmentalVariables = {
   logToConsole: false
 };
 ```
+
+## OpaqueToken and environment module
 
 We then need to declare an OpaqueToken so that we can use a simple string in Angular's DI:
 
@@ -95,6 +99,8 @@ export function environmentFactory() {
 export class EnvironmentsModule { }
 ```
 
+## Inject config in app code
+
 This completes our module definition. We can now go ahead and use this module in any of our apps like following.
 We first import the module as usual in our main app module.
 
@@ -126,8 +132,12 @@ class MyClass {
 }
 ```
 
+## Set NODE_ENV at build time
+
 The final steps that makes all the above take effect in the final built application is setting the NODE_ENV variable to the appropriate value. For instance to build an APK using the production config values we would run:
 
 ```bash
 NODE_ENV=prod bash -c 'ionic cordova build android --prod --release'
 ```
+
+Related: [Ionic Angular standalone components](/migrating-ionic-to-angular-standalone-components/) · [three Ionic apps in one Nx monorepo](/three-ionic-apps-one-nx-monorepo/).

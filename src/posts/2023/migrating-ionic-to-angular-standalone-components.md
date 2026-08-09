@@ -129,7 +129,7 @@ constructor(
 
 That's it. If everything went as planned, you should have gotten rid of quite few lines of code - and mental overhead - and have a nice fresh, up to date project, to keep building amazing stuff on.
 
-Years later we took the next step and [merged three Ionic apps into one Nx monorepo](/three-ionic-apps-one-nx-monorepo/) — standalone components made that merge much less painful than it would have been on NgModules.
+Years later we took the next step and [merged three Ionic apps into one Nx monorepo](/three-ionic-apps-one-nx-monorepo/) — standalone components made that merge much less painful than it would have been on NgModules. Older notes that still come up in Ionic work: [environment config with NODE_ENV](/using-environment-config-in-ionic2/) and [mocking presentables for unit tests](/testing-ionic-presentables/).
 
 *You can read more about standalone components [in the Angular documentation](https://angular.io/guide/standalone-components)*.
 *You can also find a nice overview of the steps needed for an Ionic project in [this article](https://ionic.zendesk.com/hc/en-us/articles/10386373742231-Angular-Standalone-Components-with-Ionic)*.

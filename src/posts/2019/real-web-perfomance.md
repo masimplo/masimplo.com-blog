@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Measure real world web performance
+title: Measure real-user web performance with the Performance API
 author: [masimplo]
 tags: [Performance, Code]
 image: ../../images/headers/veri-ivanova-17904-unsplash.jpg
 date: 2019-03-23
 draft: false
-excerpt: Using the Performance API with performance.mark and performance.measure to see how your code really runs on users' devices, not just in the lab.
+excerpt: Use performance.mark, performance.measure, and PerformanceObserver to see how slow code actually is on users' devices — not just in the lab.
 ---
 Every developer at some point gets a task to make something faster.
 
@@ -23,6 +23,8 @@ and so on. Don't be fooled perfomance issues are not always easy to spot. In the
 Sometimes it might be possible to reproduce issues by throttling CPU and network, but it is not always possible as there are many variables at play here. So how do you debug performance issues that you are not able to witness or reproduce?
 
 Thankfully there is the [Client-side performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) we can leverage to get info on how our app is behaving on a user's device. We are not just talking about time to first byte and time to interactive, but actual measurements for how long each piece of our code took to run on an actual user's device. You will be surprised with how many calculations that take a couple milliseconds on your lab devices, are responsible for dropping frames on user's devices (more than 16ms).
+
+## performance.mark and performance.measure
 
 We are going to leverage two specific methods of the performance API.
 
@@ -44,6 +46,8 @@ performance.mark('mytaskFinish'); // marking the end fo the task. Again you can 
 performance.measure('mytask', 'mytaskStart', 'mytaskFinish'); // this will give us the duration of the task in an entry named mytask measuring from mytaskStart mark up to mytaskFinish mark
 
 ```
+
+## Capture measurements with PerformanceObserver
 
 To capture the measurement and do something with it (e.g. log it or send it to a server or even change our app's behavior), we need to set up and register a performance observer. It's actually pretty straightforward.
 
@@ -69,4 +73,5 @@ In a real-world scenario, you can gather these statistics on your server or anal
 
 In conclusion, client-side performance API is a powerful tool that can help us identify and fix performance issues that are difficult to reproduce in the lab. By leveraging performance.mark and performance.measure, we can get accurate measurements of how long each piece of our code takes to run on a user's device and use that information to improve the performance of our app.
 
+Related: [guardrails beat guidelines for AI-generated code](/guardrails-beat-guidelines-for-ai-code/) — measurement in production is another guardrail that words alone cannot replace.
 
