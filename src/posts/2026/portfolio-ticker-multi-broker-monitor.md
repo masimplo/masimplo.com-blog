@@ -82,3 +82,5 @@ The thing that separates a side project you demo once from a side project you ac
 Just go to [portfolio-ticker.web.app](https://portfolio-ticker.web.app), sign in with Google, and start adding holdings. Your data is yours. You can delete your account and everything goes with it.
 
 This was one of those projects where the journey from "I wish someone made this" to "I guess I will make this" was shorter than I expected. If you have a similar itch that a few weekends could scratch — start. The boring plumbing goes in fast, and everything interesting follows from there.
+
+Four months of daily use later I added [annualized ROI, calendar-year returns, and a real order log](/portfolio-ticker-roi-and-year-returns/) — the numbers the first version left on the table.
