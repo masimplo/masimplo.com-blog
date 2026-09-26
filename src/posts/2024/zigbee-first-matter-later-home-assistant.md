@@ -11,13 +11,13 @@ excerpt: My house is Wi‑Fi and Shelly end to end. When I finally add battery s
 
 After [building the HVAC side from scratch](/building-a-smart-hvac-system/), the rest of the house automation is catching up on Home Assistant. What I keep glossing over in conversations is the radio question people ask the moment they open a shopping tab: Zigbee, Matter, Thread, Z-Wave, more Wi‑Fi?
 
-Here is the honest starting point: **I do not run Zigbee.** The house is almost entirely Shelly on local Wi‑Fi, plus Local Tuya thermostats on the LAN. No mesh stick. No battery sensor fleet. Wi‑Fi only — on purpose.
+Here is the honest starting point: I do not run Zigbee. The house is almost entirely Shelly on local Wi‑Fi, plus Local Tuya thermostats on the LAN. No mesh stick. No battery sensor fleet. Wi‑Fi only — on purpose.
 
 The marketing answer to "what next?" is always "Matter — the future." The answer that matches how this house actually behaves is duller. **Keep Shelly on Wi‑Fi for powered gear. When I add a battery layer, start on Zigbee. Treat Matter as a purchase filter, not a religion.**
 
 ## Why Wi‑Fi won here
 
-The network was designed for it. This is a Greek concrete-and-brick house — masonry and slabs, not plasterboard — and RF does not wander through them the way American drywall blogs pretend. Ubiquiti throughout: a **U7 access point on each floor** so coverage is planned, not hoped for, and **Ethernet drops in every room** so the APs, cameras, and anything that should never roam sit on copper. Shellys still talk Wi‑Fi, but they talk to a radio plan built for dense IoT on hostile walls, not a single router in a cupboard.
+The network was designed for it. This is a Greek concrete-and-brick house — masonry and slabs, not plasterboard — and RF does not wander through them the way American drywall blogs pretend. Ubiquiti throughout: a **U7 access point on each floor** so coverage is planned, not hoped for, and Ethernet drops in every room so the APs, cameras, and anything that should never roam sit on copper. Shellys still talk Wi‑Fi, but they talk to a radio plan built for dense IoT on hostile walls, not a single router in a cupboard.
 
 Shelly's local API is good. The Home Assistant integration is good. Circuit monitors, relays, and plugs sit on mains power and need to move real telemetry — Wi‑Fi is the right tool for that job *when the Wi‑Fi is this deliberate*. I got to sixty-plus devices partly by refusing to leave sub-panels blind, and that density only works because every endpoint is a boring LAN citizen on a network that can absorb them.
 
@@ -39,7 +39,7 @@ Coordinator placement would matter more than brand. USB extension away from the 
 
 Until those sensors earn their keep, I am not inventing a second radio just to feel modern.
 
-## What Matter is actually good for
+## What Matter is good for
 
 Matter is real enough to take seriously. Cross-ecosystem portability matters if you care that a lock or a bulb might need to speak Apple and Google and HA without a proprietary bridge. The controller side in Home Assistant is improving; the device catalog is still uneven.
 

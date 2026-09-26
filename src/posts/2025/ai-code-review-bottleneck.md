@@ -19,7 +19,7 @@ That sounds like a complaint about lazy teammates. It is not. It is Amdahl's law
 
 When I fan a feature out across parallel agent sessions — the same instinct as [splitting work across Claude Code agents](/claude-code-parallel-agents-feature/) — the happy path is three coherent slices landing close together. The unhappy path is three coherent-looking slices landing close together. Same shape. Different cost.
 
-I used to review my own work as I wrote it — the thinking and the typing shared a brain. Now the typing is outsourced and the thinking has to catch up *after* the code exists. That lag is the bottleneck. I am not waiting on CI. I am waiting on myself to actually understand what just showed up.
+I used to review my own work as I wrote it — the thinking and the typing shared a brain. Now the typing is outsourced and the thinking has to catch up *after* the code exists. That lag is the bottleneck. I am not waiting on CI. I am waiting on myself to understand what just showed up.
 
 Rubber-stamping is the easy failure mode. You skim, the tests are green, the PR description is fluent, you hit approve. The dangerous bugs — the ones that pass the model-written tests and fail on the third Tuesday — love that workflow.
 

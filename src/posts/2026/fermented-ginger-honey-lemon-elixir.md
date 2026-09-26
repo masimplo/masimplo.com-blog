@@ -15,7 +15,7 @@ That version is already worth making. Then I started fermenting it, and now I ca
 
 ## The original
 
-The base recipe is simple enough that it barely deserves to be called a recipe. Peel and roughly chop a large piece of fresh ginger. Add honey and lemon juice. Blend. Dilute to taste. Drink it cold, drink it in hot water, do whatever you like.
+The base recipe is simple enough that it barely deserves to be called a recipe, a nice change from [a coffee machine that ships its own brew profiles](/fellow-aiden-coffee-maker-review/). Peel and roughly chop a large piece of fresh ginger. Add honey and lemon juice. Blend. Dilute to taste. Drink it cold, drink it in hot water, do whatever you like.
 
 The ginger packs a serious punch — spicy in a way that clears your head, not in a way that makes you reach for milk. The honey rounds it. The lemon keeps it honest. It is one of those things that tastes like medicine but is also genuinely enjoyable, which is rare.
 

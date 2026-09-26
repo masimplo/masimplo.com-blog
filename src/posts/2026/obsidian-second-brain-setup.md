@@ -9,15 +9,15 @@ draft: false
 excerpt: I finally built an Obsidian second brain that stuck — by writing down what my AI agents are and aren't allowed to put in it.
 ---
 
-I have started a second brain three times before this one. Notion, then a folder of dated Markdown files, then a paid app with a mascot I have since forgotten the name of. All three died the same way — a burst of enthusiasm, a week of dutiful notes, then silence, because the thing I actually needed was not a place to write. It was a rule for what was worth writing down.
+I have started a second brain three times before this one. Notion, then a folder of dated Markdown files, then a paid app with a mascot I have since forgotten the name of. All three died the same way: a burst of enthusiasm, a week of dutiful notes, then silence, because the thing I needed was not a place to write. It was a rule for what was worth writing down.
 
-This time it stuck. The tool is Obsidian. The reason it stuck has almost nothing to do with Obsidian and everything to do with the rule I finally wrote — with help from the AI agents I already run all day — about what belongs in it and what doesn't.
+This time it stuck. The tool is Obsidian. The reason it stuck has almost nothing to do with Obsidian and everything to do with the rule I finally wrote (with help from the AI agents I already run all day) about what belongs in it and what doesn't.
 
 ## The tool barely matters
 
 Obsidian's whole pitch is that it gets out of the way: a vault is just a folder of plain Markdown files on disk, with an `.obsidian` config directory for plugins and themes sitting next to your notes, not wrapping them. No proprietary format, no server you're renting access to. A developer should expect no less of a knowledge base than of a codebase — you would not accept one you couldn't `grep`, so why accept one you can't either.
 
-I installed it with `brew install --cask obsidian`, pointed it at a fresh folder — mine lives at `~/Brain` — and put that folder under git the same day. Committing markdown is not a novel idea, but it's an underrated one: your notes get history, diffs, and a restore path with zero extra tooling. If your sync story is "iCloud Drive" or "Dropbox," fine, that works too. I wanted `git log` on my own thinking.
+I installed it with `brew install --cask obsidian`, pointed it at a fresh folder (mine lives at `~/Brain`) and put that folder under git the same day. Committing markdown is not a novel idea, but it's an underrated one: your notes get history, diffs, and a restore path with zero extra tooling. If your sync story is "iCloud Drive" or "Dropbox," fine, that works too. I wanted `git log` on my own thinking.
 
 ## PARA, but I stopped arguing with it
 
@@ -27,9 +27,9 @@ The folders answer "where does this go." The links answer "what does this connec
 
 ## Bootstrapping it with agents, not by hand
 
-Starting a second brain from a blank vault is the same failure mode as starting a novel from a blank page — the emptiness itself is what kills momentum. So I didn't start from blank. I pointed Claude Code subagents at everything I already had lying around — old project skill files, a folder of company reference docs, prior working sessions — and had them mine that material into a first pass of hub notes and reference pages, one subagent per source, running in parallel.
+Starting a second brain from a blank vault is the same failure mode as starting a novel from a blank page: the emptiness itself is what kills momentum. So I didn't start from blank. I pointed Claude Code subagents at everything I already had lying around — old project skill files, a folder of company reference docs, prior working sessions — and had them mine that material into a first pass of hub notes and reference pages, one subagent per source, running in parallel.
 
-Was the output perfect? No — some of it needed a second look, and a few generated notes were more summary than insight. But *editing* an overeager first draft is a completely different task from *generating* one from nothing, and it's the task I'm actually good at. An afternoon of agent-assisted mining got me further than three previous solo attempts combined.
+Was the output perfect? No — some of it needed a second look, and a few generated notes were more summary than insight. But *editing* an overeager first draft is a completely different task from *generating* one from nothing, and it's the task I'm good at. An afternoon of agent-assisted mining got me further than three previous solo attempts combined.
 
 ## The rule that made it stick
 

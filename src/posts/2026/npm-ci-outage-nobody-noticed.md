@@ -55,7 +55,7 @@ Every push since the June 20th dependency-update commit had failed CI with that 
 
 ## Why the site never noticed either
 
-Netlify's own build step runs `npm install`, not `npm ci`. The lockfile drift that had been failing GitHub Actions for six weeks was invisible to the one pipeline that actually puts pages in front of readers, because that pipeline uses the lenient installer. A CI badge nobody checks is a smoke detector with the battery pulled — except in this case a second smoke detector, on a different circuit, happened to be working the entire time, and I didn't know it was doing the job until I went looking for the first one.
+Netlify's own build step runs `npm install`, not `npm ci`. The lockfile drift that had been failing GitHub Actions for six weeks was invisible to the one pipeline that puts pages in front of readers, because that pipeline uses the lenient installer. A CI badge nobody checks is a smoke detector with the battery pulled — except in this case a second smoke detector, on a different circuit, happened to be working the entire time, and I didn't know it was doing the job until I went looking for the first one.
 
 ## The actual fix, and the ones I didn't take
 

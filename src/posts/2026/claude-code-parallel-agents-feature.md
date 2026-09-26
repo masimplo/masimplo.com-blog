@@ -3,7 +3,7 @@ layout: post
 title: Using Claude Code's parallel agents to collaborate on a feature
 author: [masimplo]
 tags: [AI, Code, Tools]
-image: ../../images/headers/iyr7iiiyr7iiiyr7.png
+image: ../../images/headers/claude-code-parallel-agents.jpg
 date: 2026-03-22
 draft: false
 excerpt: The single-agent model has a ceiling. Claude Code's parallel agents let you split a feature into independent pieces and work like a focused team.
@@ -23,7 +23,7 @@ Running those streams sequentially through a single agent is slow. More importan
 
 Multi-agent mode inverts the relationship. You become the architect, not the author. Your job is to define the interfaces between pieces clearly enough that independent agents can work without stepping on each other. The thinking is harder upfront. The execution is faster.
 
-## How I actually decompose a feature
+## How I decompose a feature
 
 When starting a feature of any real size, I now open with a planning step before I touch code. I ask Claude Code to help me split the work into independent tasks with clear inputs and outputs. The question that forces the right decomposition is: *what does each piece need to be told, and what does it promise to produce?*
 
@@ -44,7 +44,7 @@ The hardest part is not the prompting. It is defining the interfaces clearly bef
 
 Spending twenty minutes agreeing on types, field names, and API contracts before spawning agents is the forcing function that makes the rest of it clean. I use the planning session to produce a short interface document — just the types and the API shape in pseudocode or TypeScript — that every agent gets as a shared input.
 
-That document is effectively the thing you are actually writing. The agents write the implementation; you write the contract.
+That document is what you are *writing*. The agents write the implementation; you write the contract.
 
 ## Where it breaks down
 
@@ -58,7 +58,7 @@ Agents drift if the interface document is vague. "Returns the user object" is no
 
 Your hardware is again the weakest link. Running five agents simultaneously on a 24GB machine is a genuine way to discover that local tools compound. Each agent is not just holding a context window — it is spawning processes: indexing files, running type-checkers, invoking test runners, searching the repo. When five of them do that at once, you do not get five times the throughput; you get five times the I/O contention and one machine on its knees. Three concurrent agents tends to be about the real ceiling before the environment starts fighting you. Start smaller than you think you need to.
 
-## What this actually changes
+## What this changes
 
 Before this workflow I would often batch smaller features into a single session and just trust the agent to keep everything consistent. It mostly worked. For anything bigger than a day's work it started to produce code I had to hold in my head rather than code that explained itself.
 

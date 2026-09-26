@@ -25,20 +25,20 @@ The controller will not tune itself to your envelope. It will run whatever conse
 
 Our house is ~230 m², A++, concrete and brick, Attica winters that mostly live in the 5–15 °C outdoor band. Design-day studies assume near-freezing. Reality rarely does. The heat pump is essentially never thermally stressed here — real-world COP in that band sits around 4.5–5.5 when the hydraulics cooperate.
 
-Against that climate, the commissioned weather-compensation offset sat at **+5**. At roughly 11 °C outdoor, LWT was hanging around **46 °C**. Fine if you have undersized emitters and a cold climate. Wrong for fan coils that are happy in the high thirties, and wrong for a house that barely notices an 8 °C night.
+Against that climate, the commissioned weather-compensation offset sat at **+5**. At roughly 11 °C outdoor, LWT was hanging around 46 °C. Fine if you have undersized emitters and a cold climate. Wrong for fan coils that are happy in the high thirties, and wrong for a house that barely notices an 8 °C night.
 
 I had been staring at Shelly totals that felt high for how mild the weeks were. Comfort was fine — which is exactly how bad curves survive. Nobody complains when the rooms are warm. The bill just gets a little thicker every month.
 
 ## One change, measured
 
-On 11 March 2026 I dropped the offset from +5 to **0**. Same outdoor conditions in the days around the change. At ~11 °C outdoor, LWT fell from ~46 °C to ~**38 °C**.
+On 11 March 2026 I dropped the offset from +5 to 0. Same outdoor conditions in the days around the change. At ~11 °C outdoor, LWT fell from ~46 °C to ~38 °C.
 
 Shelly on the heat-pump circuit told the rest:
 
 - Occupied house, pre-tune (8–11 Mar): heat pump ~**20.7 kWh/day**
 - Occupied house, post-tune (12–20 Mar): heat pump ~**16.3 kWh/day**
 
-That is about **21% less heat-pump energy per day**. Rough annualisation for the heating season lands near **€80/year** saved on that circuit alone — not life-changing money, but real money for touching one number. Whole-house daily draw fell from ~40 kWh to ~33 kWh in the same window; the heat pump was most of the move.
+That is about **21% less heat-pump energy per day**. Rough annualisation for the heating season lands near €80/year saved on that circuit alone — not life-changing money, but real money for touching one number. Whole-house daily draw fell from ~40 kWh to ~33 kWh in the same window; the heat pump was most of the move.
 
 Comfort did not collapse. Rooms still reached setpoint. Fan coils stayed quiet on low speed. If anything the system felt less frantic — longer, calmer runs, which is what the textbooks promise when LWT stops being theatrical.
 
@@ -62,6 +62,6 @@ And I would still start energy monitoring on day one of a build. You cannot defe
 
 If you own an air-to-water heat pump on weather compensation and you have never opened the WD settings since install, you are probably paying an installer-shaped tax. Especially in a mild climate with a tight envelope and emitters that can run low LWT.
 
-Open the controller. Note the outdoor temperature and the current LWT. Ask whether that water temperature is doing work your house actually needs — or just making the compressor feel important.
+Open the controller. Note the outdoor temperature and the current LWT. Ask whether that water temperature is doing work your house needs — or just making the compressor feel important.
 
 The expensive setting is the one nobody told you was optional. I left +5 alone for too long. Zero was waiting the whole time.

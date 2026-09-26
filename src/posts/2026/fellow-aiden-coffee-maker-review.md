@@ -21,7 +21,7 @@ The feature that impressed me most wasn't even the hot coffee. Traditional cold 
 
 ## Once it's dialed in, it becomes furniture
 
-This machine goes through the exact same arc as a new tool in my terminal: intense tuning for the first couple of weeks, a burst of "look what I can configure now," and then, once you've got two or three coffee origins dialed in, you stop opening the app at all. You just tap the profile and walk away. That's a genuinely good outcome — *set and forget* is what you actually want from a coffee maker at 6:30am — but it also means the most exciting phase of ownership is also the shortest one. Unlike a dev tool you get bored of, though, you can't just uninstall this and move on for free; it's sitting on your counter having cost you real money.
+This machine goes through the exact same arc as a new tool in my terminal: intense tuning for the first couple of weeks, a burst of "look what I can configure now," and then, once you've got two or three coffee origins dialed in, you stop opening the app at all. You just tap the profile and walk away. That's a good outcome — *set and forget* is what you want from a coffee maker at 6:30am — but it also means the most exciting phase of ownership is also the shortest one, the same thing I found once [the Voron build high wore off](/voron-build-vs-maintenance/). Unlike a dev tool you get bored of, though, you can't just uninstall this and move on for free; it's sitting on your counter having cost you real money.
 
 ## The coffee is good. Not 10x-the-price good.
 

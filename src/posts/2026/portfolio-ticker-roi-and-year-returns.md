@@ -19,7 +19,7 @@ The launch app was good at *now*: live quotes, FX into EUR, daily and total P/L,
 
 Total P/L in euros is the wrong shape for that. A portfolio you funded last month and one you funded in 2019 can show the same euro gain and mean completely different things. I needed an annualized rate.
 
-So the summary row now has an **ROI / yr** card — portfolio CAGR on open holdings: current value versus cost, raised to one over years since the earliest open purchase. Same spirit as the long-term S&P figures people quote. Signed percent, one decimal, em dash when the inputs are nonsense (no buy date, zero cost, and so on). Closed lots stay out of the start date so a sold position from 2018 does not stretch the clock for money that is already gone.
+So the summary row now has an ROI / yr card — portfolio CAGR on open holdings: current value versus cost, raised to one over years since the earliest open purchase. Same spirit as the long-term S&P figures people quote. Signed percent, one decimal, em dash when the inputs are nonsense (no buy date, zero cost, and so on). Closed lots stay out of the start date so a sold position from 2018 does not stretch the clock for money that is already gone.
 
 No GIPS theater — just a glanceable answer to "am I even in the ballpark of the story I tell myself about equities."
 
@@ -27,7 +27,7 @@ No GIPS theater — just a glanceable answer to "am I even in the ballpark of th
 
 CAGR collapses the whole life of the book into one number. Useful, and incomplete. Years are uneven — 2022 felt nothing like 2023 — and I wanted the S&P-style strip: **2023 +11.2% · 2024 −4.1% · 2026 YTD +3.1%**.
 
-That lives under the history chart now. Each completed calendar year gets a time-weighted return; the current year is labeled **YTD** and is *not* annualized. Buys and sells from the order log are linked in as cash flows so a mid-year deposit does not pretend to be performance.
+That lives under the history chart now. Each completed calendar year gets a time-weighted return; the current year is labeled YTD and is *not* annualized. Buys and sells from the order log are linked in as cash flows so a mid-year deposit does not pretend to be performance.
 
 Getting TWR right on a personal book is fiddlier than the CAGR card. The weekly series alone lies if you ignore cash flows. The order log alone has no prices. You need both, and you need tests for the ugly cases — mid-year buy, mid-year sell, empty series — or you ship a number that feels profound and is wrong.
 

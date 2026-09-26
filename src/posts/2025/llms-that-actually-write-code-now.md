@@ -33,15 +33,15 @@ GPT-4.5 showing up in the same window did not hurt the narrative either: the mar
 
 ## What I changed in practice
 
-Smaller PRs when AI is involved, not because the model cannot do big ones — it can — but because **human review does not scale with model enthusiasm**.
+Smaller PRs when AI is involved, not because the model cannot do big ones — it can — but because **[human review does not scale with model enthusiasm](/ai-code-review-bottleneck/)**.
 
 Explicit “no-go” zones in prompts and in team norms: auth, billing, anything that moves money or PII, anything that is hard to roll back.
 
-More emphasis on **architecture notes** in-repo. If the only record of intent is tribal memory, you will lose to a tool that confidently implements the wrong intent beautifully.
+More emphasis on architecture notes in-repo. If the only record of intent is tribal memory, you will lose to a tool that confidently implements the wrong intent beautifully.
 
 ## The vibe-coding conversation
 
-Early March was also when “vibe coding” stopped being a niche meme and turned into a mainstream argument: ship fast, feel the output, worry about understanding later. I get the appeal. I also know what production incidents feel like when understanding arrives at 2 a.m.
+Early March was also when [“vibe coding”](/vibe-coding-a-developers-honest-take/) stopped being a niche meme and turned into a mainstream argument: ship fast, feel the output, worry about understanding later. I get the appeal. I also know what production incidents feel like when understanding arrives at 2 a.m.
 
 The boring take is the true one: **speed without judgement is just technical debt with better marketing.**
 

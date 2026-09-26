@@ -9,7 +9,7 @@ draft: false
 excerpt: Three years of AI-assisted development later, vibe coding is real. The thinking is yours, the judgment is yours — the typing was never the point.
 ---
 
-Long time no see. Three years ago I wrote a post about the dawn of the ChatGPT era and how it felt like we were standing at a genuinely unusual inflection point in history. I used the analogy of low-background steel — the idea that pre-AI content might one day be considered uniquely valuable, untainted by machines. Reading that now feels both prescient and a little dramatic.
+Long time no see. Three years ago I wrote a post about the dawn of the ChatGPT era and how it felt like we were standing at an unusual inflection point in history. I used the analogy of low-background steel — the idea that pre-AI content might one day be considered uniquely valuable, untainted by machines. Reading that now feels both prescient and a little dramatic.
 
 A lot has happened since then.
 
@@ -23,7 +23,7 @@ What happened gradually, and then suddenly, was that the AI started owning *cont
 
 This changes the job in ways that took me a while to articulate.
 
-Writing code was never really the bottleneck. The bottleneck was always *thinking clearly about the problem*. The developers who were exceptional before AI tools were exceptional because they could decompose a fuzzy requirement into a precise mental model and then translate that model faithfully into implementation. That skill hasn't become less valuable — it's become the *only* thing that matters.
+Writing code was never the bottleneck. The bottleneck was always *thinking clearly about the problem*. The developers who were exceptional before AI tools were exceptional because they could decompose a fuzzy requirement into a precise mental model and then translate that model faithfully into implementation. That skill hasn't become less valuable — it's become the *only* thing that matters.
 
 Vibe coding collapses the gap between thinking and implementation. If your mental model is clear, the AI executes it remarkably well. If it isn't, the AI gives you something plausible-looking that quietly embeds your confusion into the code. The failure mode is invisible and that's the dangerous part.
 
@@ -31,7 +31,7 @@ Vibe coding collapses the gap between thinking and implementation. If your menta
 
 I still spend most of my time reading code, not writing it. The ratio has shifted because there's more AI-generated code to read, but the act of *understanding* — deeply, skeptically, asking "why does this behave this way?" — hasn't been automated away. Maybe it will be. But right now, the developer who can look at 300 lines of AI output and immediately spot the subtle race condition or the misunderstood business rule is still indispensable.
 
-Security hasn't changed either. If anything, the surface area has grown because it's now trivially easy to add a dependency, call an API, or scaffold an auth flow in thirty seconds without really internalizing what it does. The code-as-culture argument I made about security in 2023 feels more relevant than ever. Speed is not wisdom.
+Security hasn't changed either. If anything, the surface area has grown because it's now trivially easy to add a dependency, call an API, or scaffold an auth flow in thirty seconds without internalizing what it does. The code-as-culture argument I made about security in 2023 feels more relevant than ever. Speed is not wisdom.
 
 ## The identity question nobody has a clean answer to
 
@@ -39,7 +39,7 @@ There's an identity question lurking underneath all of this. If a significant po
 
 The scaffolding analogy breaks down though, because scaffolding is neutral — it doesn't have opinions. AI coding assistants have been trained on choices, patterns, and idioms, and they'll nudge your system toward them whether you notice or not. That's not necessarily bad, but it demands a kind of critical authorship that I don't think we talk about enough. You need to know what you wanted *before* you prompt, or you end up with a system that works perfectly but that nobody — including you — fully understands.
 
-I said in 2023 that it's up to us to decide how to navigate this landscape. Three years in, I think the navigation is less about resisting or embracing AI wholesale, and more about being precise about what part of the job is yours to own.
+I said in 2023 that it's up to us to decide how to handle what comes next. Three years in, I think the navigation is less about resisting or embracing AI wholesale, and more about being precise about what part of the job is yours to own.
 
 The thinking is yours. The judgment is yours. The accountability is yours.
 

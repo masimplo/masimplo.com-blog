@@ -35,11 +35,11 @@ Think back to how you onboarded a new hire ten years ago. You did not hand them 
 - An end-to-end suite that caught the cross-system mistakes the unit tests could not.
 - A code review where a senior asked "what happens if this is null?"
 
-The binder mattered. But the **automated, deterministic, no-hard-feelings tooling** is what actually stopped bad code from reaching production. The junior could not argue with the linter. The CI did not care about their feelings. They learned the rules by bumping into the walls until the walls stopped moving.
+The binder mattered. But the **automated, deterministic, no-hard-feelings tooling** is what stopped bad code from reaching production. The junior could not argue with the linter. The CI did not care about their feelings. They learned the rules by bumping into the walls until the walls stopped moving.
 
 AI is the same kind of contributor. A fast, confident, occasionally overconfident new hire who has never seen your business logic before. Treat it like one.
 
-## What guardrails actually look like
+## What guardrails look like
 
 There is nothing exotic here. The point is precisely that there is nothing exotic — the tools have existed for years and we already trust them on human-written code. The shift is using them as the **primary** quality gate for AI output, not the secondary one.
 

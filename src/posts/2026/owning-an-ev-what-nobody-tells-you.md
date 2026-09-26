@@ -29,17 +29,17 @@ I pick two fixed nights — Sunday and Wednesday — plug in, and forget about i
 
 ## The trip that breaks the routine is the one that gets you
 
-My fixed schedule handles ordinary weeks fine. What it doesn't handle automatically is the day that isn't ordinary — an unplanned longer drive, a detour, a week where I'm simply out more than usual. With a gas car, that day used to fix itself: notice the tank is low, stop, back to full in five minutes, anywhere, anytime. With an EV, that day requires *noticing ahead of time* that tomorrow won't be a normal day, and putting in extra charge tonight for a trip I haven't made yet. Forget to think one day forward and the flexibility gas gave you for free is exactly what you're missing.
+My fixed schedule handles ordinary weeks fine. What it doesn't handle automatically is the day that isn't ordinary — an unplanned longer drive, a detour, a week where I'm out more than usual. With a gas car, that day used to fix itself: notice the tank is low, stop, back to full in five minutes, anywhere, anytime. With an EV, that day requires *noticing ahead of time* that tomorrow won't be a normal day, and putting in extra charge tonight for a trip I haven't made yet. Forget to think one day forward and the flexibility gas gave you for free is exactly what you're missing.
 
 ## The bill that quietly absorbs your fuel budget
 
-This is the one that caught me off guard, and it's about where the cost went, not the car itself. Gas money used to be its own separate, visible line: a card swipe, a receipt, a number you mentally filed under "car." That number is gone now. What replaced it didn't disappear — it moved into the electricity bill, sitting quietly next to the water heater and the AC and everything else the house already draws.
+This is the one that caught me off guard, and it's about where the cost went, not the car itself. Gas money used to be its own separate, visible line: a card swipe, a receipt, a number you mentally filed under "car." That number is gone now. What replaced it didn't disappear — it moved into the electricity bill, sitting quietly next to the water heater and [the heat pump](/building-a-smart-hvac-system/) and everything else the house already draws.
 
 Per mile it's cheaper than gas — that part of the pitch is true. But it is not a rounding error against normal household consumption the way people imply when they say "it costs pennies to charge." A month where you did more driving than usual will spike that bill noticeably, and the first time you see it you will not immediately connect a bloated electricity number to "I drove more this month" — you'll just see a bigger bill than you're used to and wonder what broke. Nothing broke. **Your fuel cost just moved house.**
 
-## Who this actually works for
+## Who this works for
 
-If you have guaranteed off-street parking and a life with a mostly predictable weekly rhythm, this is a genuinely good trade — quieter car, less maintenance, a fuel cost that's lower even after it stops hiding. If you're relying on street parking, or your weeks are unpredictable enough that "just charge Sunday and Wednesday" isn't realistic, you are signing up for the part-time logistics job, not the smug gliding-past-gas-stations part.
+If you have guaranteed off-street parking and a life with a mostly predictable weekly rhythm, this is a good trade — quieter car, less maintenance, a fuel cost that's lower even after it stops hiding. If you're relying on street parking, or your weeks are unpredictable enough that "just charge Sunday and Wednesday" isn't realistic, you are signing up for the part-time logistics job, not the smug gliding-past-gas-stations part.
 
 None of the above has cooled me on the car itself. I leased mine rather than bought it, and that was deliberate — battery chemistry and charging infrastructure are improving on a curve steep enough that I would not want to own the depreciation risk if prices drop the way I expect them to. I would never lease a gas car; a gas car's resale value is a boring, well-understood curve. An EV's isn't, yet, and that uncertainty is exactly why leasing is the correct trade right now.
 

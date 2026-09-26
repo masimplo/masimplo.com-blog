@@ -43,7 +43,7 @@ We ran it as a series of focused sessions, each with one clear goal. Before any 
 The rough sequence was:
 
 1. **Planning** — library boundaries, migration order, what could go wrong. No code yet.
-2. **Scaffold and move** — create the Nx workspace, bring the three apps in using `git subtree` to keep the full commit history from each repo. The first build broke immediately: wrong import paths, missing SCSS includes, a gitignored `index.html` that the build actually needed, and a shared dependency bump that forced an API migration across all three apps at once. Fixed in one batch.
+2. **Scaffold and move** — create the Nx workspace, bring the three apps in using `git subtree` to keep the full commit history from each repo. The first build broke immediately: wrong import paths, missing SCSS includes, a gitignored `index.html` that the build needed, and a shared dependency bump that forced an API migration across all three apps at once. Fixed in one batch.
 3. **Extract shared libraries** — the big mechanical pass. Pull out shared HTTP, logging, analytics, and core utilities into `libs/`. Wire up `tsconfig` path aliases. Update imports across hundreds of files. This is where the agent earned its keep. Consistency over hundreds of files matters more than creativity.
 4. **Lint consolidation** — kill per-app ESLint configs, one config at the root, fix whatever it complained about.
 5. **CI consolidation** — replace three CircleCI projects with one, using path filtering so changes to app A do not trigger builds for B and C. The actual hard part was not the YAML. It was cataloguing all the secrets and context variables that used to live in three different places and figuring out which ones are shared and which are per-app. We also wrote a short runbook for whoever has to operate this six months from now.
@@ -52,25 +52,18 @@ I am skipping the blow-by-blow of every build failure. The pattern is simple: bi
 
 ## Decisions that worked out
 
-**Single root `package.json`** — per-app manifests still exist for metadata but dependencies live at the root. One install, no ambiguity about which lockfile is real.
-
-**Abstract base classes where apps actually diverge** — the auth interceptor, for instance, has the same shape in all three apps but each one gets its auth token from a different source. The shared library has the base class; each app extends it with its own wiring.
-
-**Configurable providers instead of forks** — analytics is a good example. One `provideAnalytics(config)` call that accepts which vendors to enable, instead of three copies of the same dispatcher with slightly different flags.
-
-**Native projects stay per-app** — Nx targets wrap `cap sync` and friends so the developer experience feels unified even though `ios/` and `android/` live under each app.
-
-**History preservation** — `git subtree` import means `git log --follow` still works on individual files. You can trace a file back through the original repo. This matters when you are debugging something that was introduced before the merge.
+- **Single root `package.json`** — per-app manifests still exist for metadata but dependencies live at the root. One install, no ambiguity about which lockfile is real.
+- **Abstract base classes where apps actually diverge** — the auth interceptor, for instance, has the same shape in all three apps but each one gets its auth token from a different source. The shared library has the base class; each app extends it with its own wiring.
+- **Configurable providers instead of forks** — analytics is a good example. One `provideAnalytics(config)` call that accepts which vendors to enable, instead of three copies of the same dispatcher with slightly different flags.
+- **Native projects stay per-app** — Nx targets wrap `cap sync` and friends so the developer experience feels unified even though `ios/` and `android/` live under each app.
+- **History preservation** — `git subtree` import means `git log --follow` still works on individual files. You can trace a file back through the original repo. That pays off when you are debugging something that was introduced before the merge.
 
 ## Things that bit us
 
-**Builder and output path mismatch** — one of the apps was on an older Angular builder that put web assets in a different directory. Capacitor config had to match. Easy to miss when you fix "the build" on one app and assume the others work the same way.
-
-**Gitignored files that the build needs** — one app generated its `index.html` from environment variants and had it in `.gitignore`. CI builds from a clean clone, so it just was not there. Only showed up when CI ran for the first time.
-
-**Shared dependency bumps** — one `package.json` means one version of everything. A breaking change in something like a carousel library forces a coordinated migration across all three apps in one commit. Honestly this is still better than discovering later that the three repos each applied a different workaround.
-
-**CI secret sprawl** — three apps, two platforms, multiple environments, multiple vendors. That is a lot of context variables. We ended up writing a checklist document just to track what goes where during the cutover. Without it you get a green pipeline that cannot actually sign a build.
+- **Builder and output path mismatch** — one of the apps was on an older Angular builder that put web assets in a different directory. Capacitor config had to match. Easy to miss when you fix "the build" on one app and assume the others work the same way.
+- **Gitignored files that the build needs** — one app generated its `index.html` from environment variants and had it in `.gitignore`. CI builds from a clean clone, so it just was not there. Only showed up when CI ran for the first time.
+- **Shared dependency bumps** — one `package.json` means one version of everything. A breaking change in something like a carousel library forces a coordinated migration across all three apps in one commit. This is still better than discovering later that the three repos each applied a different workaround.
+- **CI secret sprawl** — three apps, two platforms, multiple environments, multiple vendors. That is a lot of context variables. We ended up writing a checklist document just to track what goes where during the cutover. Without it you get a green pipeline that cannot sign a build.
 
 ## Where we landed
 

@@ -11,11 +11,11 @@ excerpt: When DeepSeek dropped R1, my first reaction was not hype — it was spr
 
 I spend my working life thinking about systems, vendors, and risk. So when DeepSeek dropped R1 in late January and the internet spent a week arguing whether a Chinese lab had just made a serious open-weight reasoning model look “cheap,” my first reaction was not hype — it was **spreadsheet panic**.
 
-Not because I suddenly believed every headline. Because the comfortable story we had been telling ourselves — that frontier capability would stay bundled with hyperscaler capex and US-cloud pricing power — suddenly had a counterexample people could actually run and diff against.
+Not because I suddenly believed every headline. Because the comfortable story we had been telling ourselves — that frontier capability would stay bundled with hyperscaler capex and US-cloud pricing power — suddenly had a counterexample people could run and diff against.
 
 ## What actually landed
 
-R1 was not a magic trick. It was a **reasoning-oriented model** in the same conversation as OpenAI’s o-series: chain-of-thought style behavior, strong benchmark chatter, and enough open weight / openness (depending on the exact artifact and license nuance you care about) that the gap between “we rent intelligence” and “we host intelligence” felt narrower than it had the month before.
+R1 was not a magic trick. It was a reasoning-oriented model in the same conversation as OpenAI’s o-series: chain-of-thought style behavior, strong benchmark chatter, and enough open weight / openness (depending on the exact artifact and license nuance you care about) that the gap between “we rent intelligence” and “we host intelligence” felt narrower than it had the month before.
 
 The part that hit me as a practitioner was not nationalism or narrative. It was **economics**. If competitive reasoning-class models can be produced and served at radically lower marginal cost than the incumbents assumed, then every product plan built on “APIs only get more expensive from here” deserves another look.
 
@@ -31,10 +31,10 @@ Third: **open weights are not free security**. They are a different risk profile
 
 I did not rip out production integrations on a news cycle. I did not declare the cloud dead. I did not pretend benchmarks tell you how a model behaves on *your* data, *your* prompts, and *your* compliance constraints.
 
-What I did do was reopen the boring questions: what are we locked into, what would it cost to migrate, and **where does our differentiation actually live** if the commodity layer keeps getting cheaper faster than our roadmap assumed.
+What I did do was reopen the boring questions: what are we locked into, what would it cost to migrate, and **where does our differentiation live** if the commodity layer keeps getting cheaper faster than our roadmap assumed.
 
 ## The uncomfortable question
 
-If intelligence keeps trending toward commodity, the winners are not the teams with the shiniest model — they are the teams with the clearest product judgement, the tightest feedback loops, and the discipline not to ship confident-sounding sludge.
+If intelligence keeps trending toward commodity, the winners are not the teams with the shiniest model — they are the teams with the clearest product judgement, the tightest feedback loops, and [the discipline not to ship confident-sounding sludge](/guardrails-beat-guidelines-for-ai-code/).
 
 DeepSeek R1 did not answer that question. It just made it harder to ignore.

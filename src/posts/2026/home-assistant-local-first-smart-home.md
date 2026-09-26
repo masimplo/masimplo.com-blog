@@ -25,13 +25,13 @@ The energy monitoring foundation of the house is built on Shelly devices — at 
 
 The reason I got to 60+ is partly the lesson I learned the hard way: I initially missed several sub-panels that had been wired without monitoring, and spent a while confused about why my consumption numbers did not add up. Now the rule is simple — nothing gets wired without visibility.
 
-Having this level of monitoring granularity turns out to be genuinely useful beyond just curiosity. You can spot when something is drawing more than it should, understand how much your heat pump actually costs to run in different modes, and have real data when you want to optimize something.
+Having this level of monitoring granularity turns out to be useful beyond curiosity. You can spot when something is drawing more than it should, understand how much your heat pump actually costs to run in different modes, and have real data when you want to optimize something.
 
 ## Mushroom dashboards
 
 The default Home Assistant UI is functional but not beautiful. After going through a few dashboard approaches, I landed on Mushroom Strategy, which generates clean card-based views from your entities automatically. It is the kind of thing that makes Home Assistant feel like a finished product rather than a developer tool.
 
-Having a dashboard that actually makes sense to everyone in the house — not just me — turned out to matter more than I initially expected.
+Having a dashboard that makes sense to everyone in the house — not just me — turned out to matter more than I initially expected.
 
 ## Local Tuya for thermostats
 

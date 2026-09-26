@@ -11,19 +11,19 @@ excerpt: When you build your own house you get to make all the decisions. That s
 
 When you build your own house you get to make all the decisions. That sounds great until you realize you also have to live with all of them.
 
-I have been building a three-floor house in a suburb of Athens for the better part of several years now, and the HVAC system has been one of the most unexpectedly deep rabbit holes of the whole project. Not because it is particularly complicated in concept, but because the gap between what gets installed and what actually works well requires a lot of owner-driven tuning that nobody tells you about.
+I have been building a three-floor house in a suburb of Athens for the better part of several years now, and the HVAC system has been one of the most unexpectedly deep rabbit holes of the whole project. Not because it is particularly complicated in concept, but because the gap between what gets installed and what works well is filled with owner-driven tuning that no installer mentions at handover.
 
 ## Choosing the heat pump
 
 After a lot of research I settled on a Daikin Monobloc as the primary heating and cooling system. Monobloc means all the refrigerant components are in one outdoor unit, with just water circuits going into the house — simpler installation, no refrigerant pipes to worry about inside. The emitters are **hydronic fan coil units** on two of the three floors — the same water loop does heating in winter and cooling in summer, which is exactly the kind of load a monobloc and buffer tank arrangement is built for.
 
-The installer set it up, commissioned it, and left. That is where my involvement really began.
+The installer set it up, commissioned it, and left. That is where my involvement began.
 
 ## Weather curves and why they matter
 
 The Daikin BRC1HHDA controller exposes something called a weather compensation curve — the idea is that the system adjusts the Leaving Water Temperature (LWT) automatically based on outdoor temperature, rather than always running at full blast. A well-tuned weather curve means the system runs more continuously at lower power (much more efficient) rather than cycling on and off at high power.
 
-The defaults the installer leaves in are almost never optimal for your house. Your insulation, glazing, room-by-room loads, orientation, and how the fan coils actually behave at different supply temperatures — all of it affects what the right curve should be. I spent a fair amount of time adjusting the curve parameters and monitoring the results, comparing electricity consumption against indoor comfort, before landing on settings that actually made sense for our house.
+The defaults the installer leaves in are almost never optimal for your house. Your insulation, glazing, room-by-room loads, orientation, and how the fan coils behave at different supply temperatures — all of it affects what the right curve should be. I spent a fair amount of time adjusting the curve parameters and monitoring the results, comparing electricity consumption against indoor comfort, before landing on settings that made sense for our house.
 
 It is one of those things that makes a real difference to both comfort and electricity bills, and yet most people who own heat pumps have no idea it exists. I later wrote up the [March tune that cut heat-pump energy about 21%](/daikin-weather-compensation-curve/) — one offset, Shelly receipts.
 
@@ -33,13 +33,13 @@ Domestic hot water (DHW) was its own adventure. On this controller, **Comfort an
 
 The problem in practice was leaving everything biased toward the high target when a solar loop is in the mix — the heat pump was doing premium-temperature work the sun could have covered, or firing at the wrong times of day. It took iteration to align tank setpoints and timing with real shower patterns, cheap solar gain during the day, and avoiding unnecessary heat-pump runs in expensive tariff windows.
 
-This is the kind of optimization that you simply cannot do without understanding the system. The installer has no incentive to dig into it, and the manual is not exactly a pleasure to read.
+This is the kind of optimization that you cannot do without understanding the system. The installer has no incentive to dig into it, and the manual is not exactly a pleasure to read.
 
 ## The mystery of the unmetered loads
 
 At some point I started noticing that my total electricity consumption did not add up. I had Shelly energy monitors on most circuits, but the numbers just did not reconcile.
 
-It turned out there were sub-panels in the house that had been wired without Shelly monitors — basically blind spots in my energy monitoring setup. Once I tracked them all down and got monitoring on every circuit, the picture became clear. It sounds like a small thing but it genuinely bothered me that I had significant consumption I could not account for. There is something deeply satisfying about having complete visibility into your own house's energy flows.
+It turned out there were sub-panels in the house that had been wired without Shelly monitors — blind spots in my energy monitoring setup. Once I tracked them all down and got monitoring on every circuit, the picture became clear. It sounds like a small thing but it bothered me that I had significant consumption I could not account for. There is something deeply satisfying about having complete visibility into your own house's energy flows.
 
 ## The solar water heater platform
 
@@ -49,7 +49,7 @@ The hydraulic integration with the existing buffer tank and 3-way valve arrangem
 
 ## Fan coil units and thermostats
 
-The ceiling fan coils are **Gree**. The floor-mounted cassettes come from another line — same hydronic circuit, different form factor and throw pattern. I am deliberately not listing model codes here; the important part was getting both families to behave predictably on the same supply temperatures. **Every fan coil is oversized relative to the nominal room load** — not by accident. The goal is to run **day-to-day heating and cooling on the lowest air speed** so the house stays quiet; undersized units spend their lives screaming on high fan to keep up. For control, I ended up with MOES BAC-006ALWW thermostats, which support Local Tuya — meaning they integrate directly into Home Assistant without going through any cloud service. Local-first has been a strong principle throughout the smart home setup, and it matters especially for things like heating and cooling control where you really do not want to depend on a third-party server being up.
+The ceiling fan coils are Gree. The floor-mounted cassettes come from another line — same hydronic circuit, different form factor and throw pattern. I am deliberately not listing model codes here; the important part was getting both families to behave predictably on the same supply temperatures. **Every fan coil is oversized relative to the nominal room load** — not by accident. The goal is to run day-to-day heating and cooling on the lowest air speed so the house stays quiet; undersized units spend their lives screaming on high fan to keep up. For control, I ended up with MOES BAC-006ALWW thermostats, which support Local Tuya — meaning they integrate directly into Home Assistant without going through any cloud service. Local-first has been a strong principle throughout the smart home setup, and it matters especially for things like heating and cooling control where you do not want to depend on a third-party server being up.
 
 The basement playroom still needs climate control — that will be a Toshiba Daisekai 10 split unit. The floor fan coils in some rooms are also going to get IR blasters (Broadlink RM4 Mini) for control where wired thermostats were not practical.
 

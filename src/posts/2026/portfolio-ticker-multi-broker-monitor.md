@@ -3,17 +3,17 @@ layout: post
 title: Portfolio Ticker — a tiny monitor for investments scattered across brokers
 author: [masimplo]
 tags: [Technology, Code, Firebase, Tools, Personal]
-image: ../../images/headers/portfolio-ticker-header.png
+image: ../../images/headers/portfolio-ticker-header.jpg
 date: 2026-04-17
 draft: false
 excerpt: I had stocks and ETFs across three platforms and no single place to see them. So I built one, and left it open for anyone else to use.
 ---
 
-I had investments scattered across three different brokers and no single place to see what was actually going on. Each platform shows you its own slice, in its own currency, with its own definition of "daily change". Switching between them to mentally sum everything up was annoying on good days and misleading on bad ones.
+I had investments scattered across three different brokers and no single place to see what was going on. Each platform shows you its own slice, in its own currency, with its own definition of "daily change". Switching between them to mentally sum everything up was annoying on good days and misleading on bad ones.
 
 So I built a small web app that pulls all of it into one screen. It is live at [portfolio-ticker.web.app](https://portfolio-ticker.web.app) and anyone with a Google account can use it. No ads, no tracking beyond the bare minimum, no pitch to upgrade. I wrote it for myself and then realised there was no real reason not to share it.
 
-## What it actually does
+## What it does
 
 You add your holdings — ticker, shares, average price, currency, purchase date, optionally which platform you hold them on. The app then:
 
@@ -29,7 +29,7 @@ It is not a trading tool. There is no order placement, no options chain, no news
 
 I started with a single-file Flask prototype. Python, `yfinance`, a SQLite file, an HTML template with some JavaScript sprinkled on top. That version still exists in the repo as a museum piece. It worked for me on localhost for about a year.
 
-What pushed me to rewrite it was wanting to access the thing from my phone without running a laptop at home, and — honestly — wanting to let a few friends use it without handing out SSH keys. Once you say "multi-user, accessible from anywhere", you are building a web app, not a script.
+What pushed me to rewrite it was wanting to access the thing from my phone without running a laptop at home, and, just as much, wanting to let a few friends use it without handing out SSH keys. Once you say "multi-user, accessible from anywhere", you are building a web app, not a script.
 
 The rewrite went to Firebase:
 
@@ -59,23 +59,18 @@ The nice property of this is that the cache is shaped around *tickers*, not *use
 
 Firebase Auth handles sign-in. Google or email/password, whichever you prefer. Every Firestore path is scoped under `users/{uid}/...` and the security rules reject anything that does not match the authenticated UID. The Cloud Functions verify the Firebase ID token on every request and attach the UID to the handler context. There is no admin panel, no impersonation, no shared state between users.
 
-This matters because I opened the app to the public. "Hopefully won't be abused" is not a security model. The security model is: each user's holdings are readable and writable only by them, period. If the functions get hammered I can add rate limiting or quotas; the data isolation is structural.
+The app is open to the public, and "hopefully won't be abused" is not a security model. The security model is: each user's holdings are readable and writable only by them, period. If the functions get hammered I can add rate limiting or quotas; the data isolation is structural.
 
 ## Small touches that made it feel finished
 
 The thing that separates a side project you demo once from a side project you actually use is the small stuff. A few things I am glad I spent time on:
 
-**Ticker auto-lookup in the add-holding form.** You type a company name, it suggests tickers. Without this you are tabbing back to Yahoo constantly.
-
-**Undo.** Deleting a holding pushes the previous state onto a small in-memory stack, and there is an undo button. I have hit it more than once.
-
-**Merge duplicate purchases.** If you bought the same ticker on the same platform twice, the UI lets you collapse them into one row with a weighted-average price. Otherwise the table turns into a wall over time.
-
-**Purchase markers on the chart.** Tiny triangles on the historical chart where you actually bought. Context is everything when you are looking at a drawdown.
-
-**A proper mobile layout.** The desktop view is a sortable table. On mobile it switches to a card layout because a table scrolled sideways is not useful. Same data, different shape.
-
-**Market-status awareness.** A small composable knows which exchange a ticker trades on and whether that market is currently open. If it is closed, the "daily change" is the last session's change, not a meaningless flatline.
+- **Ticker auto-lookup in the add-holding form.** You type a company name, it suggests tickers. Without this you are tabbing back to Yahoo constantly.
+- **Undo.** Deleting a holding pushes the previous state onto a small in-memory stack, and there is an undo button. I have hit it more than once.
+- **Merge duplicate purchases.** If you bought the same ticker on the same platform twice, the UI lets you collapse them into one row with a weighted-average price. Otherwise the table turns into a wall over time.
+- **Purchase markers on the chart.** Tiny triangles on the historical chart where you bought. Context is everything when you are looking at a drawdown.
+- **A proper mobile layout.** The desktop view is a sortable table. On mobile it switches to a card layout because a table scrolled sideways is not useful. Same data, different shape.
+- **Market-status awareness.** A small composable knows which exchange a ticker trades on and whether that market is currently open. If it is closed, the "daily change" is the last session's change, not a meaningless flatline.
 
 ## If you want to use it
 

@@ -37,7 +37,7 @@ Upgrades are the tempting layer: every improvement makes sense in isolation, and
 
 Neither layer cares that you have a deadline for a practical print. Both reward the same temperament: someone who does not mind opening the machine when they would rather be done.
 
-## Who this is actually for
+## Who this is for
 
 If you want a reliable appliance and your joy is in the *output* — the parts, the models, the projects — a well-supported commercial printer is often the rational choice. Nothing wrong with that.
 

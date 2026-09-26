@@ -78,6 +78,6 @@ The documents also go stale. A skill that references a module you refactored las
 
 And they are still guidelines — words, advisory, exactly the soft constraint I have [warned about before](/guardrails-beat-guidelines-for-ai-code/). A better manual reduces how often the small model drifts; it does not catch the drift that still happens. The linters, the type checker, and the test suite remain the things that say no. This post is about making the contractor better trained. You still lock the doors.
 
-The instinct with a new frontier model is to use it as a better worker. The higher-leverage move, at least for me, has been to use it as the person who writes the training material — spend the expensive intelligence at compile time, and let the cheap models cash it in at runtime, hundreds of sessions over.
+The instinct with a new frontier model is to use it as a better worker. The better use, at least for me, has been to use it as the person who writes the training material — spend the expensive intelligence at compile time, and let the cheap models cash it in at runtime, hundreds of sessions over.
 
 Next time you get access to a model a tier above your daily driver, before you point it at the backlog, hand it your `CLAUDE.md` and your worst-performing skill and ask it to rewrite them for a weaker audience. Give it a shot — you can thank me later.
