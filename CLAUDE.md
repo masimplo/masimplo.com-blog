@@ -2,7 +2,7 @@
 
 masimplo.com is the personal blog of a software engineer of 20+ years — first-person, essay-style posts about AI-assisted development, software engineering practice, 3D printing, smart home tinkering, and industry opinions, written for practicing developers and hands-on makers. It is a Gatsby 5 static site (TypeScript strict + Emotion CSS-in-JS, a port of the Ghost Casper theme) deployed on Netlify; content is Markdown under `src/posts/<year>/`.
 
-**Writing or editing a post? Use the project skills:** `write-post` (draft a new post in the author's voice) and `optimize-post` (de-slop, audience fit, and SEO polish for an existing draft). The conventions they encode are summarized below, but the skills are the source of truth for content work.
+**Writing or editing a post? Use the project skills:** `write-post` (end-to-end: gather the author's material, keyword research, story outline, draft in the author's voice, Nano Banana header image, validate), `optimize-post` (de-slop, audience fit, and SEO polish for an existing draft), and `validate-post` (read-only spec check of a post and its header image; `python3 .claude/skills/validate-post/scripts/validate_post.py <post.md>`). The conventions they encode are summarized below, but the skills are the source of truth for content work.
 
 ---
 

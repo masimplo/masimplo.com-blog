@@ -27,6 +27,8 @@ Scan the full text and rewrite every hit. Patterns to kill:
 - Lazy extremes ("every developer", "nobody ever") when a specific claim is available.
 - Metronomic rhythm: three same-length sentences in a row, or every paragraph ending on a punchy one-liner. Vary it.
 
+**Also** run the numbered tells list in `.claude/skills/write-post/references/voice.md` (filler "actually", "nobody tells you" hooks, zinger-ending paragraphs, em-dash density above ~2 per 100 words, invented precision).
+
 **Keep** (author's voice — do not remove): em dashes, one bold thesis phrase per section, italics on pivot words, rhetorical questions, first-person hedges that are honesty ("I underestimated..."), the aphoristic closer.
 
 ## Pass 2 — Audience fit
@@ -55,3 +57,5 @@ These are the only levers this site reads. All verified against `gatsby-node.js`
 ## Output
 
 Deliver: the edited file (apply changes directly), then a change report — slop patterns found and fixed (with counts), audience-fit cuts, and each SEO lever checked with its before/after value. Flag anything deliberately kept. If the excerpt, image, or a link target could not be verified in the repo, say so explicitly rather than guessing.
+
+When done, run the `validate-post` skill to confirm the result meets the spec. It checks, you fix.

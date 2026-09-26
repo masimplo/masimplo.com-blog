@@ -114,3 +114,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 .vscode
+# Nano Banana (Gemini CLI) scratch output
+nanobanana-output/
