@@ -104,4 +104,4 @@ excerpt: One sentence, ~120–155 characters, containing the primary keyword.
 - A dangling `image` path does not fail the build. It silently ships the post with no header and no social card.
 - A tag that is not in `tag.yaml` breaks the tag archive.
 - Post URLs have no `/blog/` prefix. Internal links are `/<slug>/` with a trailing slash.
-- Nano Banana's API key is not in the shell profile. Ask the user for it, and never echo a key into a command, file, commit, or the vault.
+- Never echo an API key into a command, file, commit, or the vault. If `GEMINI_API_KEY` is unset, ask the user to export it (setup in `references/header-image.md`).

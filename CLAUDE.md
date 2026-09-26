@@ -50,7 +50,7 @@ gatsby-node.js            # Slugs, page creation, reading time, related posts
 
 ### Posts
 
-One Markdown file per post at `src/posts/<year>/<kebab-case-slug>.md`. All 50+ posts use the same frontmatter block, in this field order:
+One Markdown file per post at `src/posts/<year>/<kebab-case-slug>.md`. Every post uses the same frontmatter block, in this field order:
 
 ```markdown
 ---
@@ -61,6 +61,7 @@ tags: [Tag1, Tag2]
 image: ../../images/headers/some-image.jpg
 date: YYYY-MM-DD
 draft: false
+excerpt: One sentence that becomes the meta description.
 ---
 ```
 
@@ -73,7 +74,7 @@ draft: false
 | `image` | Relative path from the post file; **without it the post gets no og:image/twitter:image at all** |
 | `date` | ISO `YYYY-MM-DD` |
 | `draft` | `true` excludes the post from pages, sitemap, and RSS |
-| `excerpt` | Optional single sentence; becomes the meta description (see SEO below) |
+| `excerpt` | One sentence, ~120–155 chars, containing the primary keyword; becomes the meta description (see SEO below). Required — `validate-post` fails a post without one |
 | `permalink` | Supported by `gatsby-node.js` but used by zero posts — avoid |
 
 ### Tags and authors
@@ -87,10 +88,10 @@ draft: false
 
 - **Post URLs are at the site root**: slug = `/<filename-without-.md>/` (`gatsby-node.js`). There is **no `/blog/` prefix**. The filename IS the permanent URL — choose it carefully, never rename a published post's file.
 - Tag pages: `/tags/<kebab-case-tag>/`; author pages: `/author/<kebab-case-name>/`. The index is effectively a single page (`postsPerPage = 1000`).
-- **Meta description** (also og/twitter description and JSON-LD): frontmatter `excerpt` if present, otherwise Gatsby's auto-excerpt (~140-char truncation). Only a handful of posts set `excerpt`; set it on any post you care about.
+- **Meta description** (also og/twitter description and JSON-LD): frontmatter `excerpt` if present, otherwise Gatsby's auto-excerpt (~140-char truncation). Every post sets `excerpt`; keep it that way.
 - **Only `tags[0]` reaches meta tags** (`article:tag`, `twitter:data2`) and drives related-post selection (`primaryTag`). Order tags most-relevant-first.
 - Post pages emit full OG + Twitter cards + a `BlogPosting` JSON-LD block (`src/templates/post.tsx`). Canonical URLs come from `gatsby-plugin-canonical-urls`; sitemap from `gatsby-plugin-sitemap` (referenced by `src/static/robots.txt` as `/sitemap-index.xml`).
-- RSS at `/rss.xml` via `gatsby-plugin-feed` — items include full post HTML. Note: the feed's `match: '^/blog/'` option means no post page injects the feed `<link>` into its head (post paths don't start with `/blog/`); the feed itself is still complete.
+- RSS at `/rss.xml` via `gatsby-plugin-feed` — items include full post HTML, and every page's head links the feed.
 - Analytics: `gatsby-plugin-google-gtag` (GA4, `G-SKNLCK1W2K`).
 - Images: `gatsby-plugin-sharp` / `gatsby-remark-images` at quality 85, `maxWidth` 2000, WEBP/AVIF variants. Recent posts use **one header image and no inline body images**.
 - `siteMetadata.description` in `gatsby-config.js` ("Pressing keys, generating bytes") feeds only the RSS feed; the homepage meta description comes from `src/website-config.ts` — they differ on purpose. Edit `website-config.ts` for anything user-facing.

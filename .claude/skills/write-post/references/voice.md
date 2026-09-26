@@ -48,7 +48,7 @@ These show up even in some recent posts. Do not copy them from the exemplars.
 
 1. **Contrast formulas.** "It's not X — it's Y.", "X isn't a fix. It's a different bug…", "less X and more Y". Allow at most one per post, and only when it is the thesis. Otherwise state Y directly.
 2. **"Actually" / "genuinely" / "honestly" as filler.** Target zero. Keep one only where it carries a real contrast with an expectation.
-3. **"Nobody tells you / nobody mentions"** in titles and hooks. It has been used twice recently. Find another angle.
+3. **"Nobody tells you / nobody mentions"** in titles and hooks. The blog has already used this hook; find another angle.
 4. **The closer that restates the thesis as an aphorism built on a contrast.** Prefer a callback to a concrete detail from the opening: the caliper, the +5 offset, the 7am charge percentage.
 5. **Every paragraph ending on a zinger.** Let most paragraphs end on information.
 6. **Triads everywhere.** One "X, Y, and Z" rhythm per section at most.

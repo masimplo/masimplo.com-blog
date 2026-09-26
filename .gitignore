@@ -116,3 +116,4 @@ $RECYCLE.BIN/
 .vscode
 # Nano Banana (Gemini CLI) scratch output
 nanobanana-output/
+__pycache__/
