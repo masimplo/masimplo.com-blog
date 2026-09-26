@@ -237,7 +237,7 @@ def validate(path, keyword=None, secondary=(), kind=None, calibrate=False):
         if tags and not re.fullmatch(r"\[[^,\]]+(?:, [^,\]]+)*\]", tags_raw.strip()):
             r.warn("tags", "format as `[A, B, C]` — comma + single space")
 
-    date_raw = fm.get("date", "")
+    date_raw = fm.get("date", "").strip().strip('"')
     try:
         d = dt.date.fromisoformat(date_raw)
         if rel and len(rel.parts) == 2 and rel.parts[0] != str(d.year):
