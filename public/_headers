@@ -1,0 +1,11 @@
+# Security headers for all pages
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# Long-lived cache for content-hashed Astro build assets (CSS, JS, optimized images)
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable

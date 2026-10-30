@@ -4,7 +4,7 @@ Every post gets exactly one generated header image and no inline body images. It
 
 ## How it renders (why aspect ratio matters)
 
-`src/templates/post.tsx` renders the header as a `background-size: cover` figure **800px tall** at roughly content width, and it is cropped to a social card elsewhere. Ultra-wide images (e.g. 1792×592, 3:1) lose their sides badly. **Target 16:9** (~1376×768). 3:2 (1536×1024) is acceptable. Keep the subject centred, with a safe margin on every edge.
+`src/pages/[...slug].astro` renders the header as an `object-fit: cover` image in a figure **800px tall** at roughly content width, and it is cropped to a social card elsewhere. Ultra-wide images (e.g. 1792×592, 3:1) lose their sides badly. **Target 16:9** (~1376×768). 3:2 (1536×1024) is acceptable. Keep the subject centred, with a safe margin on every edge.
 
 The nanobanana `/generate` and `/edit` commands have **no aspect-ratio flag**. Valid options are only `--count`, `--styles`, `--variations`, `--format`, `--seed`, and `--preview`, and anything else makes the parser error out. Asking for 16:9 in the prompt is only a hint: an `/edit` of a 3:1 image came back 3:1, and past outputs have ranged from 1376×768 to 1792×592. When the frame must be 16:9 (always for headers you can't crop, and for recomposing an existing wide image), use `scripts/nano_banana_api.py`. It calls the same models through the Gemini API with a real `aspectRatio` setting:
 

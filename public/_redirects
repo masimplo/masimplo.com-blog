@@ -1,0 +1,12 @@
+https://kind-almeida-4abe69.netlify.com/* https://masimplo.com/:splat 301!
+https://masimplo.netlify.com/* https://masimplo.com/:splat 301!
+https://www.masimplo.com/* https://masimplo.com/:splat 301!
+
+# First-party proxy for gtag.js — some networks block googletagmanager.com.
+# Force (!): always proxy, even if a file with this path ever exists.
+/gtag/js  https://www.googletagmanager.com/gtag/js  200!
+# Removed starter-template page (pointed at the old gatsby-casper repo) and its only tag.
+/github-link/  /  301
+/github-link  /  301
+/tags/source/  /  301
+/tags/source  /  301

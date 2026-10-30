@@ -1,0 +1,41 @@
+---
+import config from '../../website-config';
+
+type Props = {
+  /** Unique per page: the inline box and the overlay can both be on a post page. */
+  id: string;
+};
+
+const { id } = Astro.props;
+const inputId = `${id}-email`;
+---
+
+<form class="subscribe-form" novalidate data-subscribe-form>
+  <div class="form-group">
+    <label class="visually-hidden" for={inputId}>
+      Email address
+    </label>
+    <input
+      class="subscribe-email"
+      type="email"
+      name={config.mailchimpEmailFieldName}
+      id={inputId}
+      placeholder="youremail@example.com"
+      autocomplete="email"
+      required
+    />
+  </div>
+  <div style="position: absolute; left: -5000px" aria-hidden="true">
+    <input type="text" name={config.mailchimpName} tabindex="-1" value="" />
+  </div>
+  <button class="subscribe-form-button" type="submit">
+    <span>Subscribe</span>
+  </button>
+  <div class="subscribe-message" role="status" aria-live="polite" hidden></div>
+</form>
+
+<script>
+  import { initSubscribeForms } from '../../scripts/subscribe';
+
+  initSubscribeForms();
+</script>

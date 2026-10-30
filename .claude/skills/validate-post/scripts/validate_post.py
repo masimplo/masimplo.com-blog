@@ -258,7 +258,7 @@ def validate(path, keyword=None, secondary=(), kind=None, calibrate=False):
 
     excerpt = fm.get("excerpt", "").strip().strip('"')
     if not excerpt:
-        r.fail("excerpt", "missing — Gatsby will auto-truncate the first ~140 chars as meta description")
+        r.fail("excerpt", "missing — the site will auto-truncate the first ~140 chars as meta description")
     elif not 100 <= len(excerpt) <= 165:
         r.warn("excerpt", f"{len(excerpt)} chars (aim ~120–155 for the meta description)")
     else:

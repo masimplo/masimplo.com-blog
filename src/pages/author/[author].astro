@@ -1,0 +1,117 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import { kebabCase } from 'lodash-es';
+
+import ArchiveHeader from '../../components/ArchiveHeader.astro';
+import Footer from '../../components/Footer.astro';
+import PostCard from '../../components/PostCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { type Author, countLabel, getPostSummaries, type PostSummary } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  // Author archives list posts oldest first.
+  const posts = (await getPostSummaries()).reverse();
+  const authors = await getCollection('authors');
+
+  return authors.map(author => ({
+    params: { author: kebabCase(author.data.name) },
+    props: {
+      author,
+      posts: posts.filter(post => post.authors.some(a => a.id === author.id)),
+    },
+  }));
+}
+
+type Props = { author: Author; posts: PostSummary[] };
+
+const { author: entry, posts } = Astro.props;
+const author = entry.data;
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+const twitterHandle = author.twitter ? `@${author.twitter}` : undefined;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: author.name,
+  url: author.website ?? pageUrl,
+  ...(author.twitter && { sameAs: [`https://twitter.com/${author.twitter}`] }),
+  ...(author.bio && { description: author.bio }),
+};
+---
+
+<BaseLayout
+  title={`${author.name} - masimplo.com`}
+  description={author.bio}
+  type="profile"
+  twitterCard="summary"
+  jsonLd={[jsonLd]}
+>
+  <Fragment slot="head">
+    {author.twitter && (
+      <meta property="article:author" content={`https://twitter.com/${author.twitter}`} />
+    )}
+    {twitterHandle && <meta name="twitter:creator" content={twitterHandle} />}
+  </Fragment>
+
+  <ArchiveHeader image={author.profile_image}>
+    <div class="site-header-content author-header">
+      <Image
+        class="author-profile-image"
+        src={author.avatar}
+        alt={author.name}
+        width={110}
+        height={110}
+        densities={[1, 2]}
+        loading="eager"
+      />
+      <div class="author-header-content">
+        <h1 class="site-title">{author.name}</h1>
+        {author.bio && <p class="author-bio">{author.bio}</p>}
+        <div class="author-meta">
+          {author.location && <div class="author-location">{author.location}</div>}
+          <div class="author-stats">{countLabel(posts.length)}</div>
+          {author.website && (
+            <span class="author-social-link">
+              <a href={author.website} target="_blank" rel="noopener noreferrer">
+                Website
+              </a>
+            </span>
+          )}
+          {author.twitter && (
+            <span class="author-social-link">
+              <a
+                href={`https://twitter.com/${author.twitter}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Twitter
+              </a>
+            </span>
+          )}
+          {author.facebook && (
+            <span class="author-social-link">
+              <a
+                href={`https://www.facebook.com/${author.facebook}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Facebook
+              </a>
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  </ArchiveHeader>
+  <main id="site-main" class="site-main outer">
+    <div class="inner">
+      <div class="post-feed">
+        {posts.map((post, index) => (
+          <PostCard post={post} eager={index < 3} />
+        ))}
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

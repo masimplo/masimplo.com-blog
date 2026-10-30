@@ -2,11 +2,14 @@
 # Node.js-Specific Ignores
 # =========================
 
-# Build directory
-public/
+# Build output
+dist/
 
-# Gatsby cache
-.cache/
+# Astro generated types and caches
+.astro/
+
+# Netlify CLI
+.netlify/
 
 # Logs
 logs

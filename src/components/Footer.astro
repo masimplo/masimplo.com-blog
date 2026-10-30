@@ -1,0 +1,32 @@
+---
+import config from '../website-config';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer outer">
+  <div class="site-footer-content inner">
+    <section class="copyright">
+      <a href="/">{config.title}</a> &copy; {year}{' '}
+      {config.footer && (
+        <a href="/">
+          | {config.title} {config.footer}
+        </a>
+      )}
+    </section>
+    <nav class="site-footer-nav" aria-label="Footer">
+      <a href="/">Latest Posts</a>
+      {config.facebook && (
+        <a href={config.facebook} target="_blank" rel="noopener noreferrer">
+          Facebook
+        </a>
+      )}
+      {config.twitter && (
+        <a href={config.twitter} target="_blank" rel="noopener noreferrer">
+          Twitter
+        </a>
+      )}
+      <a href="/rss.xml">RSS</a>
+    </nav>
+  </div>
+</footer>

@@ -1,0 +1,38 @@
+---
+import PostCard from '../components/PostCard.astro';
+import SiteNav from '../components/SiteNav.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPostSummaries } from '../lib/posts';
+
+const latest = (await getPostSummaries()).slice(0, 3);
+---
+
+<BaseLayout title="Page not found — masimplo.com" description="This page does not exist.">
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+  </Fragment>
+  <header class="site-archive-header">
+    <div class="site-nav-main outer">
+      <div class="inner">
+        <SiteNav />
+      </div>
+    </div>
+  </header>
+  <main id="site-main" class="error-content outer">
+    <div class="inner">
+      <section style="text-align: center">
+        <h1 class="error-code">404</h1>
+        <p class="error-description">Page not found</p>
+        <a class="error-link" href="/">
+          Go to the front page →
+        </a>
+      </section>
+
+      <div class="post-feed">
+        {latest.map(post => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    </div>
+  </main>
+</BaseLayout>

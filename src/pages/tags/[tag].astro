@@ -1,0 +1,55 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getCollection } from 'astro:content';
+import { kebabCase } from 'lodash-es';
+
+import ArchiveHeader from '../../components/ArchiveHeader.astro';
+import Footer from '../../components/Footer.astro';
+import PostCard from '../../components/PostCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { countLabel, getPostSummaries, type PostSummary } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  // Tag archives list posts oldest first.
+  const posts = (await getPostSummaries()).reverse();
+  const tagData = await getCollection('tags');
+  const tags = [...new Set(posts.flatMap(post => post.tags))];
+
+  return tags.map(tag => ({
+    params: { tag: kebabCase(tag) },
+    props: {
+      tag,
+      posts: posts.filter(post => post.tags.includes(tag)),
+      info: tagData.find(entry => entry.id.toLowerCase() === tag.toLowerCase())?.data,
+    },
+  }));
+}
+
+type Props = {
+  tag: string;
+  posts: PostSummary[];
+  info?: { description?: string; image?: ImageMetadata };
+};
+
+const { tag, posts, info } = Astro.props;
+const description = info?.description ?? `A collection of ${countLabel(posts.length)}`;
+---
+
+<BaseLayout title={`${tag} - masimplo.com`} description={description}>
+  <ArchiveHeader image={info?.image}>
+    <div class="site-header-content">
+      <h1 class="site-title">{tag}</h1>
+      <p class="site-description">{description}</p>
+    </div>
+  </ArchiveHeader>
+  <main id="site-main" class="site-main outer">
+    <div class="inner">
+      <div class="post-feed">
+        {posts.map((post, index) => (
+          <PostCard post={post} eager={index < 3} />
+        ))}
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

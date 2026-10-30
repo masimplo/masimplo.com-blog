@@ -101,7 +101,7 @@ excerpt: One sentence, ~120–155 characters, containing the primary keyword.
 
 ## Gotchas
 
-- A dangling `image` path does not fail the build. It silently ships the post with no header and no social card.
+- A dangling `image` path fails `npm run build` (`ImageNotFound`) once the post has `draft: false`, so never commit a placeholder path.
 - A tag that is not in `tag.yaml` breaks the tag archive.
 - Post URLs have no `/blog/` prefix. Internal links are `/<slug>/` with a trailing slash.
 - Never echo an API key into a command, file, commit, or the vault. If `GEMINI_API_KEY` is unset, ask the user to export it (setup in `references/header-image.md`).

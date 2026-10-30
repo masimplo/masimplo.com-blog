@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+
+import logo from '../../images/logo.png';
+import config from '../../website-config';
+import SubscribeForm from './SubscribeForm.astro';
+---
+
+<dialog class="subscribe-overlay" aria-labelledby="subscribe-overlay-title">
+  <button
+    class="subscribe-overlay-close"
+    type="button"
+    aria-label="Close"
+    data-close-subscribe
+  ></button>
+  <div class="subscribe-overlay-content">
+    <Image
+      class="subscribe-overlay-logo"
+      src={logo}
+      alt=""
+      height={30}
+      densities={[1, 2]}
+      loading="lazy"
+    />
+    <h2 class="subscribe-overlay-title" id="subscribe-overlay-title">
+      Subscribe to {config.title}
+    </h2>
+    <p class="subscribe-overlay-description">
+      Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox
+    </p>
+    <SubscribeForm id="subscribe-overlay" />
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('.subscribe-overlay');
+  if (dialog) {
+    for (const button of document.querySelectorAll('[data-open-subscribe]')) {
+      button.addEventListener('click', () => {
+        dialog.showModal();
+      });
+    }
+
+    dialog.querySelector('[data-close-subscribe]')?.addEventListener('click', () => {
+      dialog.close();
+    });
+  }
+</script>

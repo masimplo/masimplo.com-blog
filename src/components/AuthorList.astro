@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+
+import { type Author, authorUrl } from '../lib/posts';
+
+type Props = {
+  authors: Author[];
+  /** `small`: name tooltip (post cards). `large`: bio card (post byline). */
+  tooltip: 'small' | 'large';
+};
+
+const { authors, tooltip } = Astro.props;
+---
+
+<ul class="author-list">
+  {authors.map(({ data: author }) => (
+    <li class="author-list-item">
+      {tooltip === 'small' && (
+        <div class="author-name-tooltip" aria-hidden="true">
+          {author.name}
+        </div>
+      )}
+      {tooltip === 'large' && (
+        <div class="author-card">
+          <Image
+            class="author-profile-image"
+            src={author.avatar}
+            alt=""
+            width={60}
+            height={60}
+            densities={[1, 2]}
+          />
+          <div class="author-info">
+            <div class="bio">
+              <p class="author-card-name">{author.name}</p>
+              <p>{author.bio}</p>
+              <p>
+                <a href={authorUrl(author.name)}>More posts</a> by {author.name}.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+      <a class="author-avatar" href={authorUrl(author.name)}>
+        <Image
+          class="author-profile-image"
+          src={author.avatar}
+          alt={author.name}
+          width={40}
+          height={40}
+          densities={[1, 2, 3]}
+        />
+      </a>
+    </li>
+  ))}
+</ul>

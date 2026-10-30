@@ -1,0 +1,54 @@
+---
+import { displayDate, isoDate, type PostSummary, tagUrl } from '../lib/posts';
+import PostCard from './PostCard.astro';
+
+type Props = {
+  primaryTag?: string;
+  /** Up to 3 other posts in the primary tag, oldest first. */
+  related: PostSummary[];
+  /** Total published posts in the primary tag, including the current one. */
+  tagCount: number;
+  prev?: PostSummary;
+  next?: PostSummary;
+};
+
+const { primaryTag, related, tagCount, prev, next } = Astro.props;
+---
+
+<aside class="read-next outer" aria-label="Read next">
+  <div class="inner">
+    <div class="read-next-feed">
+      {primaryTag && tagCount > 1 && (
+        <article class="read-next-card">
+          <header class="read-next-card-header">
+            <h2 class="read-next-card-header-title">
+              <span>More in</span> <a href={tagUrl(primaryTag)}>{primaryTag}</a>
+            </h2>
+          </header>
+          <div class="read-next-card-content">
+            <ul>
+              {related.map(post => (
+                <li>
+                  <h3 class="read-next-card-post-title">
+                    <a href={post.slug}>{post.title}</a>
+                  </h3>
+                  <div class="read-next-card-meta">
+                    <p>
+                      <time datetime={isoDate(post.date)}>{displayDate(post.date)}</time> –{' '}
+                      {post.readingTime}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <footer class="read-next-card-footer">
+            <a href={tagUrl(primaryTag)}>See all {tagCount} posts →</a>
+          </footer>
+        </article>
+      )}
+      {prev && <PostCard post={prev} />}
+      {next && <PostCard post={next} />}
+    </div>
+  </div>
+</aside>
