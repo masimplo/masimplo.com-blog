@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Custom TeamCity build agent from a Dockerfile
 author: [masimplo]
 tags: [Docker, Tools]

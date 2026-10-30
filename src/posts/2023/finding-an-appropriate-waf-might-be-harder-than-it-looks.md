@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Finding an appropriate WAF might be harder than it looks'
 author: [masimplo]
 tags: [Security,Technology]

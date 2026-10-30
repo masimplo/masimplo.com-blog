@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Run Ghost in Docker behind an nginx reverse proxy
 author: [masimplo]
 tags: [Docker, Blogging, Tips]

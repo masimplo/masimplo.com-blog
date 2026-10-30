@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Three similar Ionic apps, one Nx monorepo, and a lot of AI-assisted glue work
 author: [masimplo]
 tags: [Ionic, Technology, AI, Code, Personal]

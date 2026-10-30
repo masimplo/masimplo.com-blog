@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Portfolio Ticker — a tiny monitor for investments scattered across brokers
 author: [masimplo]
 tags: [Technology, Code, Firebase, Tools, Personal]

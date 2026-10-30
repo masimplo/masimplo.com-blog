@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Enable git rerere so rebase conflicts resolve themselves
 author: [masimplo]
 tags: [Tips, Tools]

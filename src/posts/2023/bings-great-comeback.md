@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Bing's great comeback
 author: [masimplo]
 tags: [Technology, AI]

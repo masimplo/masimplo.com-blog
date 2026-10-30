@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Breaking promises...and asking santa for internet access.
 author: [masimplo]
 tags: [Blogging, Personal]

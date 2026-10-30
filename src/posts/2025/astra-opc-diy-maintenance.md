@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Keeping an old car in great shape when nobody else sweats the details
 author: [masimplo]
 tags: [Tips, Hobbies]

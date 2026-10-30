@@ -1,5 +1,4 @@
 ---
-layout: post
 title: AI code review is the bottleneck — writing got cheap
 author: [masimplo]
 tags: [AI, Opinions, Code]

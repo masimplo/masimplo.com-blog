@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Home Assistant and the local-first smart home
 author: [masimplo]
 tags: [Smart Home, Technology, Hobbies]

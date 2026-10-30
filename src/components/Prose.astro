@@ -1,0 +1,400 @@
+---
+// Wrapper for rendered Markdown (post bodies) and long-form page copy.
+---
+
+<section class="post-full-content">
+  <div class="post-content">
+    <slot />
+  </div>
+</section>
+
+<!-- Global on purpose: these rules style the HTML that Markdown renders inside the slot. -->
+<style is:global>
+  .post-full-content {
+    position: relative;
+    margin: 0 auto;
+    padding: 0 170px 6vw;
+    min-height: 230px;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    line-height: 1.6em;
+    background: #fff;
+  }
+
+  @media (max-width: 1170px) {
+    .post-full-content {
+      padding: 0 11vw;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .post-full-content {
+      padding: 0 5vw;
+      font-size: 1.8rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .post-full-content {
+      padding: 0;
+    }
+  }
+
+  html.dark .post-full-content {
+    background: var(--darkmode);
+  }
+
+  .post-content > :is(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, pre, blockquote, .footnotes),
+  .post-content :is(p, ul, ol, dl, pre, blockquote) {
+    margin: 0 0 1.5em;
+    min-width: 100%;
+  }
+
+  @media (max-width: 500px) {
+    .post-content :is(p, ul, ol, dl, pre, .footnotes) {
+      margin-bottom: 1.28em;
+    }
+  }
+
+  .post-content li {
+    word-break: break-word;
+  }
+
+  .post-content li p {
+    margin: 0;
+  }
+
+  .post-content a {
+    color: var(--darkgrey);
+    word-break: break-word;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.12em;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .post-content a:hover {
+    color: #1678ae;
+    text-decoration-color: var(--blue);
+  }
+
+  .post-content strong,
+  .post-content em {
+    color: #0a0b0c;
+  }
+
+  .post-content small {
+    display: inline-block;
+    line-height: 1.6em;
+  }
+
+  .post-content img,
+  .post-content video {
+    display: block;
+    margin: 1.5em auto;
+    max-width: 1040px;
+    height: auto;
+  }
+
+  @media (max-width: 1040px) {
+    .post-content img,
+    .post-content video {
+      width: 100%;
+    }
+  }
+
+  .post-content iframe {
+    display: block;
+    margin: 0 auto 1.5em;
+    max-width: 100%;
+  }
+
+  .post-content blockquote {
+    margin: 0 0 1.5em;
+    padding: 0 1.5em;
+    border-left: var(--blue) 3px solid;
+  }
+
+  @media (max-width: 500px) {
+    .post-content blockquote {
+      padding: 0 1.3em;
+    }
+  }
+
+  .post-content blockquote p {
+    margin: 0 0 1em;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-style: italic;
+  }
+
+  .post-content blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  .post-content code {
+    padding: 0 5px 2px;
+    font-size: 0.8em;
+    line-height: 1em;
+    font-weight: 400;
+    background: var(--whitegrey);
+    border-radius: 3px;
+  }
+
+  .post-content p code {
+    word-break: break-all;
+  }
+
+  /* Fenced code blocks (Shiki, night-owl theme; colours come inline from Shiki). */
+  .post-content pre {
+    overflow-x: auto;
+    margin: 0 -1.3125rem 1.75rem;
+    padding: 20px;
+    max-width: none;
+    min-width: calc(100% + 2.625rem);
+    font-size: 1.4rem;
+    line-height: 1.5;
+    tab-size: 4;
+    border-radius: 10px;
+  }
+
+  .post-content pre code {
+    padding: 0;
+    font-size: inherit;
+    line-height: inherit;
+    background: transparent;
+    word-break: normal;
+  }
+
+  .post-content pre ::selection {
+    color: inherit;
+    background: hsla(0, 0%, 100%, 0.15);
+  }
+
+  .post-content hr {
+    margin: 2em 0;
+  }
+
+  .post-content hr::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    display: block;
+    margin-left: -10px;
+    width: 1px;
+    height: 30px;
+    background: #e4eaed;
+    box-shadow: #fff 0 0 0 5px;
+    transform: rotate(45deg);
+  }
+
+  .post-content hr + p {
+    margin-top: 1.2em;
+  }
+
+  .post-content :is(h1, h2, h3, h4, h5, h6) {
+    color: #0a0b0c;
+    font-family: var(--font-sans);
+  }
+
+  .post-content h1 {
+    margin: 0.5em 0 0.4em;
+    font-size: 4.2rem;
+    line-height: 1.25em;
+    font-weight: 600;
+  }
+
+  .post-content p + h1 {
+    margin-top: 0.8em;
+  }
+
+  .post-content h2 {
+    margin: 0.5em 0 0.4em;
+    font-size: 3.2rem;
+    line-height: 1.25em;
+    font-weight: 600;
+  }
+
+  .post-content p + h2 {
+    margin-top: 0.8em;
+  }
+
+  .post-content h3 {
+    margin: 0.5em 0 0.2em;
+    font-size: 2.5rem;
+    line-height: 1.3em;
+    font-weight: 600;
+  }
+
+  .post-content h2 + h3 {
+    margin-top: 0.7em;
+  }
+
+  .post-content h4 {
+    margin: 0.5em 0 0.2em;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+
+  .post-content h2 + h4 {
+    margin-top: 0.7em;
+  }
+
+  .post-content h3 + h4 {
+    margin-top: 0;
+  }
+
+  .post-content h5 {
+    display: block;
+    margin: 0.5em 0;
+    padding: 0.4em 1em 0.9em;
+    border: 0;
+    color: var(--text-accent);
+    font-family: var(--font-serif);
+    font-size: 3.2rem;
+    line-height: 1.35em;
+    text-align: center;
+  }
+
+  .post-content h6 {
+    margin: 0.5em 0 0.2em;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 800px) {
+    .post-content h1 {
+      font-size: 3.2rem;
+    }
+
+    .post-content h2 {
+      margin-bottom: 0.3em;
+      font-size: 2.8rem;
+    }
+
+    .post-content h3,
+    .post-content h4 {
+      margin-bottom: 0.3em;
+      font-size: 2.4rem;
+      line-height: 1.3em;
+    }
+
+    .post-content h5 {
+      margin-bottom: 1em;
+      margin-left: 1.3em;
+      padding: 0 0 0.5em;
+      font-size: 2.4rem;
+      text-align: initial;
+    }
+
+    .post-content h6 {
+      font-size: 1.8rem;
+      line-height: 1.4em;
+    }
+  }
+
+  .post-content table {
+    display: inline-block;
+    overflow-x: auto;
+    margin: 0.5em 0 2.5em;
+    max-width: 100%;
+    width: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 1.6rem;
+    white-space: nowrap;
+    vertical-align: top;
+    -webkit-overflow-scrolling: touch;
+    background:
+      radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center,
+      radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+    background-attachment: scroll, scroll;
+    background-size:
+      10px 100%,
+      10px 100%;
+    background-repeat: no-repeat;
+  }
+
+  .post-content table td:first-of-type {
+    background-image: linear-gradient(to right, #fff 50%, rgba(255, 255, 255, 0) 100%);
+    background-size: 20px 100%;
+    background-repeat: no-repeat;
+  }
+
+  .post-content table td:last-child {
+    background-image: linear-gradient(to left, #fff 50%, rgba(255, 255, 255, 0) 100%);
+    background-position: 100% 0;
+    background-size: 20px 100%;
+    background-repeat: no-repeat;
+  }
+
+  .post-content table th {
+    color: var(--darkgrey);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-align: left;
+    text-transform: uppercase;
+    background-color: #f4f8fb;
+  }
+
+  .post-content table th,
+  .post-content table td {
+    padding: 6px 12px;
+    border: #e1edf4 1px solid;
+  }
+
+  html.dark .post-content :is(h1, h2, h3, h4, h6) {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  html.dark .post-content a {
+    color: #fff;
+  }
+
+  html.dark .post-content :is(strong, em) {
+    color: #fff;
+  }
+
+  html.dark .post-content code {
+    color: #fff;
+    background: #000;
+  }
+
+  html.dark .post-content pre code {
+    background: transparent;
+  }
+
+  html.dark .post-content hr {
+    border-top-color: #2b2f36;
+  }
+
+  html.dark .post-content hr::after {
+    background: #2b2f36;
+    box-shadow: var(--darkmode) 0 0 0 5px;
+  }
+
+  html.dark .post-content figcaption {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  html.dark .post-content table td:first-of-type {
+    background-image: linear-gradient(to right, var(--darkmode) 50%, rgba(25, 27, 31, 0) 100%);
+  }
+
+  html.dark .post-content table td:last-child {
+    background-image: linear-gradient(270deg, var(--darkmode) 50%, rgba(25, 27, 31, 0));
+  }
+
+  html.dark .post-content table th {
+    color: rgba(255, 255, 255, 0.85);
+    background-color: #2b2f36;
+  }
+
+  html.dark .post-content table :is(th, td) {
+    border: #2b2f36 1px solid;
+  }
+</style>

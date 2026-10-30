@@ -1,5 +1,4 @@
 ---
-layout: post
 title: The week coding assistants stopped pretending to be autocomplete
 author: [masimplo]
 tags: [Technology, AI, Code]

@@ -1,4 +1,5 @@
-- name: masimplo
+- id: masimplo
+  name: masimplo
   avatar: avatars/masimplo.jpg
   bio: Father,Software engineer,cook,tinkerer
   twitter: masimplo

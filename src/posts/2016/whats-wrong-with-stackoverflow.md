@@ -1,5 +1,4 @@
 ---
-layout: post
 title: What's wrong with StackOverflow
 author: [masimplo]
 tags: [Opinions]

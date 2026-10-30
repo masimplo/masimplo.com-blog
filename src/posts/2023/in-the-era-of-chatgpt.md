@@ -1,5 +1,4 @@
 ---
-layout: post
 title: In the Era of ChatGPT and friends
 author: [masimplo]
 tags: [Technology, AI]

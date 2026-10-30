@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Measure real-user web performance with the Performance API
 author: [masimplo]
 tags: [Performance, Code]

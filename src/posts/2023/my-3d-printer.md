@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Building my own 3D printer
 author: [masimplo]
 tags: [3D Printing, Hobbies]

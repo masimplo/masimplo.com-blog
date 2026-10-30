@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 3D printing resources
 author: [masimplo]
 tags: [3D Printing]

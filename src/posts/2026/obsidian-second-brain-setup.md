@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Building a second brain in Obsidian — and telling my AI agents what not to write there
 author: [masimplo]
 tags: [AI, Tools, Tips]

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: A picture is a thousand words. GreenShot
 author: [masimplo]
 tags: [Tools]

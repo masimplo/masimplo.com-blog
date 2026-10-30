@@ -1,5 +1,4 @@
 ---
-layout: post
 title: My Canon G5040 had no Mac app, so Claude Code reverse-engineered one
 author: [masimplo]
 tags: [AI, Tools, Code, Technology]

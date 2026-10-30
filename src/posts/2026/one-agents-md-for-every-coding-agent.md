@@ -1,5 +1,4 @@
 ---
-layout: post
 title: One AGENTS.md for every coding agent — stop maintaining three rule files
 author: [masimplo]
 tags: [AI, Tools, Tips]

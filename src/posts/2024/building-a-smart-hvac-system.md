@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Building a smart HVAC system from scratch
 author: [masimplo]
 tags: [Smart Home, Hobbies, Technology]

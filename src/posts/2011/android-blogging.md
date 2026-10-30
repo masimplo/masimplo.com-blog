@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Android blogging
 author: [masimplo]
 tags: [Blogging]

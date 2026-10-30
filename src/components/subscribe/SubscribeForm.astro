@@ -39,3 +39,117 @@ const inputId = `${id}-email`;
 
   initSubscribeForms();
 </script>
+
+<style>
+  .subscribe-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 460px;
+  }
+
+  .subscribe-form .form-group {
+    flex-grow: 1;
+  }
+
+  .subscribe-email {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    border: #dbe3e7 1px solid;
+    color: var(--text-muted);
+    font-size: 1.8rem;
+    line-height: 1em;
+    font-weight: normal;
+    user-select: text;
+    border-radius: 5px;
+    transition: border-color 0.15s linear;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .subscribe-email:focus {
+    border-color: #bfcdd5;
+  }
+
+  :global(html.dark) .subscribe-email {
+    border-color: #272a30;
+    color: rgba(255, 255, 255, 0.9);
+    background: #202227;
+  }
+
+  :global(html.dark) .subscribe-email:focus {
+    border-color: #525866;
+  }
+
+  .subscribe-form-button {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 0 10px;
+    padding: 0 20px;
+    height: 43px;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 39px;
+    font-weight: 400;
+    text-align: center;
+    /* Darker than the original Casper gradient so white text passes contrast checks. */
+    background: linear-gradient(#1d8ac4, #1678ae 60%, #1678ae 90%, #1a80b6);
+    border-radius: 5px;
+  }
+
+  .subscribe-form-button:active,
+  .subscribe-form-button:focus-visible {
+    background: #146a9a;
+  }
+
+  .subscribe-form-button[disabled] {
+    cursor: default;
+    opacity: 0.8;
+  }
+
+  .subscribe-message {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .subscribe-message.success {
+    color: #4f7a12;
+  }
+
+  .subscribe-message.error {
+    color: #c4361b;
+  }
+
+  .subscribe-message.error :global(a) {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  :global(html.dark) .subscribe-message.success {
+    color: var(--green);
+  }
+
+  :global(html.dark) .subscribe-message.error {
+    color: var(--red);
+  }
+
+  @media (max-width: 500px) {
+    .subscribe-form {
+      flex-direction: column;
+    }
+
+    .subscribe-form .form-group {
+      width: 100%;
+    }
+
+    .subscribe-form-button {
+      margin: 10px 0 0;
+      width: 100%;
+    }
+  }
+</style>

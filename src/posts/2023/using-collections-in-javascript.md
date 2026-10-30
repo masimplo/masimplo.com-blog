@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Manage model collections in JavaScript without leaking Array
 author: [masimplo]
 tags: [Javascript, Code]

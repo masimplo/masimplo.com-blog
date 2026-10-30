@@ -1,0 +1,59 @@
+---
+type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<!-- Title block of posts and standalone pages; the "before" slot holds the post tags. -->
+<header class="post-full-header">
+  <slot name="before" />
+  <h1 class="post-full-title">{title}</h1>
+  <slot />
+</header>
+
+<style>
+  .post-full-header {
+    position: relative;
+    margin: 0 auto;
+    padding: 70px 170px 50px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  @media (max-width: 1170px) {
+    .post-full-header {
+      padding: 60px 11vw 50px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .post-full-header {
+      padding-right: 5vw;
+      padding-left: 5vw;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .post-full-header {
+      padding: 20px 0 35px;
+    }
+  }
+
+  .post-full-title {
+    margin: 0 0 0.2em;
+    color: #0b0c0e;
+  }
+
+  @media (max-width: 500px) {
+    .post-full-title {
+      margin-top: 0.2em;
+      font-size: 3.3rem;
+    }
+  }
+
+  :global(html.dark) .post-full-title {
+    color: rgba(255, 255, 255, 0.9);
+  }
+</style>

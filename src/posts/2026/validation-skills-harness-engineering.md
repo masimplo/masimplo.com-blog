@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Validation skills — the part of harness engineering that let me stop babysitting agents
 author: [masimplo]
 tags: [AI, Tools, Code, Opinions]

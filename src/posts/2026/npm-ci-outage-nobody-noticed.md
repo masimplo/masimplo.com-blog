@@ -1,5 +1,4 @@
 ---
-layout: post
 title: CI was red for six weeks — and the site never noticed
 author: [masimplo]
 tags: [Testing, Tools, Code]

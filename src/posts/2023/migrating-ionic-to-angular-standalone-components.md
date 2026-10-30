@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Ionic Angular standalone components — migrating 500+ components
 author: [masimplo]
 tags: [Ionic, Code]

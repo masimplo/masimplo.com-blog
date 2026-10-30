@@ -54,3 +54,192 @@ const { authors, tooltip } = Astro.props;
     </li>
   ))}
 </ul>
+
+<style>
+  .author-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 0 4px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .author-list-item {
+    position: relative;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .author-list-item::marker {
+    content: none;
+  }
+
+  .author-avatar {
+    display: block;
+    overflow: hidden;
+    margin: 0 -4px;
+    width: 40px;
+    height: 40px;
+    border: #fff 2px solid;
+    border-radius: 100%;
+    transition: all 0.5s cubic-bezier(0.4, 0.01, 0.165, 0.99) 700ms;
+  }
+
+  @media (max-width: 500px) {
+    .author-avatar {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  :global(html.dark) .author-avatar {
+    border-color: #1a1c20;
+  }
+
+  .author-profile-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #e4eaed;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+
+  :global(html.dark) .author-profile-image {
+    background: var(--darkmode);
+  }
+
+  .author-name-tooltip {
+    position: absolute;
+    bottom: 105%;
+    z-index: 999;
+    display: block;
+    padding: 2px 8px;
+    color: #fff;
+    font-size: 1.2rem;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    background: var(--darkgrey);
+    border-radius: 3px;
+    box-shadow:
+      rgba(39, 44, 49, 0.08) 0 12px 26px,
+      rgba(39, 44, 49, 0.03) 1px 3px 8px;
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transform: translateY(6px);
+    pointer-events: none;
+  }
+
+  .author-list-item:hover .author-name-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 700px) {
+    .author-name-tooltip {
+      display: none;
+    }
+  }
+
+  .author-card {
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    z-index: 600;
+    display: flex;
+    justify-content: space-between;
+    margin-left: -200px;
+    padding: 20px 20px 22px;
+    width: 400px;
+    color: #303a3e;
+    font-size: 1.4rem;
+    line-height: 1.5em;
+    text-transform: none;
+    letter-spacing: 0;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow:
+      rgba(39, 44, 49, 0.08) 0 12px 26px,
+      rgba(39, 44, 49, 0.06) 1px 3px 8px;
+    opacity: 0;
+    visibility: hidden;
+    /* Stay open briefly after the pointer leaves so it can be reached. */
+    transition:
+      opacity 0.35s cubic-bezier(0.4, 0.01, 0.165, 0.99) 0.6s,
+      transform 0.35s cubic-bezier(0.4, 0.01, 0.165, 0.99) 0.6s,
+      visibility 0s linear 0.95s;
+    transform: scale(0.98) translateY(15px);
+  }
+
+  .author-list-item:hover .author-card,
+  .author-list-item:focus-within .author-card {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+    transition-delay: 0s;
+  }
+
+  .author-card::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    display: block;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid #fff;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+  }
+
+  .author-card .author-profile-image {
+    flex: 0 0 60px;
+    margin: 0;
+    width: 60px;
+    height: 60px;
+  }
+
+  .author-card .author-info {
+    flex: 1 1 auto;
+    padding: 0 0 0 20px;
+  }
+
+  .author-card .author-card-name {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .author-card .author-info p {
+    margin: 0.8em 0 0;
+  }
+
+  @media (max-width: 1170px) {
+    .author-card {
+      margin-left: -50px;
+      width: 430px;
+    }
+
+    .author-card::before {
+      left: 50px;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .author-card {
+      display: none;
+    }
+  }
+
+  :global(html.dark) .author-card {
+    color: rgba(255, 255, 255, 0.75);
+    background: #22252a;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
+  }
+
+  :global(html.dark) .author-card::before {
+    border-top-color: #22252a;
+  }
+</style>

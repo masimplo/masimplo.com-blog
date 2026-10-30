@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Daikin weather compensation — 21% less heat from one offset
 author: [masimplo]
 tags: [Smart Home, Tips, Hobbies]

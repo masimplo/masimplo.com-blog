@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Training juniors in the AI era — judgment, struggle, and why the field still needs new data
 author: [masimplo]
 tags: [Opinions, Code, Technology]

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Install and switch Node.js versions with nvm
 author: [masimplo]
 tags: [Tools, Tips]

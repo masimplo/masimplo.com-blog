@@ -1,5 +1,4 @@
 ---
-layout: post
 title: The Fellow Aiden was the most fun I've had making coffee — I still might not buy it again
 author: [masimplo]
 tags: [Technology, Personal, Opinions]

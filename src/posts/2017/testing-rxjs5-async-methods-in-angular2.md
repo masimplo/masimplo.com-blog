@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Test RxJS interval and debounceTime without waiting real seconds
 author: [masimplo]
 tags: [Testing, Code]

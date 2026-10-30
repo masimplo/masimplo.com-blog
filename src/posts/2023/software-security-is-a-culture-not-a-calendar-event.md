@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Software security is a culture not a calendar event
 author: [masimplo]
 tags: [Security, Opinions]

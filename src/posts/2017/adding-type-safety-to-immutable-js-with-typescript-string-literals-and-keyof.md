@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Adding type safety to Immutable.js with Typescript string literals and keyof
 author: [masimplo]
 tags: [Code]

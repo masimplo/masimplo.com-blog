@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Practical CSS3 tables with rounded corners - RedTeamDesign"
 author: [masimplo]
 tags: [Web Design, CSS]

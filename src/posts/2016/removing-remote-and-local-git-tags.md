@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Delete git tags in bulk — remote and local one-liners
 author: [masimplo]
 tags: [Tips, Tools]

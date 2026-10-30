@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Batch resize images on Mac with Preview
 author: [masimplo]
 tags: [Tips, Tools]

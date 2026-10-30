@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Remove sensitive data from git history with BFG
 author: [masimplo]
 tags: [Security, Tools, Tips]

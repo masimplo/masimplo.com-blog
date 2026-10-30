@@ -1,5 +1,4 @@
 ---
-layout: post
 title: DeepSeek R1 and the week the pricing story broke
 author: [masimplo]
 tags: [Technology, AI, Opinions]

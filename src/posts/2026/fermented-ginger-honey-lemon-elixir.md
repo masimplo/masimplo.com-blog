@@ -1,5 +1,4 @@
 ---
-layout: post
 title: The drink I make that actually works
 author: [masimplo]
 tags: [Hobbies, Lifehacks]

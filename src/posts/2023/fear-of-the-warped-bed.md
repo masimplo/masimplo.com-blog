@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Voron bed mesh looks warped — check the gantry first
 author: [masimplo]
 tags: [3D Printing, Hobbies]

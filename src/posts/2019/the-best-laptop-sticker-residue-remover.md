@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Remove laptop sticker residue with baking soda and rubbing alcohol
 author: [masimplo]
 tags: [Lifehacks, Tips]

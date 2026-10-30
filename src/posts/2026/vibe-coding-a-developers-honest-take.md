@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Vibe Coding: An Honest Take After Three Years of AI-Assisted Development"
 author: [masimplo]
 tags: [Technology, AI, Code, Opinions]

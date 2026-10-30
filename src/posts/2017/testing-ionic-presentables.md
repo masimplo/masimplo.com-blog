@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Mock Ionic ModalController to test onDidDismiss
 author: [masimplo]
 tags: [Ionic, Testing, Code]

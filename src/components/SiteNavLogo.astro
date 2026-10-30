@@ -8,3 +8,30 @@ import config from '../website-config';
 <a class="site-nav-logo" href="/">
   <Image src={logo} alt={config.title} height={21} densities={[1, 2]} loading="eager" />
 </a>
+
+<style>
+  .site-nav-logo {
+    position: relative;
+    z-index: 100;
+    flex-shrink: 0;
+    display: inline-block;
+    margin-right: 32px;
+    padding: 12px 0;
+    color: #fff;
+    font-size: 1.7rem;
+    line-height: 1.8rem;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+    text-transform: none;
+  }
+
+  .site-nav-logo:hover {
+    text-decoration: none;
+  }
+
+  .site-nav-logo img {
+    display: block;
+    width: auto;
+    height: 21px;
+  }
+</style>

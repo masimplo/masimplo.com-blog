@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Entity Framework Proxy GetType() mess
 author: [masimplo]
 tags: [.Net]

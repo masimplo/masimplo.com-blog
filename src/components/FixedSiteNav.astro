@@ -1,0 +1,32 @@
+---
+import SiteNav from './SiteNav.astro';
+
+type Props = {
+  postTitle?: string;
+};
+---
+
+<!-- The nav pinned to the top of every page except home, where it sits inside the cover photo. -->
+<div class="site-nav-main outer">
+  <div class="inner">
+    <SiteNav {...Astro.props} />
+  </div>
+</div>
+
+<style>
+  .site-nav-main {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    background: var(--nav-bg);
+  }
+
+  @media (max-width: 700px) {
+    .site-nav-main {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+</style>

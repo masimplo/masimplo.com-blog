@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Sync Cordova config.xml version with npm version
 author: [masimplo]
 tags: [Bash, Tips, Ionic]

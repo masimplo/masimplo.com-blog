@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Portfolio Ticker four months on — ROI/yr, year returns, and a real order log
 author: [masimplo]
 tags: [Tools, Technology, Code, Firebase, Personal]

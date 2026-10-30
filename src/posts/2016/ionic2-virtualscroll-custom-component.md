@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Ionic VirtualScroll with custom components — wrap in a div
 author: [masimplo]
 tags: [Ionic, Tips]

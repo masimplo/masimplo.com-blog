@@ -1,7 +1,6 @@
 import { defineCollection, reference } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
-import { parse } from 'yaml';
 
 // Posts live in src/posts/<year>/<slug>.md. The filename (case preserved) is the URL slug,
 // so the year folder is dropped and the default lowercasing id is overridden.
@@ -13,7 +12,6 @@ const posts = defineCollection({
   }),
   schema: ({ image }) =>
     z.object({
-      layout: z.literal('post').default('post'),
       title: z.string(),
       author: z.array(reference('authors')),
       tags: z.array(z.string()).default([]),
@@ -25,12 +23,9 @@ const posts = defineCollection({
     }),
 });
 
-// author.yaml is keyed by `name`; expose it as the entry id so posts can say `author: [masimplo]`.
+// Posts reference authors by id: `author: [masimplo]`.
 const authors = defineCollection({
-  loader: file('src/content/author.yaml', {
-    parser: text =>
-      (parse(text) as Array<{ name: string }>).map(author => ({ id: author.name, ...author })),
-  }),
+  loader: file('src/content/author.yaml'),
   schema: ({ image }) =>
     z.object({
       name: z.string(),

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: List globally installed npm packages with versions
 author: [masimplo]
 tags: [Tips, Tools]

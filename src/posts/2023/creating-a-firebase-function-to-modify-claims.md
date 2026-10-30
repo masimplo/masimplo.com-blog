@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Set Firebase custom user claims with a Cloud Function
 author: [masimplo]
 tags: [Firebase, Code]

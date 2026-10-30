@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Annoying online salesrobot
 author: [masimplo]
 tags: [Online Shopping]

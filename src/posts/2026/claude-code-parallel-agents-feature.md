@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Using Claude Code's parallel agents to collaborate on a feature
 author: [masimplo]
 tags: [AI, Code, Tools]

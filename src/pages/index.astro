@@ -78,3 +78,62 @@ const preloads = [
   </main>
   <Footer />
 </BaseLayout>
+
+<style>
+  .site-home-header {
+    position: relative;
+    padding-bottom: 12px;
+    color: #fff;
+    background: var(--nav-bg) no-repeat center center;
+    background-size: cover;
+    background-image: var(--header-bg-light);
+  }
+
+  :global(html.dark) .site-home-header {
+    background-image: var(--header-bg-dark);
+  }
+
+  .site-home-header :global(.site-header-content) {
+    position: relative;
+  }
+
+  .site-home-header :global(.site-title) img {
+    width: auto;
+    height: 55px;
+  }
+
+  /* Darkening overlays so white text stays readable on the photo. */
+  .site-home-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: block;
+    background: rgba(0, 0, 0, 0.18);
+  }
+
+  .site-home-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    display: block;
+    height: 140px;
+    background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+  }
+
+  :global(html.dark) .site-home-header::before {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .site-home-header :global(.inner) {
+    position: relative;
+    z-index: 100;
+  }
+
+  .posts {
+    overflow-x: hidden;
+  }
+</style>

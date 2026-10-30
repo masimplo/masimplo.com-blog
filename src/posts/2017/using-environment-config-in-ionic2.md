@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Ionic environment config with NODE_ENV and Angular DI
 author: [masimplo]
 tags: [Ionic, Code, Tips]

@@ -82,7 +82,6 @@ Summarize for the user: title, slug/URL, excerpt, primary + secondary keywords a
 
 ```markdown
 ---
-layout: post
 title: Post Title Here
 author: [masimplo]
 tags: [Tag1, Tag2]

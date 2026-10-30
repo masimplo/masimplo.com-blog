@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Guardrails beat guidelines — how to keep AI-generated code honest
 author: [masimplo]
 tags: [AI, Code, Testing, Opinions]

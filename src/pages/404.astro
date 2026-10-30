@@ -1,6 +1,6 @@
 ---
 import PostCard from '../components/PostCard.astro';
-import SiteNav from '../components/SiteNav.astro';
+import FixedSiteNav from '../components/FixedSiteNav.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getPostSummaries } from '../lib/posts';
 
@@ -12,11 +12,7 @@ const latest = (await getPostSummaries()).slice(0, 3);
     <meta name="robots" content="noindex" />
   </Fragment>
   <header class="site-archive-header">
-    <div class="site-nav-main outer">
-      <div class="inner">
-        <SiteNav />
-      </div>
-    </div>
+    <FixedSiteNav />
   </header>
   <main id="site-main" class="error-content outer">
     <div class="inner">
@@ -36,3 +32,63 @@ const latest = (await getPostSummaries()).slice(0, 3);
     </div>
   </main>
 </BaseLayout>
+
+<style>
+  .error-content {
+    padding: 14vw 4vw 6vw;
+  }
+
+  @media (max-width: 800px) {
+    .error-content {
+      padding-top: 24vw;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .error-content {
+      padding-top: 28vw;
+    }
+  }
+
+  @media (min-width: 940px) {
+    .error-content :global(.post-card) {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  .error-code {
+    margin: 0;
+    color: var(--midgrey);
+    font-size: 12vw;
+    line-height: 1em;
+    letter-spacing: -5px;
+  }
+
+  @media (max-width: 800px) {
+    .error-code {
+      font-size: 11.2rem;
+    }
+  }
+
+  .error-description {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 3rem;
+    line-height: 1.3em;
+    font-weight: 400;
+  }
+
+  @media (max-width: 800px) {
+    .error-description {
+      margin: 5px 0 0;
+      font-size: 1.8rem;
+    }
+  }
+
+  .error-link {
+    display: inline-block;
+    margin-top: 5px;
+  }
+</style>

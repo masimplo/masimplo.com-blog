@@ -1,5 +1,4 @@
 ---
-layout: post
 title: The Voron build was hard — owning one is the real project
 author: [masimplo]
 tags: [3D Printing, Hobbies]

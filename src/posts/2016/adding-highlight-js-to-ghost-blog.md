@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Add highlight.js to Ghost with Code Injection
 author: [masimplo]
 tags: [Blogging, Tips]

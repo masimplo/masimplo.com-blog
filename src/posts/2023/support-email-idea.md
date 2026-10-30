@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Help the Helpdesk! Send Info.
 author: [masimplo]
 tags: [Tips]

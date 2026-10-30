@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Owning an EV — the parking space and the bill nobody mentioned
 author: [masimplo]
 tags: [Personal, Technology, Opinions]

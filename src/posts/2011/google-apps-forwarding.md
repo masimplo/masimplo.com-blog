@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Google Apps forwarding
 author: [masimplo]
 tags: [Tips]

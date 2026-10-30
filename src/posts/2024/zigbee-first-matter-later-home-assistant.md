@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Zigbee first, Matter later — radios for a local Home Assistant house
 author: [masimplo]
 tags: [Smart Home, Technology, Hobbies]

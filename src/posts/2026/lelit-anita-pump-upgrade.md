@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Lelit Anita pump replacement — how a dying pump became my best espresso upgrade
 author: [masimplo]
 tags: [Hobbies, Tips, Personal]

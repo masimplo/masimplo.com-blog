@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Waiting for progress
 author: [masimplo]
 tags: [Code]

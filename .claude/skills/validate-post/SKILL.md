@@ -23,7 +23,7 @@ What it covers:
 | Area | FAIL | WARN |
 |---|---|---|
 | Location/slug | not `src/posts/<yyyy>/<slug>.md`, not kebab-case, date in slug | slug length outside 2–9 words |
-| Frontmatter | missing field, wrong order (`layout,title,author,tags,image,date,draft,excerpt`), `permalink`, layout ≠ `post`, author ≠ `[masimplo]`, unquoted colon in title/excerpt, bad date, unknown tag, no excerpt | 2–5 tags, excerpt outside 100–165 chars, draft: true, date/folder year mismatch, future date |
+| Frontmatter | missing field, wrong order (`title,author,tags,image,date,draft,excerpt`), `permalink`, author ≠ `[masimplo]`, unquoted colon in title/excerpt, bad date, unknown tag, no excerpt | 2–5 tags, excerpt outside 100–165 chars, draft: true, date/folder year mismatch, future date |
 | Header image | missing, placeholder, not under `images/headers/`, file not found, < 50 KB (failed generation), wider than 2:1, gitignored | taller than 1.3:1, < 1200 px wide, > 4 MB, non-descriptive filename, reused from another post, leftover `nanobanana-output/` |
 | Structure | `###`+ or H1 in body, opens with a heading, inline images, emoji, placeholders (`TODO:`, `TBD`, `[TK]`) | H2 count outside 4–7, tables, closer > 70 words |
 | Links | internal link to a missing post or without trailing slash | no internal links, absolute masimplo.com links |

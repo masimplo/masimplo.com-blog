@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Async/await retry with timeout in Node.js
 author: [masimplo]
 tags: [Code, Tips]

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Welcome to Ghost
 author: [masimplo]
 tags: [Docker]

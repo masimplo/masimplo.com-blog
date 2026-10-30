@@ -1,11 +1,14 @@
 ---
-import { getImage, Picture } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import { render } from 'astro:content';
 
+import ArticleHeader from '../components/ArticleHeader.astro';
 import AuthorList from '../components/AuthorList.astro';
 import Footer from '../components/Footer.astro';
+import FixedSiteNav from '../components/FixedSiteNav.astro';
+import PostHero from '../components/PostHero.astro';
+import Prose from '../components/Prose.astro';
 import ReadNext from '../components/ReadNext.astro';
-import SiteNav from '../components/SiteNav.astro';
 import Subscribe from '../components/subscribe/Subscribe.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import {
@@ -63,9 +66,6 @@ const socialImage = social && {
   width: Number(social.attributes.width),
   height: Number(social.attributes.height),
 };
-const heroWidths = image
-  ? [...[480, 800, 1200, 1600, 2000].filter(w => w < image.width), Math.min(image.width, 2000)]
-  : [];
 const twitterHandle = config.twitter
   ? `@${config.twitter.split('https://twitter.com/')[1]}`
   : undefined;
@@ -112,17 +112,13 @@ const jsonLd = {
   </Fragment>
 
   <header class="site-header">
-    <div class="site-nav-main outer">
-      <div class="inner">
-        <SiteNav postTitle={title} />
-      </div>
-    </div>
+    <FixedSiteNav postTitle={title} />
   </header>
   <main id="site-main" class="site-main under-nav outer">
     <div class="inner">
       <article class:list={['post-full', { 'no-image': !image }]}>
-        <header class="post-full-header">
-          <section class="post-full-tags" aria-label="Tags">
+        <ArticleHeader title={title}>
+          <section class="post-full-tags" aria-label="Tags" slot="before">
             {(config.showAllTags ? tags : tags.slice(0, 1)).map((tag, idx) => (
               <>
                 {idx > 0 && ', \u00a0'}
@@ -130,7 +126,6 @@ const jsonLd = {
               </>
             ))}
           </section>
-          <h1 class="post-full-title">{title}</h1>
           {post.data.excerpt && <p class="post-full-custom-excerpt">{post.data.excerpt}</p>}
           <div class="post-full-byline">
             <section class="post-full-byline-content">
@@ -153,28 +148,13 @@ const jsonLd = {
               </section>
             </section>
           </div>
-        </header>
+        </ArticleHeader>
 
-        {image && (
-          <figure class="post-full-image">
-            <Picture
-              src={image}
-              alt={title}
-              formats={['avif']}
-              fallbackFormat="webp"
-              widths={heroWidths}
-              sizes="(max-width: 1170px) 100vw, 1040px"
-              loading="eager"
-              fetchpriority="high"
-            />
-          </figure>
-        )}
+        {image && <PostHero image={image} alt={title} />}
 
-        <section class="post-full-content">
-          <div class="post-content">
-            <Content />
-          </div>
-        </section>
+        <Prose>
+          <Content />
+        </Prose>
 
         <div class="post-footer-note">
           <p>
@@ -196,3 +176,128 @@ const jsonLd = {
   />
   <Footer />
 </BaseLayout>
+
+<style>
+  .post-full {
+    position: relative;
+    z-index: 50;
+  }
+
+  .post-full-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    line-height: 1.4em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .post-full-tags a {
+    color: var(--text-accent);
+  }
+
+  :global(html.dark) .post-full-custom-excerpt {
+    color: #90a2aa;
+  }
+
+  :global(html.dark) .post-full-tags {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  :global(html.dark) .post-full-tags a {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  :global(html.dark) .post-full-tags a:hover {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .post-full-custom-excerpt {
+    margin: 20px 0 0;
+    font-family: var(--font-serif);
+    font-size: 2.3rem;
+    line-height: 1.4em;
+    font-weight: 300;
+  }
+
+  @media (max-width: 500px) {
+    .post-full-custom-excerpt {
+      font-size: 1.9rem;
+      line-height: 1.5em;
+    }
+  }
+
+  .post-full-byline {
+    display: flex;
+    justify-content: space-between;
+    margin: 35px 0 0;
+    padding-top: 15px;
+    border-top: 1px solid #e4eaed;
+  }
+
+  :global(html.dark) .post-full-byline {
+    border-top-color: #3b4049;
+  }
+
+  .post-full-byline-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .post-full-byline-content :global(.author-list) {
+    justify-content: flex-start;
+    padding: 0 12px 0 0;
+  }
+
+  .post-full-byline-meta {
+    margin: 2px 0 0;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    line-height: 1.2em;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+  }
+
+  .post-full-byline-meta .author-name {
+    margin: 0 0 3px;
+    font-size: 1.3rem;
+    line-height: 1.4em;
+    font-weight: 500;
+  }
+
+  .post-full-byline-meta .author-name a {
+    color: #2c3036;
+  }
+
+  .post-full-byline-meta .author-name a:hover {
+    color: var(--darkgrey);
+  }
+
+  :global(html.dark) .post-full-byline-meta .author-name a {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  :global(html.dark) .post-full-byline-meta .author-name a:hover {
+    color: #fff;
+  }
+
+  .post-footer-note {
+    margin-bottom: 4vh;
+    padding: 0 8vw;
+    text-align: center;
+  }
+
+  .post-footer-note a {
+    text-decoration: underline;
+  }
+
+  .bull {
+    display: inline-block;
+    margin: 0 4px;
+    opacity: 0.6;
+  }
+</style>

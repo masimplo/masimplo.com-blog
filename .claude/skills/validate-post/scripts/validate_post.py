@@ -21,7 +21,7 @@ POSTS = ROOT / "src" / "posts"
 HEADERS = ROOT / "src" / "images" / "headers"
 TAGS_YAML = ROOT / "src" / "content" / "tag.yaml"
 
-FIELD_ORDER = ["layout", "title", "author", "tags", "image", "date", "draft", "excerpt"]
+FIELD_ORDER = ["title", "author", "tags", "image", "date", "draft", "excerpt"]
 
 SLOP_PHRASES = [
     "in conclusion", "in this post", "in this article", "here's the thing", "let that sink in",
@@ -198,10 +198,8 @@ def validate(path, keyword=None, secondary=(), kind=None, calibrate=False):
             msg += f"; unexpected {extra}"
         r.fail("frontmatter", msg)
     else:
-        r.ok("frontmatter", "all 8 fields, house order")
+        r.ok("frontmatter", "all 7 fields, house order")
 
-    if fm.get("layout") != "post":
-        r.fail("layout", f"must be `post`, got {fm.get('layout')!r}")
     if fm.get("author") != "[masimplo]":
         r.fail("author", f"must be `[masimplo]`, got {fm.get('author')!r}")
 

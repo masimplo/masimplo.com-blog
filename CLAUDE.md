@@ -29,14 +29,15 @@ npx netlify <command>  # Netlify CLI (pinned in devDependencies)
 
 ```
 src/
-├── components/           # Astro components: SiteNav, PostCard, AuthorList, ReadNext, Footer, subscribe/
+├── components/           # Astro components, each with its own scoped <style>: SiteNav/FixedSiteNav,
+│                         #   ArchiveHeader, ArticleHeader, PostHero, Prose, PostCard, AuthorList, ReadNext, Footer, subscribe/
 ├── layouts/BaseLayout.astro  # <head> (meta, OG/Twitter, JSON-LD, theme + gtag scripts) and page shell
 ├── pages/                # Routes: index, [...slug] (posts), tags/[tag], author/[author], about, 404, rss.xml
 ├── lib/posts.ts          # Post queries, URLs, dates, reading time, excerpts
 ├── scripts/subscribe.ts  # Mailchimp JSONP subscribe + GA4 events (client-side)
-├── styles/global.css     # All site CSS (Casper port), dark mode via html.dark
+├── styles/global.css     # Tokens, reset, base typography, shared layout primitives (Casper port)
 ├── posts/<year>/         # Markdown content, one folder per year (2011–2026)
-├── content/              # author.yaml, tag.yaml, avatars/
+├── content/              # author.yaml, tag.yaml (data collections), avatars/
 ├── images/               # headers/ (post header images), content/ (inline + about), logo, home covers
 ├── content.config.ts     # Content collections + frontmatter schema (posts, authors, tags)
 └── website-config.ts     # Site-wide config (title, description, twitter, mailchimp)
@@ -55,7 +56,6 @@ One Markdown file per post at `src/posts/<year>/<kebab-case-slug>.md`. Every pos
 
 ```markdown
 ---
-layout: post
 title: Post Title Here
 author: [masimplo]
 tags: [Tag1, Tag2]
@@ -68,9 +68,8 @@ excerpt: One sentence that becomes the meta description.
 
 | Field | Notes |
 |---|---|
-| `layout` | Always `post` (kept for compatibility; there is one post template) |
 | `title` | Unquoted unless it contains a colon |
-| `author` | Always `[masimplo]`; each entry must match a `name` in `content/author.yaml` (validated at build) |
+| `author` | Always `[masimplo]`; each entry must match an `id` in `content/author.yaml` (validated at build) |
 | `tags` | Inline array `[A, B, C]` with spaces; every tag should match an `id` in `content/tag.yaml` exactly (TitleCase) |
 | `image` | Relative path from the post file; **without it the post gets no og:image/twitter:image at all** |
 | `date` | ISO `YYYY-MM-DD` |
@@ -83,7 +82,7 @@ The schema lives in `src/content.config.ts` and is enforced by `astro check`/`as
 ### Tags and authors
 
 - Tag vocabulary lives in `src/content/tag.yaml` (`id`, `description`, `image`). A post tag missing from that file still gets an archive page, but with a generic description and no header image. Most-used tags: Code, Tools, Technology, Tips, AI, Opinions, Hobbies.
-- Author metadata lives in `src/content/author.yaml`; the about page (`src/pages/about.astro`) carries the author's positioning.
+- Author metadata lives in `src/content/author.yaml` (`id` is what posts reference, `name` is displayed); the about page (`src/pages/about.astro`) carries the author's positioning.
 
 ---
 
@@ -104,7 +103,7 @@ The schema lives in `src/content.config.ts` and is enforced by `astro check`/`as
 ## Code Conventions
 
 - **Components**: `.astro` components, PascalCase filenames, typed `Props`. No UI framework — interactivity is small vanilla `<script>` blocks (bundled and deduped by Astro).
-- **Styling**: plain CSS in `src/styles/global.css`, organized by section, using the custom properties on `:root` (no new hardcoded palette colors). Dark mode is the `dark` class on `<html>` (set before paint from localStorage or the OS preference); write dark rules as `html.dark …`. Small text uses `--text-muted`/`--text-accent`, which pass WCAG AA — don't swap them back to `--midgrey`/`--blue`.
+- **Styling**: each component styles itself in a scoped `<style>` block; `src/styles/global.css` holds only the `:root` tokens, reset, base typography, and layout primitives shared across pages (`.outer`, `.inner`, `.site-main`, `.post-feed`, the page-title block). Use the custom properties (no new hardcoded palette colors). Dark mode is the `dark` class on `<html>` (set before paint from localStorage or the OS preference); in scoped styles write `:global(html.dark) .thing`. To style another component's markup (e.g. ReadNext restyling PostCard) wrap the foreign part in `:global(...)`, including any trailing element such as `:global(.post-card-byline-content a)`. Scoped selectors carry an extra attribute, so each scoped part adds specificity; if an override stops winning, make it more specific rather than adding `!important`. `Prose.astro` uses `<style is:global>` because it styles rendered Markdown. Small text uses `--text-muted`/`--text-accent`, which pass WCAG AA — don't swap them back to `--midgrey`/`--blue`.
 - **Performance budget**: the site scores 98–100 on Lighthouse (mobile and desktop) in all categories. Keep it there: no web fonts, no client frameworks, `<Picture>`/`<Image>` (never raw `<img>` for local images), `loading="eager"` + `fetchpriority="high"` only for the above-the-fold image, and CSS stays inlined (`build.inlineStylesheets: 'always'`).
 - **TypeScript**: strict (`astro/tsconfigs/strict`) plus `noUnusedLocals`/`noUnusedParameters`.
 - **Lint/format**: ESLint flat config (`eslint.config.js`: typescript-eslint + eslint-plugin-astro) and Prettier with `prettier-plugin-astro` (semi, single quotes, trailing commas, printWidth 100, `arrowParens: avoid`). Run `npm run lint:fix` and `npx prettier --write .` before committing.

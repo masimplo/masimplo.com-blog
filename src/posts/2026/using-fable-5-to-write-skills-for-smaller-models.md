@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Let the big model write the manual — using Fable 5 to make smaller models better
 author: [masimplo]
 tags: [AI, Code, Tools]
