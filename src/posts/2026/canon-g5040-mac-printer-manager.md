@@ -1,17 +1,17 @@
 ---
 layout: post
-title: My Canon G5040 had no Mac app, so Claude Code and I reverse-engineered one
+title: My Canon G5040 had no Mac app, so Claude Code reverse-engineered one
 author: [masimplo]
 tags: [AI, Tools, Code, Technology]
 image: ../../images/headers/canon-g5040-mac-printer-manager.png
 date: 2026-10-30
 draft: true
-excerpt: Canon ships no Mac utility for the Canon G5040, so in one Claude Code session I reverse-engineered its maintenance protocol and built my own.
+excerpt: Canon ships no Mac utility for the Canon G5040. In one session, Claude Code reverse-engineered its maintenance protocol and built me one.
 ---
 
 My printer stopped printing, and I had no way to ask it why. It's a Canon PIXMA G5040, one of the MegaTank models with refillable ink tanks, and on the Canon G5040 a Mac user gets an AirPrint queue and nothing else. Canon has no management app for macOS. Its Mac driver does have a Utility tab with cleaning and a nozzle check, but only when you install Canon's own CUPS driver instead of the AirPrint queue macOS sets up by itself. For everything else, Canon sends you to the printer's built-in web page, the Remote UI.
 
-The Remote UI wouldn't let me log in. A PDF sat in the queue going nowhere. So I asked Claude Code to find out. One session later I had a diagnosis, a reverse-engineered maintenance protocol, and the Mac app Canon never wrote.
+The Remote UI wouldn't let me log in. A PDF sat in the queue going nowhere. So I asked Claude Code to find out. One session later I had a diagnosis, a reverse-engineered maintenance protocol, and the Mac app Canon never wrote. My part was answering a few questions.
 
 ## Two problems, neither of them the printer
 
@@ -35,7 +35,7 @@ My first plan for maintenance came from Canon's open-source Linux driver, [cnijf
 
 **The G5040 accepted every one and did nothing.** IPP even reported the job "completed successfully", with zero pages printed. A printer that says "no" would have been more useful.
 
-The next move was one I wouldn't have reached for that quickly: running `strings` on Canon's closed library, `libcnbpcnclapicom2.so`. It gave up the exact IVEC XML templates the driver sends. It also explained the `_canon-chmp` service: CHMP is Canon's management channel over plain HTTP on port 80, and it reports things IPP doesn't, like paper per tray, sheets fed per tray (5,840 at the time), print-head replacement counts, Canon support codes and ink.
+The next move was Claude Code's own idea: running `strings` on Canon's closed library, `libcnbpcnclapicom2.so`. It gave up the exact IVEC XML templates the driver sends. It also explained the `_canon-chmp` service: CHMP is Canon's management channel over plain HTTP on port 80, and it reports things IPP doesn't, like paper per tray, sheets fed per tray (5,840 at the time), print-head replacement counts, Canon support codes and ink.
 
 It has one quirk you won't guess. You POST an IVEC command to `/canon/ij/command2/port1`, then GET the *same path* to read the reply, and the GET must go over the same keep-alive connection. A GET on a fresh connection returns HTTP 409. The client ended up as a raw socket rather than `fetch`:
 
@@ -70,7 +70,7 @@ The missing piece came from a research agent running alongside the main session,
 
 The first try over CHMP half-worked. `StartJob` came back `OK`, and `TestPrint` came back `NotStart`. Each command had gone out on a new connection, the way you'd talk to any HTTP API. **The printer ties a job to the TCP connection that started it**, so `StartJob`, `TestPrint` and `EndJob` have to share one socket. Once they did, the printer reported "TestPrint processing" for about 12 seconds, a nozzle check pattern came out, and the cassette's sheet counter went up by one.
 
-From there the printer explained itself. `GetCapability` for maintenance lists cleaning types `regular`, `deep` and `choke` (an ink flush), and test prints `nozzle_check`, `auto_registration`, `manual_registration` and `regi_check`, all fed from the cassette on A4 or Letter plain paper. Device settings use the same envelope with `GetConfiguration` and `SetConfiguration` under `servicetype="device"`. My printer was set to auto power-off after 240 minutes, auto power-on off, quiet mode off (with a 21:00–07:00 schedule), drying level 3 of 5 and paper gap on auto. I proved the write path with a no-op first, setting drying level 3 to 3, then switched auto power-on from off to on, and confirmed both by reading them back.
+From there the printer explained itself. `GetCapability` for maintenance lists cleaning types `regular`, `deep` and `choke` (an ink flush), and test prints `nozzle_check`, `auto_registration`, `manual_registration` and `regi_check`, all fed from the cassette on A4 or Letter plain paper. Device settings use the same envelope with `GetConfiguration` and `SetConfiguration` under `servicetype="device"`. My printer was set to auto power-off after 240 minutes, auto power-on off, quiet mode off (with a 21:00–07:00 schedule), drying level 3 of 5 and paper gap on auto. Claude Code proved the write path with a no-op first, setting drying level 3 to 3, then switched auto power-on from off to on, and confirmed both by reading them back.
 
 ## A Canon G5040 manager for the Mac
 
@@ -83,7 +83,7 @@ With the protocol mapped, the app came together in the same session. G5040 Manag
 - **Support codes**: all 95 G5000 codes, stored as the code, a short category in my own words and a link to [Canon's page for it](https://ij.manual.canon/ij/webmanual/ErrorCode/G5000%20series/EN/ERR/err_contents0100.html). Canon's manual site forbids reproducing its text, so I didn't.
 - **History**: status changes, raw printer signals, ink over time and every action taken.
 
-The ink flush is deliberately missing. It pushes a lot of ink into the waste-ink absorber, and a full absorber (support codes 1700, 1701 and 5B00) is something only Canon service can fix. The printer offers it. I decided the app shouldn't.
+The ink flush is deliberately missing. It pushes a lot of ink into the waste-ink absorber, and a full absorber (support codes 1700, 1701 and 5B00) is something only Canon service can fix. The printer offers it. The app doesn't.
 
 The least visible feature is a keep-alive nozzle check. After 7 days without printing, between 09:00 and 21:00 and only when the printer reports ready, the app prints one. Canon advises printing at least monthly, and weekly is what MegaTank owners tend to recommend. "Idle" comes from the printer's own sheet counter, so a print from my phone counts too. This is also why I had to turn auto power-on back on: with auto power-off at 4 hours and auto power-on disabled, the printer is unreachable by the time any keep-alive wants to run.
 
@@ -130,15 +130,17 @@ Two problems had nothing to do with the printer at all.
 
 The first appeared the moment the app ran as a LaunchAgent: every connection to the printer failed with `EHOSTUNREACH`. The same Node binary, started from a terminal, worked fine. The cause is **macOS Local Network privacy**, which blocks background processes from reaching the LAN until you approve them. The fix is a toggle for `node` under System Settings → Privacy & Security → Local Network. The error message gives no hint that a permission is involved.
 
-The second was notifications. `osascript -e 'display notification …'` is silently dropped on macOS 26, because the notification gets attributed to Script Editor, and the command still exits 0 ([Apple's developer forums have the thread](https://developer.apple.com/forums/thread/808496)). I replaced it with a tiny native app, G5040 Manager.app: about 50 lines of Swift, ad-hoc signed, using `UNUserNotificationCenter`. It posts notifications under its own name, opening it opens the web UI, and its icon is the printer's own image, served by the printer. I'd originally wanted to hook the "printer web page" button in the Mac's printer info dialog, but macOS 26 no longer has one, so the launcher took that job too. Each alert condition fires once, with quiet hours and per-category switches.
+The second was notifications. `osascript -e 'display notification …'` is silently dropped on macOS 26, because the notification gets attributed to Script Editor, and the command still exits 0 ([Apple's developer forums have the thread](https://developer.apple.com/forums/thread/808496)). Claude Code replaced it with a tiny native app, G5040 Manager.app: about 50 lines of Swift, ad-hoc signed, using `UNUserNotificationCenter`. It posts notifications under its own name, opening it opens the web UI, and its icon is the printer's own image, served by the printer. The first idea had been to hook the "printer web page" button in the Mac's printer info dialog, but macOS 26 no longer has one, so the launcher took that job too. Each alert condition fires once, with quiet hours and per-category switches.
 
 ## One session, several agents
 
-None of this was planned as a project. It started as "why won't my printer print" and ended, in the same Claude Code session, as a working app with tests. Claude Code (on Opus) drove: it ran the Bonjour and IPP probes, captured the bytes, and wrote the clients and the server. Fable ran as a separate research agent and as a plan reviewer, and a couple of Sonnet helpers took the smaller jobs. I've written before about [splitting work across parallel agents](/claude-code-parallel-agents-feature/), and this is the clearest case I've had for it: the research agent found the cnijfilter2 6.81 change while the main session was still sending BJL into the void.
+None of this was planned as a project. It started as "why won't my printer print" and ended, in the same Claude Code session, as a working app with tests. Claude Code (on Opus) drove: it ran the Bonjour and IPP probes, captured the bytes, and wrote the clients and the server. Fable ran as a separate research agent and as a plan reviewer, and a couple of Sonnet helpers took the smaller jobs. I've written before about [splitting work across parallel agents](/claude-code-parallel-agents-feature/), and this is the clearest case I've had for it: the research agent found the cnijfilter2 6.81 change while the main session was still sending BJL into the void. I didn't steer any of that. My whole contribution was answering the handful of questions Claude Code asked along the way.
 
 **The printer was the test oracle.** Every claim got checked against the device: a sheet counter that went up by one, a setting that read back with its new value, a queue that resumed. When `TestPrint` came back `NotStart`, the fix came from that reply, not from a guess. The total paper cost of all the testing was two nozzle checks and three near-blank sheets.
 
 What came out is Node 22 with zero npm dependencies: a hand-written IPP/1.1 encoder and decoder, the CHMP client, the IPP server, the URF decoder and a BMP writer, with `sips` doing image conversion. The front end is plain HTML, CSS and JavaScript with light and dark modes. There are 90 tests on `node:test`, several running against real bytes captured from the printer, with the serial number and MAC addresses swapped for placeholders before anything went public. Mutation checks, breaking the implementation on purpose, confirmed the key tests fail when they should.
+
+"Game-changing" is a word I'd normally cut from a draft. Here it's the accurate one. I went in wanting to know why a PDF wouldn't print, and came out with a reverse-engineered protocol, a fake printer that understands CUPS's failure modes, a native notification helper and 90 tests, all done by Claude Code on its own. That isn't autocomplete. It's handing over a problem I didn't know how to approach and getting back a finished, tested answer.
 
 ## What I still don't know
 
