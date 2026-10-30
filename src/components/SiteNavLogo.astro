@@ -1,0 +1,10 @@
+---
+import { Image } from 'astro:assets';
+
+import logo from '../images/logo.png';
+import config from '../website-config';
+---
+
+<a class="site-nav-logo" href="/">
+  <Image src={logo} alt={config.title} height={21} densities={[1, 2]} loading="eager" />
+</a>

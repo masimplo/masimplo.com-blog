@@ -1,0 +1,80 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getImage, Image } from 'astro:assets';
+
+import Footer from '../components/Footer.astro';
+import PostCard from '../components/PostCard.astro';
+import SiteNav from '../components/SiteNav.astro';
+import coverDark from '../images/blog-cover-sunset.jpg';
+import coverLight from '../images/blog-cover-sunrise.png';
+import logo from '../images/logo.png';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPostSummaries } from '../lib/posts';
+import config from '../website-config';
+
+const posts = await getPostSummaries();
+
+// The header photo is a CSS background (light/dark variants), so build the variants here.
+const cover = async (src: ImageMetadata, width: number) =>
+  (await getImage({ src, width, format: 'webp', quality: 75 })).src;
+const [light1000, light2000, dark1000, dark2000] = await Promise.all([
+  cover(coverLight, 1000),
+  cover(coverLight, 2000),
+  cover(coverDark, 1000),
+  cover(coverDark, 2000),
+]);
+const social = await getImage({ src: coverDark, width: 1200, format: 'jpg' });
+
+const headerCss = `
+.site-home-header { --header-bg-light: url('${light1000}'); --header-bg-dark: url('${dark1000}'); }
+@media (min-width: 1000px) {
+  .site-home-header { --header-bg-light: url('${light2000}'); --header-bg-dark: url('${dark2000}'); }
+}`;
+
+// Fetch the header background matching the OS colour scheme before the CSS is parsed.
+const preloads = [
+  { href: light1000, media: '(prefers-color-scheme: light) and (max-width: 999px)' },
+  { href: light2000, media: '(prefers-color-scheme: light) and (min-width: 1000px)' },
+  { href: dark1000, media: '(prefers-color-scheme: dark) and (max-width: 999px)' },
+  { href: dark2000, media: '(prefers-color-scheme: dark) and (min-width: 1000px)' },
+];
+---
+
+<BaseLayout
+  title={config.title}
+  description={config.description}
+  image={{
+    src: social.src,
+    width: social.attributes.width as number,
+    height: social.attributes.height as number,
+  }}
+>
+  <Fragment slot="head">
+    {preloads.map(preload => (
+      <link rel="preload" as="image" type="image/webp" href={preload.href} media={preload.media} />
+    ))}
+    <style is:inline set:html={headerCss} />
+  </Fragment>
+
+  <header class="site-home-header outer">
+    <div class="inner">
+      <SiteNav isHome />
+      <div class="site-header-content">
+        <h1 class="site-title">
+          <Image src={logo} alt={config.title} height={55} densities={[1, 2]} loading="eager" />
+        </h1>
+        <p class="site-description">{config.description}</p>
+      </div>
+    </div>
+  </header>
+  <main id="site-main" class="site-main outer">
+    <div class="inner posts">
+      <div class="post-feed">
+        {posts.map((post, index) => (
+          <PostCard post={post} isLarge={index === 0} />
+        ))}
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

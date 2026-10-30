@@ -1,0 +1,10 @@
+---
+import config from '../../website-config';
+import SubscribeForm from './SubscribeForm.astro';
+---
+
+<section class="subscribe-form-section">
+  <h2 class="subscribe-form-title">Subscribe to {config.title}</h2>
+  <p>Get the latest posts delivered right to your inbox</p>
+  <SubscribeForm id="subscribe-inline" />
+</section>

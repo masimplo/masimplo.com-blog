@@ -1,0 +1,198 @@
+---
+import { getImage, Picture } from 'astro:assets';
+import { render } from 'astro:content';
+
+import AuthorList from '../components/AuthorList.astro';
+import Footer from '../components/Footer.astro';
+import ReadNext from '../components/ReadNext.astro';
+import SiteNav from '../components/SiteNav.astro';
+import Subscribe from '../components/subscribe/Subscribe.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  authorUrl,
+  displayDate,
+  getPublishedPosts,
+  isoDate,
+  type Post,
+  postUrl,
+  summarize,
+  tagUrl,
+} from '../lib/posts';
+import config from '../website-config';
+
+export async function getStaticPaths() {
+  // Oldest first, so "prev" is the previous (older) post and "next" the newer one.
+  const posts = (await getPublishedPosts()).reverse();
+  return posts.map((post, index) => ({
+    params: { slug: postUrl(post).replace(/^\/|\/$/g, '') },
+    props: { post, posts, index },
+  }));
+}
+
+type Props = { post: Post; posts: Post[]; index: number };
+
+const { post, posts, index } = Astro.props;
+const { Content } = await render(post);
+const summary = await summarize(post);
+const { title, tags, image } = post.data;
+const author = summary.authors[0]?.data;
+const primaryTag = tags[0];
+const url = new URL(summary.slug, Astro.site).href;
+
+// "More in <tag>": the oldest five posts in the primary tag, minus this one, capped at three.
+const tagPosts = primaryTag ? posts.filter(p => p.data.tags.includes(primaryTag)) : [];
+const related = await Promise.all(
+  tagPosts
+    .slice(0, 5)
+    .filter(p => p.id !== post.id)
+    .slice(0, 3)
+    .map(async p => summarize(p)),
+);
+const prev = index > 0 ? await summarize(posts[index - 1]) : undefined;
+const next = index < posts.length - 1 ? await summarize(posts[index + 1]) : undefined;
+
+const social = image
+  ? await getImage({
+      src: image,
+      width: Math.min(1200, image.width),
+      format: image.format === 'png' ? 'png' : 'jpg',
+    })
+  : undefined;
+const socialImage = social && {
+  src: social.src,
+  width: Number(social.attributes.width),
+  height: Number(social.attributes.height),
+};
+const heroWidths = image
+  ? [...[480, 800, 1200, 1600, 2000].filter(w => w < image.width), Math.min(image.width, 2000)]
+  : [];
+const twitterHandle = config.twitter
+  ? `@${config.twitter.split('https://twitter.com/')[1]}`
+  : undefined;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: summary.excerpt,
+  datePublished: post.data.date.toISOString(),
+  url,
+  mainEntityOfPage: url,
+  ...(socialImage && { image: new URL(socialImage.src, Astro.site).href }),
+  ...(primaryTag && { keywords: tags.join(', ') }),
+  author: author && {
+    '@type': 'Person',
+    name: author.name,
+    url: new URL(authorUrl(author.name), Astro.site).href,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: config.title,
+    url: config.siteUrl,
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={summary.excerpt}
+  type="article"
+  image={socialImage}
+  jsonLd={[jsonLd]}
+>
+  <Fragment slot="head">
+    <meta property="article:published_time" content={post.data.date.toISOString()} />
+    {primaryTag && <meta property="article:tag" content={primaryTag} />}
+    {config.facebook && <meta property="article:author" content={config.facebook} />}
+    {author && <meta name="twitter:label1" content="Written by" />}
+    {author && <meta name="twitter:data1" content={author.name} />}
+    {primaryTag && <meta name="twitter:label2" content="Filed under" />}
+    {primaryTag && <meta name="twitter:data2" content={primaryTag} />}
+    {twitterHandle && <meta name="twitter:creator" content={twitterHandle} />}
+  </Fragment>
+
+  <header class="site-header">
+    <div class="site-nav-main outer">
+      <div class="inner">
+        <SiteNav postTitle={title} />
+      </div>
+    </div>
+  </header>
+  <main id="site-main" class="site-main under-nav outer">
+    <div class="inner">
+      <article class:list={['post-full', { 'no-image': !image }]}>
+        <header class="post-full-header">
+          <section class="post-full-tags" aria-label="Tags">
+            {(config.showAllTags ? tags : tags.slice(0, 1)).map((tag, idx) => (
+              <>
+                {idx > 0 && ', \u00a0'}
+                <a href={tagUrl(tag)}>{tag}</a>
+              </>
+            ))}
+          </section>
+          <h1 class="post-full-title">{title}</h1>
+          {post.data.excerpt && <p class="post-full-custom-excerpt">{post.data.excerpt}</p>}
+          <div class="post-full-byline">
+            <section class="post-full-byline-content">
+              <AuthorList authors={summary.authors} tooltip="large" />
+              <section class="post-full-byline-meta">
+                <p class="author-name">
+                  {summary.authors.map(a => (
+                    <a href={authorUrl(a.data.name)}>{a.data.name}</a>
+                  ))}
+                </p>
+                <div class="byline-meta-content">
+                  <time class="byline-meta-date" datetime={isoDate(post.data.date)}>
+                    {displayDate(post.data.date)}
+                  </time>
+                  <span class="byline-reading-time">
+                    <span class="bull">&bull;</span>
+                    {summary.readingTime}
+                  </span>
+                </div>
+              </section>
+            </section>
+          </div>
+        </header>
+
+        {image && (
+          <figure class="post-full-image">
+            <Picture
+              src={image}
+              alt={title}
+              formats={['avif']}
+              fallbackFormat="webp"
+              widths={heroWidths}
+              sizes="(max-width: 1170px) 100vw, 1040px"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </figure>
+        )}
+
+        <section class="post-full-content">
+          <div class="post-content">
+            <Content />
+          </div>
+        </section>
+
+        <div class="post-footer-note">
+          <p>
+            Thanks for reading! To stay updated on my latest posts and thoughts, follow me on
+            Twitter <a href="https://twitter.com/masimplo">@masimplo</a>
+          </p>
+        </div>
+        {config.showSubscribe && <Subscribe />}
+      </article>
+    </div>
+  </main>
+
+  <ReadNext
+    primaryTag={primaryTag}
+    related={related}
+    tagCount={tagPosts.length}
+    prev={prev}
+    next={next}
+  />
+  <Footer />
+</BaseLayout>

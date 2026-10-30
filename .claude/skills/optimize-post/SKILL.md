@@ -1,6 +1,6 @@
 ---
 name: optimize-post
-description: Polish an existing masimplo.com draft post — strip AI-tell slop while preserving the author's voice, tighten it for the target audience (working developers and makers), and set up the SEO surface this Gatsby site actually reads (excerpt, tag order, image, slug, internal links). Use on a written draft before publishing. NOT for drafting a new post from scratch (use write-post) and NOT for site-wide SEO code changes to templates or plugins.
+description: Polish an existing masimplo.com draft post — strip AI-tell slop while preserving the author's voice, tighten it for the target audience (working developers and makers), and set up the SEO surface this Astro site actually reads (excerpt, tag order, image, slug, internal links). Use on a written draft before publishing. NOT for drafting a new post from scratch (use write-post) and NOT for site-wide SEO code changes to templates or plugins.
 ---
 
 # Optimize a Post
@@ -43,13 +43,13 @@ The reader is a practicing software engineer or technical maker, mid-career, ske
 
 ## Pass 3 — SEO surface
 
-These are the only levers this site reads. All verified against `gatsby-node.js`, `gatsby-config.js`, and `src/templates/post.tsx` — do not invent others.
+These are the only levers this site reads. All verified against `src/content.config.ts`, `src/lib/posts.ts`, `src/layouts/BaseLayout.astro`, and `src/pages/[...slug].astro` — do not invent others.
 
-1. **Excerpt = meta description.** Frontmatter `excerpt` feeds meta description, og:description, twitter:description, and JSON-LD. Without it, Gatsby auto-truncates the opening ~140 chars mid-sentence. Write a one-sentence `excerpt` of ~120–155 characters that contains the post's main keyword and reads as a hook — often the post's first line works verbatim.
+1. **Excerpt = meta description.** Frontmatter `excerpt` feeds meta description, og:description, twitter:description, and JSON-LD. Without it, the site auto-truncates the opening ~140 chars mid-sentence. Write a one-sentence `excerpt` of ~120–155 characters that contains the post's main keyword and reads as a hook — often the post's first line works verbatim.
 2. **Title.** Becomes `<title>`, og:title, and JSON-LD headline as-is. Keep the editorial voice, but put the searchable phrase in the front half (e.g. "Guardrails beat guidelines — how to keep AI-generated code honest"). Quote it in YAML only if it contains a colon.
 3. **Tag order.** Only `tags[0]` is emitted as `article:tag`/`twitter:data2` and selects related posts shown under the article. Reorder so the most specific relevant tag is first. Every tag must match an `id` in `src/content/tag.yaml` exactly.
-4. **Image.** No frontmatter `image` = no og:image, no twitter:image, no JSON-LD image — the post shares as a bare link. Confirm the referenced file exists in `src/images/headers/` — a dangling path does not fail the build; it silently ships the post with no header or social-card image. Flag placeholders loudly.
-5. **Slug = filename.** The URL is `/<filename-without-.md>/` at the site root, forever. Check the filename is kebab-case, keyword-bearing, and free of dates or filler words. Renaming after publication breaks the URL (redirects are hand-maintained in `src/static/_redirects`).
+4. **Image.** No frontmatter `image` = no og:image, no twitter:image, no JSON-LD image — the post shares as a bare link. Confirm the referenced file exists in `src/images/headers/` — a dangling path fails the build (`astro build` validates every frontmatter image). Flag placeholders loudly.
+5. **Slug = filename.** The URL is `/<filename-without-.md>/` at the site root, forever. Check the filename is kebab-case, keyword-bearing, and free of dates or filler words. Renaming after publication breaks the URL (redirects are hand-maintained in `public/_redirects`).
 6. **Internal links.** Add 1–3 root-relative links (`/other-post-slug/`) to related posts where the prose naturally supports a back-reference. Verify each target filename exists under `src/posts/**`. Descriptive anchor text, never "click here".
 7. **Headings.** `##` only. Make sure at least one H2 carries the topic phrase naturally — but keep headings wry and voice-forward, never keyword-stuffed.
 8. **`draft: false`** — drafts are excluded from pages, sitemap, and RSS.

@@ -1,8 +1,6 @@
 export type WebsiteConfig = {
   title: string;
   description: string;
-  coverImage?: string;
-  logo: string;
   /**
    * Specifying a valid BCP 47 language helps screen readers announce text properly.
    * See: https://dequeuniversity.com/rules/axe/2.2/valid-lang
@@ -37,11 +35,9 @@ export type WebsiteConfig = {
    */
   mailchimpEmailFieldName?: string;
   /**
-  /**
    * Meta tag for Google Webmaster Tools
    */
   googleSiteVerification?: string;
-  /**
   /**
    * Appears alongside the footer, after the credits
    */
@@ -55,19 +51,19 @@ export type WebsiteConfig = {
 
 const config: WebsiteConfig = {
   title: 'masimplo.com',
-  description: '"Love many things, for therein lies the true strength, and whosoever loves much performs much, and can accomplish much, and what is done in love is done well." - Van Gogh',
-  coverImage: 'blog-cover-sunset.jpg',
-  logo: 'logo.png',
+  description:
+    '"Love many things, for therein lies the true strength, and whosoever loves much performs much, and can accomplish much, and what is done in love is done well." - Van Gogh',
   lang: 'en',
   siteUrl: 'https://masimplo.com',
   // facebook: 'https://www.facebook.com/masimplo',
   twitter: 'https://twitter.com/masimplo',
   showSubscribe: true,
-  mailchimpAction: 'https://gmail.us20.list-manage.com/subscribe/post?u=e751f209dff476297e609e4d2&id=876a986ffe',
+  mailchimpAction:
+    'https://gmail.us20.list-manage.com/subscribe/post?u=e751f209dff476297e609e4d2&id=876a986ffe',
   mailchimpName: 'b_e751f209dff476297e609e4d2_876a986ffe',
   mailchimpEmailFieldName: 'EMAIL',
   // googleSiteVerification: 'REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_TOKEN',
-  footer: 'is based on Gatsby Casper',
+  footer: 'is based on Casper',
   showAllTags: true,
 };
 

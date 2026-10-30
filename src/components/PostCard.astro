@@ -1,0 +1,77 @@
+---
+import { Picture } from 'astro:assets';
+
+import { authorUrl, displayDate, isoDate, type PostSummary, tagUrl } from '../lib/posts';
+import config from '../website-config';
+import AuthorList from './AuthorList.astro';
+
+type Props = {
+  post: PostSummary;
+  /** Full-width hero card: first post on the home page. */
+  isLarge?: boolean;
+  /** Load the image eagerly; only for cards visible on first paint. */
+  eager?: boolean;
+};
+
+const { post, isLarge = false, eager = isLarge } = Astro.props;
+const tags = config.showAllTags ? post.tags : post.tags.slice(0, 1);
+---
+
+<article class:list={['post-card', { 'no-image': !post.image, 'post-card-large': isLarge }]}>
+  {post.image && (
+    <a class="post-card-image-link" href={post.slug} tabindex="-1" aria-hidden="true">
+      <Picture
+        class="post-card-image"
+        src={post.image}
+        alt=""
+        formats={['avif']}
+        fallbackFormat="webp"
+        widths={isLarge ? [480, 720, 960, 1280] : [360, 540, 720, 1000]}
+        sizes={
+          isLarge
+            ? '(max-width: 794px) calc(90vw - 40px), (max-width: 1150px) calc(90vw - 400px), 640px'
+            : '(max-width: 794px) calc(90vw - 40px), 340px'
+        }
+        loading={eager ? 'eager' : 'lazy'}
+        fetchpriority={isLarge && eager ? 'high' : undefined}
+      />
+    </a>
+  )}
+  <div class="post-card-content">
+    <header class="post-card-header">
+      {tags.length > 0 && (
+        <div class="post-card-primary-tag">
+          {tags.map((tag, idx) => (
+            <>
+              {idx > 0 && ', \u00a0'}
+              <a href={tagUrl(tag)}>{tag}</a>
+            </>
+          ))}
+        </div>
+      )}
+      <a class="post-card-content-link" href={post.slug}>
+        <h2 class="post-card-title">{post.title}</h2>
+        <section class="post-card-excerpt">
+          <p>{post.excerpt}</p>
+        </section>
+      </a>
+    </header>
+    <footer class="post-card-meta">
+      <AuthorList authors={post.authors} tooltip="small" />
+      <div class="post-card-byline-content">
+        <span>
+          {post.authors.map(({ data: author }, index) => (
+            <>
+              <a href={authorUrl(author.name)}>{author.name}</a>
+              {index < post.authors.length - 1 && ', '}
+            </>
+          ))}
+        </span>
+        <span class="post-card-byline-date">
+          <time datetime={isoDate(post.date)}>{displayDate(post.date)}</time>{' '}
+          <span class="bull">&bull;</span> {post.readingTime}
+        </span>
+      </div>
+    </footer>
+  </div>
+</article>
