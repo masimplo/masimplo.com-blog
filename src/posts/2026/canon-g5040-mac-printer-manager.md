@@ -5,7 +5,7 @@ author: [masimplo]
 tags: [AI, Tools, Code, Technology]
 image: ../../images/headers/canon-g5040-mac-printer-manager.png
 date: 2026-10-30
-draft: true
+draft: false
 excerpt: Canon ships no Mac utility for the Canon G5040. In one session, Claude Code reverse-engineered its maintenance protocol and built me one.
 ---
 
