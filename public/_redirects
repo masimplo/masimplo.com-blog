@@ -10,3 +10,11 @@ https://www.masimplo.com/* https://masimplo.com/:splat 301!
 /github-link  /  301
 /tags/source/  /  301
 /tags/source  /  301
+# Canonical URL for the 3D printing list is lowercase (the post file used to be 3D-printing-resources.md).
+/3D-printing-resources/  /3d-printing-resources/  301
+/3D-printing-resources   /3d-printing-resources/  301
+# Thin placeholder intro posts, unpublished (draft: true); send old links home.
+/welcome/  /  301
+/welcome  /  301
+/welcome-to-ghost/  /  301
+/welcome-to-ghost  /  301
