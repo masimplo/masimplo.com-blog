@@ -11,7 +11,7 @@ excerpt: Everyone says software is dead now that anyone can build their own apps
 
 Every week someone in my feed announces that software is dead. The argument goes like this: if anyone can describe an app to a coding agent and have it running by dinner, why would anyone pay for one again? Buy nothing, generate everything.
 
-I'm not a neutral observer here. I have written more than 30 personal apps. Dashboards for my personal finances, a couple of investment monitors, Telegram apps, a food app for my kids, and a long tail of smaller things I would struggle to list from memory. That last part is the point of this post.
+I'm not a neutral observer here. I have written more than 30 personal apps. Dashboards for my personal finances, a couple of investment monitors, Telegram apps, a food scanner for my kids, and a long tail of smaller things I would struggle to list from memory. That last part is the point of this post.
 
 ## The 30 apps I don't open
 
@@ -36,9 +36,11 @@ A generated app gets none of that. It gets a snapshot of one person's needs on o
 
 ## Users are the test suite
 
-My kids' food app works because it has had exactly one product manager and a handful of users who share a dinner table. Nobody has opened it on a five-year-old Android phone. Nobody has fed it data I didn't think of. Nobody has tried to use it in a way I didn't intend.
+The food app I built for my kids is the one that escaped. [Prova](https://provascan.com) is in both stores now: you scan a barcode on something headed for the lunchbox and get its Nutri-Score grade, its NOVA processing group, every ingredient flagged Safe, Caution or Avoid, and a check against whichever of the 14 EU-regulated allergens you care about. If there is no barcode, you photograph the label instead. Scanning is free, there are no ads, and it works without an account.
 
-That's also why all 30 of my apps "work". I never step off my own happy path, because I wrote the happy path. A product with thousands of users has had every path walked, usually by someone annoyed enough to file a ticket. That accumulated annoyance is the most valuable thing a mature product owns, and **you can't vibe code your way into it**, because it isn't code. It's history.
+Look at what is doing the heavy lifting, though. Most of the product data comes from open food databases like Open Food Facts, years of volunteers photographing labels and typing in ingredients, one product at a time. The grades come from Nutri-Score and NOVA, years of nutrition research and arguing about thresholds. The allergen list is EU regulation, and the ingredient flags link to published sources written by people I'll never meet. My part is the scanner, the profile, and the screens that put it all together. The valuable part of my app is software and data that other people spent years on. That's the part I couldn't have generated, and it's also why Prova is worth anything at all.
+
+The rest of my apps don't have that to lean on, and they "work" for a simpler reason. I never step off my own happy path, because I wrote the happy path. A product with thousands of users has had every path walked, usually by someone annoyed enough to file a ticket. That accumulated annoyance is the most valuable thing a mature product owns, and **you can't vibe code your way into it**, because it isn't code. It's history.
 
 I've written about this from the other side before: [vibe coding is real](/vibe-coding-a-developers-honest-take/), and AI takes the typing off our hands. The typing was always the cheapest part. Generating an app in an hour doesn't give you a product that has survived years of other people's mistakes.
 
