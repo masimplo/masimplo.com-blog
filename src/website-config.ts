@@ -1,5 +1,8 @@
 export type WebsiteConfig = {
+  /** Site/brand name: footer, subscribe copy, og:site_name, JSON-LD. */
   title: string;
+  /** Home page `<title>` and og:title; the brand name alone says nothing in search results. */
+  homeTitle: string;
   description: string;
   /**
    * Specifying a valid BCP 47 language helps screen readers announce text properly.
@@ -51,8 +54,9 @@ export type WebsiteConfig = {
 
 const config: WebsiteConfig = {
   title: 'masimplo.com',
+  homeTitle: 'masimplo.com: AI-assisted development, engineering and making',
   description:
-    '"Love many things, for therein lies the true strength, and whosoever loves much performs much, and can accomplish much, and what is done in love is done well." - Van Gogh',
+    'Essays from a software engineer of 20+ years on AI-assisted development, engineering practice, 3D printing and smart-home tinkering.',
   lang: 'en',
   siteUrl: 'https://masimplo.com',
   // facebook: 'https://www.facebook.com/masimplo',

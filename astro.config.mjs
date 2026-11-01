@@ -2,6 +2,10 @@
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
+import { buildLastmodMap } from './sitemap-lastmod.mjs';
+
+const lastmod = buildLastmodMap();
+
 export default defineConfig({
   site: 'https://masimplo.com',
   // Post URLs have always been `/<slug>/`; keep the trailing slash everywhere.
@@ -41,6 +45,10 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: page => !page.endsWith('/404/'),
+      serialize(item) {
+        const date = lastmod.get(item.url);
+        return date ? { ...item, lastmod: date } : item;
+      },
     }),
   ],
 });

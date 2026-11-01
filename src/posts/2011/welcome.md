@@ -5,7 +5,7 @@ author: [masimplo]
 tags: [Blogging]
 image: ../../images/headers/welcome-to-ghost.jpg
 date: 2011-06-06
-draft: false
+draft: true
 excerpt: I have started and abandoned several blogs before, so this is another attempt to write about my studies, my work and my hobbies.
 ---
 
