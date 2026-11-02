@@ -4,7 +4,7 @@ title: Software is dead, long live the software — notes from 30 personal apps
 author: [masimplo]
 tags: [Opinions, AI, Code, Technology]
 image: ../../images/headers/software-is-dead-long-live-software.png
-date: 2026-11-01
+date: 2026-11-02
 draft: false
 excerpt: Everyone says software is dead now that anyone can build their own apps. I've built over 30 of them, and that's why I don't believe it.
 ---
